@@ -605,8 +605,17 @@
  },
  {
   "type": "DEPENDS_ON",
-  "source": "A2",
-  "target": "R13",
+  "source": "R13",
+  "target": "A2",
+  "evidence_docs": [
+   "D03"
+  ],
+  "note": "mass_contribution"
+ },
+ {
+  "type": "DEPENDS_ON",
+  "source": "R13",
+  "target": "A4",
   "evidence_docs": [
    "D03"
   ],
@@ -615,11 +624,20 @@
  {
   "type": "DEPENDS_ON",
   "source": "A4",
-  "target": "R13",
+  "target": "A2",
   "evidence_docs": [
    "D03"
   ],
-  "note": "mass_contribution"
+  "note": "load_bearing"
+ },
+ {
+  "type": "DEPENDS_ON",
+  "source": "A4",
+  "target": "A1",
+  "evidence_docs": [
+   "D03"
+  ],
+  "note": "load_bearing"
  },
  {
   "type": "DERIVED_FROM",

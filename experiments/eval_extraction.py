@@ -53,7 +53,9 @@ def eval_relations(gold, kb, idm):
     for g in gold["relations"]:
         t, s, o = g["type"], g["source"], g["target"]
         if t == "DEPENDS_ON":
-            goldset[t].add((idm(s), idm.constraint_of(o)))
+            def node(x):
+                return idm.constraint_of(x) if x in idm.gold_reqs else idm(x)
+            goldset[t].add((node(s), node(o)))
         elif t == "DERIVED_FROM":
             goldset[t].add((idm.constraint_of(s), idm.constraint_of(o)))
         elif t == "VERIFIED_BY":

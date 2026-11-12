@@ -245,7 +245,7 @@ REQ = {r.id: r for r in REQS}
 # Дополнительно: ограничения материалов (D04) — генерируются из MATERIALS как capability на материал.
 
 # ---------------------------------------------------------------- зависимости (ПЗ, D03)
-# (component, requirement, обоснование-тип) — компонент DEPENDS_ON требование.
+# (source, target, обоснование-тип); source/target — компонент или требование.
 DEPENDS_ON: list[tuple[str, str, str]] = [
     # контакт с перекачиваемой средой
     *[(c, "R01", "medium_contact") for c in ("C01", "C02", "C05", "C06", "C07")],
@@ -260,9 +260,12 @@ DEPENDS_ON: list[tuple[str, str, str]] = [
     *[(c, "R09", "vibration_source") for c in ("C02", "C08", "A3", "A4", "C16")],
     # контроль температуры подшипника
     ("C09", "R16", "monitoring"),
-    # масса агрегата зависит от двигателя и рамы
-    *[(c, "R13", "mass_contribution") for c in ("A2", "A4")],
+    # масса агрегата зависит от двигателя и рамы (обратное направление: требование зависит от компонента)
+    *[("R13", c, "mass_contribution") for c in ("A2", "A4")],
+    # рама воспринимает нагрузки от двигателя и насоса
+    *[("A4", c, "load_bearing") for c in ("A2", "A1")],
 ]
+# Семантика DEPENDS_ON(source, target): свойства/работа source зависят от target.
 
 DERIVED_FROM = [("R04", "R03", "испытательное давление = 1,5 × рабочего"),
                 ("R27", "R03", "давление настройки клапана = 1,1 × рабочего")]
@@ -299,13 +302,13 @@ CHANGES = [
 
 # ---------------------------------------------------------------- внесённые противоречия (эталон)
 CONTRADICTIONS = [
-    {"id": "K01", "type": "value_mismatch", "pairs": [["R01", "R41"]], "severity": "high",
+    {"id": "K01", "type": "value_mismatch", "pairs": [["R01", "R41"], ["R54", "R41"]], "severity": "high",
      "description": "ТЗ: температура среды ≤ 80 °C; РЭ: ≤ 90 °C."},
     {"id": "K02", "type": "demand_exceeds_capability", "pairs": [["R03", "R23"], ["R48", "R23"]], "severity": "critical",
      "description": "Рабочее давление 1,6 МПа превышает расчётное давление корпуса 1,0 МПа."},
     {"id": "K03", "type": "unit_hidden_mismatch", "pairs": [["R04", "R42"]], "severity": "high",
      "description": "ТЗ: испытательное давление 2,4 МПа; ПМИ: 20 кгс/см² (≈1,96 МПа)."},
-    {"id": "K04", "type": "demand_exceeds_capability", "pairs": [["R11", "R36"]], "severity": "high",
+    {"id": "K04", "type": "demand_exceeds_capability", "pairs": [["R11", "R36"], ["R11", "RM_M11"]], "severity": "high",
      "description": "Нижняя граница температуры окружающего воздуха −40 °C ниже допустимой для упругого элемента муфты (−30 °C)."},
     {"id": "K05", "type": "value_mismatch", "pairs": [["R08", "R30"]], "severity": "critical",
      "description": "Мощность электродвигателя: ТЗ 55 кВт, ТТ 45 кВт."},

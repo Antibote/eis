@@ -182,8 +182,8 @@ def gold(blocks_by_doc):
     for cid, mid in EXTRA_MATERIALS:
         add("USES_MATERIAL", cid, mid, ["D02", "D04", "D11"])
     add("USES_MATERIAL", "C07", "M8", ["D05"], "противоречит D02/D04 (K08)")
-    for c, r, why in DEPENDS_ON:
-        add("DEPENDS_ON", c, r, ["D03"], why)
+    for src, tgt, why in DEPENDS_ON:
+        add("DEPENDS_ON", src, tgt, ["D03"], why)
     add("DEPENDS_ON", "C09", "R16", ["D03"], "monitoring")
     for a, b, why in DERIVED_FROM:
         add("DERIVED_FROM", a, b, ["D03", "D01"], why)

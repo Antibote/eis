@@ -1,9 +1,9 @@
 {
  "experiment": "E1_extraction",
  "variant": "test",
- "dataset_hash": "755cab5490793d17",
- "commit": "uncommitted",
- "ingest_seconds": 0.37,
+ "dataset_hash": "2e8fcf392eeb807c",
+ "commit": "cddd554",
+ "ingest_seconds": 0.38,
  "failed_documents": [
   "D13_Setpoints_scan.png: OCR недоступен: не установлен Tesseract (apt install tesseract-ocr tesseract-ocr-rus)"
  ],
@@ -67,7 +67,7 @@
    "f1": 1.0
   },
   "DEPENDS_ON": {
-   "tp": 28,
+   "tp": 30,
    "fp": 0,
    "fn": 0,
    "precision": 1.0,
@@ -144,8 +144,8 @@
   "VERIFIED_BY": [],
   "SUPERSEDES": [],
   "DOCUMENTED_IN": [
-   "('cmp:НА-200.00.000', 'doc:292f7c4697b4')",
-   "('cmp:НА-200.00.000', 'doc:da96ad3b95ba')",
+   "('cmp:НА-200.00.000', 'doc:53712c656fcd')",
+   "('cmp:НА-200.00.000', 'doc:83f80d153346')",
    "('cmp:НА-200.04.001', 'doc:79731775da00')"
   ]
  }

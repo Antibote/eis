@@ -184,8 +184,8 @@ def doc_D02(ctx):
 
 def doc_D03(ctx):
     dep = {}
-    for c, r, why in DEPENDS_ON:
-        dep.setdefault(why, []).append(c)
+    for src, tgt, why in DEPENDS_ON:
+        dep.setdefault(why, []).append(tgt if why in ("mass_contribution", "load_bearing") else src)
     b = [("h", "1 Описание сборочных единиц", [])]
     for a in [c for c in COMPONENTS if c.kind == "Assembly"]:
         kids = [c.id for c in COMPONENTS if c.parent == a.id]
@@ -210,6 +210,9 @@ def doc_D03(ctx):
             b.append(("p", ctx.pick(*phr[why]).format(names(comps)), comps))
     b.append(("p", ctx.pick(["Температура нагрева подшипникового узла зависит от температуры перекачиваемой среды."],
                             ["Нагрев подшипникового узла определяется температурой перекачиваемой среды."]), ["A6"]))
+    b.append(("p", ctx.pick(["Рама опорная воспринимает нагрузки от электродвигателя и насоса центробежного."],
+                            ["Нагрузки от электродвигателя и насоса центробежного воспринимает рама опорная."]),
+              ["A4", "A2", "A1"]))
     b.append(("p", "Датчик температуры подшипника контролирует температуру нагрева подшипникового узла.", ["C09", "A6"]))
     b.append(("p", "Испытательное давление принимается равным 1,5 рабочего давления; давление настройки клапана "
                    "предохранительного — 1,1 рабочего давления.", ["C14"]))

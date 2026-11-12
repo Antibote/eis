@@ -1,0 +1,2519 @@
+{
+ "experiment": "E2_impact",
+ "variant": "dev",
+ "dataset_hash": "e287a3da977e5457",
+ "commit": "cddd554",
+ "embedder": "intfloat/multilingual-e5-small",
+ "k": 10,
+ "index_seconds": 8.81,
+ "failed_documents": [
+  "D13_Setpoints_scan.png"
+ ],
+ "methods": {
+  "M1_keyword": {
+   "micro": {
+    "components": {
+     "tp": 18,
+     "fp": 6,
+     "fn": 14,
+     "precision": 0.75,
+     "recall": 0.5625,
+     "f1": 0.6429
+    },
+    "documents": {
+     "tp": 26,
+     "fp": 5,
+     "fn": 8,
+     "precision": 0.8387,
+     "recall": 0.7647,
+     "f1": 0.8
+    },
+    "tests": {
+     "tp": 3,
+     "fp": 0,
+     "fn": 2,
+     "precision": 1.0,
+     "recall": 0.6,
+     "f1": 0.75
+    }
+   },
+   "macro_f1_components": 0.5859,
+   "chain_recall_mean": 0.5,
+   "supported_claims_share": 1.0,
+   "time_ms_mean": 1.07,
+   "per_scenario": [
+    {
+     "scenario": "S1",
+     "components": {
+      "tp": 3,
+      "fp": 1,
+      "fn": 4,
+      "precision": 0.75,
+      "recall": 0.4286,
+      "f1": 0.5455
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 1,
+      "fn": 1,
+      "precision": 0.875,
+      "recall": 0.875,
+      "f1": 0.875
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.5,
+     "fp_components": [
+      "Упругий элемент муфты"
+     ],
+     "fn_components": [
+      "Корпус насоса",
+      "Подшипник радиальный",
+      "Прокладка фланцевая",
+      "Рабочее колесо"
+     ],
+     "fp_documents": [
+      "D12_TT_Coupling.docx"
+     ],
+     "fn_documents": [
+      "doc:bf51517ecca6"
+     ]
+    },
+    {
+     "scenario": "S2",
+     "components": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.8333,
+      "f1": 0.9091
+     },
+     "documents": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 3,
+      "precision": 1.0,
+      "recall": 0.625,
+      "f1": 0.7692
+     },
+     "tests": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [],
+     "fn_components": [
+      "Прокладка фланцевая"
+     ],
+     "fp_documents": [],
+     "fn_documents": [
+      "doc:19f27195569e",
+      "doc:c253ff25d8cc",
+      "doc:e0f2463c8eb7"
+     ]
+    },
+    {
+     "scenario": "S3",
+     "components": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 4,
+      "precision": 1.0,
+      "recall": 0.4286,
+      "f1": 0.6
+     },
+     "documents": {
+      "tp": 4,
+      "fp": 1,
+      "fn": 2,
+      "precision": 0.8,
+      "recall": 0.6667,
+      "f1": 0.7273
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.25,
+     "fp_components": [],
+     "fn_components": [
+      "Обмотка статора",
+      "Полумуфта",
+      "Рама опорная",
+      "Упругий элемент муфты"
+     ],
+     "fp_documents": [
+      "D10_RE_NA-200.pdf"
+     ],
+     "fn_documents": [
+      "doc:e0f2463c8eb7",
+      "doc:ec9f39797e7f"
+     ]
+    },
+    {
+     "scenario": "S4",
+     "components": {
+      "tp": 7,
+      "fp": 2,
+      "fn": 0,
+      "precision": 0.7778,
+      "recall": 1.0,
+      "f1": 0.875
+     },
+     "documents": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 2,
+      "precision": 1.0,
+      "recall": 0.7143,
+      "f1": 0.8333
+     },
+     "tests": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     },
+     "chain_recall": 0.75,
+     "fp_components": [
+      "Полумуфта",
+      "Прокладка фланцевая"
+     ],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [
+      "doc:c253ff25d8cc",
+      "doc:e0f2463c8eb7"
+     ]
+    },
+    {
+     "scenario": "S5",
+     "components": {
+      "tp": 0,
+      "fp": 3,
+      "fn": 5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     },
+     "documents": {
+      "tp": 5,
+      "fp": 3,
+      "fn": 0,
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.0,
+     "fp_components": [
+      "Датчик давления",
+      "Торцевое уплотнение",
+      "Электродвигатель"
+     ],
+     "fn_components": [
+      "Виброопора",
+      "Муфта соединительная",
+      "Подшипник радиальный",
+      "Рабочее колесо",
+      "Рама опорная"
+     ],
+     "fp_documents": [
+      "D05_TU_Seal.pdf",
+      "D06_TT_Motor.txt",
+      "D07_Calc_Casing.pdf"
+     ],
+     "fn_documents": []
+    }
+   ]
+  },
+  "M2_rag": {
+   "micro": {
+    "components": {
+     "tp": 18,
+     "fp": 4,
+     "fn": 14,
+     "precision": 0.8182,
+     "recall": 0.5625,
+     "f1": 0.6667
+    },
+    "documents": {
+     "tp": 27,
+     "fp": 6,
+     "fn": 7,
+     "precision": 0.8182,
+     "recall": 0.7941,
+     "f1": 0.806
+    },
+    "tests": {
+     "tp": 3,
+     "fp": 0,
+     "fn": 2,
+     "precision": 1.0,
+     "recall": 0.6,
+     "f1": 0.75
+    }
+   },
+   "macro_f1_components": 0.6149,
+   "chain_recall_mean": 0.4,
+   "supported_claims_share": 1.0,
+   "time_ms_mean": 17.43,
+   "per_scenario": [
+    {
+     "scenario": "S1",
+     "components": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 5,
+      "precision": 1.0,
+      "recall": 0.2857,
+      "f1": 0.4444
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 1,
+      "fn": 1,
+      "precision": 0.875,
+      "recall": 0.875,
+      "f1": 0.875
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.25,
+     "fp_components": [],
+     "fn_components": [
+      "Кольцо уплотнительное",
+      "Корпус насоса",
+      "Подшипник радиальный",
+      "Прокладка фланцевая",
+      "Рабочее колесо"
+     ],
+     "fp_documents": [
+      "D14_ChangeLog.csv"
+     ],
+     "fn_documents": [
+      "doc:bf51517ecca6"
+     ]
+    },
+    {
+     "scenario": "S2",
+     "components": {
+      "tp": 6,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.8571,
+      "recall": 1.0,
+      "f1": 0.9231
+     },
+     "documents": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 3,
+      "precision": 1.0,
+      "recall": 0.625,
+      "f1": 0.7692
+     },
+     "tests": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Вал насоса"
+     ],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [
+      "doc:19f27195569e",
+      "doc:c253ff25d8cc",
+      "doc:e0f2463c8eb7"
+     ]
+    },
+    {
+     "scenario": "S3",
+     "components": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 4,
+      "precision": 1.0,
+      "recall": 0.4286,
+      "f1": 0.6
+     },
+     "documents": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.8333,
+      "f1": 0.9091
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.25,
+     "fp_components": [],
+     "fn_components": [
+      "Обмотка статора",
+      "Полумуфта",
+      "Рама опорная",
+      "Упругий элемент муфты"
+     ],
+     "fp_documents": [],
+     "fn_documents": [
+      "doc:ec9f39797e7f"
+     ]
+    },
+    {
+     "scenario": "S4",
+     "components": {
+      "tp": 6,
+      "fp": 1,
+      "fn": 1,
+      "precision": 0.8571,
+      "recall": 0.8571,
+      "f1": 0.8571
+     },
+     "documents": {
+      "tp": 5,
+      "fp": 2,
+      "fn": 2,
+      "precision": 0.7143,
+      "recall": 0.7143,
+      "f1": 0.7143
+     },
+     "tests": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     },
+     "chain_recall": 0.5,
+     "fp_components": [
+      "Вал насоса"
+     ],
+     "fn_components": [
+      "Подшипник радиальный"
+     ],
+     "fp_documents": [
+      "D10_RE_NA-200.pdf",
+      "D11_Passport_Bearing.txt"
+     ],
+     "fn_documents": [
+      "doc:c253ff25d8cc",
+      "doc:e0f2463c8eb7"
+     ]
+    },
+    {
+     "scenario": "S5",
+     "components": {
+      "tp": 1,
+      "fp": 2,
+      "fn": 4,
+      "precision": 0.3333,
+      "recall": 0.2,
+      "f1": 0.25
+     },
+     "documents": {
+      "tp": 5,
+      "fp": 3,
+      "fn": 0,
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.0,
+     "fp_components": [
+      "Датчик давления",
+      "Торцевое уплотнение"
+     ],
+     "fn_components": [
+      "Муфта соединительная",
+      "Подшипник радиальный",
+      "Рабочее колесо",
+      "Рама опорная"
+     ],
+     "fp_documents": [
+      "D05_TU_Seal.pdf",
+      "D07_Calc_Casing.pdf",
+      "D12_TT_Coupling.docx"
+     ],
+     "fn_documents": []
+    }
+   ]
+  },
+  "M3_graph_d2": {
+   "micro": {
+    "components": {
+     "tp": 26,
+     "fp": 0,
+     "fn": 6,
+     "precision": 1.0,
+     "recall": 0.8125,
+     "f1": 0.8966
+    },
+    "documents": {
+     "tp": 33,
+     "fp": 18,
+     "fn": 1,
+     "precision": 0.6471,
+     "recall": 0.9706,
+     "f1": 0.7765
+    },
+    "tests": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    }
+   },
+   "macro_f1_components": 0.8892,
+   "chain_recall_mean": 0.51,
+   "supported_claims_share": 1.0,
+   "time_ms_mean": 1.2,
+   "per_scenario": [
+    {
+     "scenario": "S1",
+     "components": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.8571,
+      "f1": 0.9231
+     },
+     "documents": {
+      "tp": 8,
+      "fp": 3,
+      "fn": 0,
+      "precision": 0.7273,
+      "recall": 1.0,
+      "f1": 0.8421
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.25,
+     "fp_components": [],
+     "fn_components": [
+      "Подшипник радиальный"
+     ],
+     "fp_documents": [
+      "D02_Specification_NA-200.xlsx",
+      "D07_Calc_Casing.pdf",
+      "D14_ChangeLog.csv"
+     ],
+     "fn_documents": []
+    },
+    {
+     "scenario": "S2",
+     "components": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 3,
+      "fn": 1,
+      "precision": 0.7,
+      "recall": 0.875,
+      "f1": 0.7778
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.8,
+     "fp_components": [],
+     "fn_components": [],
+     "fp_documents": [
+      "D02_Specification_NA-200.xlsx",
+      "D04_Materials_NA-200.docx",
+      "D14_ChangeLog.csv"
+     ],
+     "fn_documents": [
+      "doc:19f27195569e"
+     ]
+    },
+    {
+     "scenario": "S3",
+     "components": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 4,
+      "precision": 1.0,
+      "recall": 0.4286,
+      "f1": 0.6
+     },
+     "documents": {
+      "tp": 6,
+      "fp": 3,
+      "fn": 0,
+      "precision": 0.6667,
+      "recall": 1.0,
+      "f1": 0.8
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.25,
+     "fp_components": [],
+     "fn_components": [
+      "Обмотка статора",
+      "Полумуфта",
+      "Рама опорная",
+      "Упругий элемент муфты"
+     ],
+     "fp_documents": [
+      "D02_Specification_NA-200.xlsx",
+      "D04_Materials_NA-200.docx",
+      "D10_RE_NA-200.pdf"
+     ],
+     "fn_documents": []
+    },
+    {
+     "scenario": "S4",
+     "components": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.8571,
+      "f1": 0.9231
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 4,
+      "fn": 0,
+      "precision": 0.6364,
+      "recall": 1.0,
+      "f1": 0.7778
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.25,
+     "fp_components": [],
+     "fn_components": [
+      "Подшипник радиальный"
+     ],
+     "fp_documents": [
+      "D02_Specification_NA-200.xlsx",
+      "D10_RE_NA-200.pdf",
+      "D11_Passport_Bearing.txt",
+      "D14_ChangeLog.csv"
+     ],
+     "fn_documents": []
+    },
+    {
+     "scenario": "S5",
+     "components": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "documents": {
+      "tp": 5,
+      "fp": 5,
+      "fn": 0,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [],
+     "fn_components": [],
+     "fp_documents": [
+      "D02_Specification_NA-200.xlsx",
+      "D04_Materials_NA-200.docx",
+      "D11_Passport_Bearing.txt",
+      "D12_TT_Coupling.docx",
+      "D14_ChangeLog.csv"
+     ],
+     "fn_documents": []
+    }
+   ]
+  },
+  "M3_graph_d3": {
+   "micro": {
+    "components": {
+     "tp": 32,
+     "fp": 23,
+     "fn": 0,
+     "precision": 0.5818,
+     "recall": 1.0,
+     "f1": 0.7356
+    },
+    "documents": {
+     "tp": 33,
+     "fp": 23,
+     "fn": 1,
+     "precision": 0.5893,
+     "recall": 0.9706,
+     "f1": 0.7333
+    },
+    "tests": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    }
+   },
+   "macro_f1_components": 0.7367,
+   "chain_recall_mean": 0.9,
+   "supported_claims_share": 1.0,
+   "time_ms_mean": 1.27,
+   "per_scenario": [
+    {
+     "scenario": "S1",
+     "components": {
+      "tp": 7,
+      "fp": 6,
+      "fn": 0,
+      "precision": 0.5385,
+      "recall": 1.0,
+      "f1": 0.7
+     },
+     "documents": {
+      "tp": 8,
+      "fp": 5,
+      "fn": 0,
+      "precision": 0.6154,
+      "recall": 1.0,
+      "f1": 0.7619
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.75,
+     "fp_components": [
+      "Датчик температуры подшипника",
+      "Муфта соединительная",
+      "Насос центробежный",
+      "Рама опорная",
+      "Узел уплотнения вала",
+      "Электродвигатель"
+     ],
+     "fn_components": [],
+     "fp_documents": [
+      "D02_Specification_NA-200.xlsx",
+      "D06_TT_Motor.txt",
+      "D07_Calc_Casing.pdf",
+      "D12_TT_Coupling.docx",
+      "D14_ChangeLog.csv"
+     ],
+     "fn_documents": []
+    },
+    {
+     "scenario": "S2",
+     "components": {
+      "tp": 6,
+      "fp": 5,
+      "fn": 0,
+      "precision": 0.5455,
+      "recall": 1.0,
+      "f1": 0.7059
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 5,
+      "fn": 1,
+      "precision": 0.5833,
+      "recall": 0.875,
+      "f1": 0.7
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Муфта соединительная",
+      "Насос центробежный",
+      "Рама опорная",
+      "Узел уплотнения вала",
+      "Электродвигатель"
+     ],
+     "fn_components": [],
+     "fp_documents": [
+      "D02_Specification_NA-200.xlsx",
+      "D04_Materials_NA-200.docx",
+      "D06_TT_Motor.txt",
+      "D12_TT_Coupling.docx",
+      "D14_ChangeLog.csv"
+     ],
+     "fn_documents": [
+      "doc:19f27195569e"
+     ]
+    },
+    {
+     "scenario": "S3",
+     "components": {
+      "tp": 7,
+      "fp": 2,
+      "fn": 0,
+      "precision": 0.7778,
+      "recall": 1.0,
+      "f1": 0.875
+     },
+     "documents": {
+      "tp": 6,
+      "fp": 3,
+      "fn": 0,
+      "precision": 0.6667,
+      "recall": 1.0,
+      "f1": 0.8
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Кожух муфты",
+      "Насос центробежный"
+     ],
+     "fn_components": [],
+     "fp_documents": [
+      "D02_Specification_NA-200.xlsx",
+      "D04_Materials_NA-200.docx",
+      "D10_RE_NA-200.pdf"
+     ],
+     "fn_documents": []
+    },
+    {
+     "scenario": "S4",
+     "components": {
+      "tp": 7,
+      "fp": 4,
+      "fn": 0,
+      "precision": 0.6364,
+      "recall": 1.0,
+      "f1": 0.7778
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 4,
+      "fn": 0,
+      "precision": 0.6364,
+      "recall": 1.0,
+      "f1": 0.7778
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.75,
+     "fp_components": [
+      "Муфта соединительная",
+      "Насос центробежный",
+      "Обмотка статора",
+      "Рама опорная"
+     ],
+     "fn_components": [],
+     "fp_documents": [
+      "D02_Specification_NA-200.xlsx",
+      "D10_RE_NA-200.pdf",
+      "D11_Passport_Bearing.txt",
+      "D14_ChangeLog.csv"
+     ],
+     "fn_documents": []
+    },
+    {
+     "scenario": "S5",
+     "components": {
+      "tp": 5,
+      "fp": 6,
+      "fn": 0,
+      "precision": 0.4545,
+      "recall": 1.0,
+      "f1": 0.625
+     },
+     "documents": {
+      "tp": 5,
+      "fp": 6,
+      "fn": 0,
+      "precision": 0.4545,
+      "recall": 1.0,
+      "f1": 0.625
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Кожух муфты",
+      "Насос центробежный",
+      "Подшипниковый узел",
+      "Полумуфта",
+      "Упругий элемент муфты",
+      "Электродвигатель"
+     ],
+     "fn_components": [],
+     "fp_documents": [
+      "D02_Specification_NA-200.xlsx",
+      "D04_Materials_NA-200.docx",
+      "D06_TT_Motor.txt",
+      "D11_Passport_Bearing.txt",
+      "D12_TT_Coupling.docx",
+      "D14_ChangeLog.csv"
+     ],
+     "fn_documents": []
+    }
+   ]
+  },
+  "M4_hybrid": {
+   "micro": {
+    "components": {
+     "tp": 32,
+     "fp": 3,
+     "fn": 0,
+     "precision": 0.9143,
+     "recall": 1.0,
+     "f1": 0.9552
+    },
+    "documents": {
+     "tp": 33,
+     "fp": 2,
+     "fn": 1,
+     "precision": 0.9429,
+     "recall": 0.9706,
+     "f1": 0.9565
+    },
+    "tests": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "violations": {
+     "tp": 10,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    }
+   },
+   "macro_f1_components": 0.96,
+   "chain_recall_mean": 0.92,
+   "supported_claims_share": 1.0,
+   "time_ms_mean": 1.65,
+   "per_scenario": [
+    {
+     "scenario": "S1",
+     "components": {
+      "tp": 7,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333
+     },
+     "documents": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Датчик температуры подшипника"
+     ],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [],
+     "violations": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S2",
+     "components": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.875,
+      "f1": 0.9333
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.6,
+     "fp_components": [],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [
+      "doc:19f27195569e"
+     ],
+     "violations": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S3",
+     "components": {
+      "tp": 7,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333
+     },
+     "documents": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Кожух муфты"
+     ],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [],
+     "violations": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S4",
+     "components": {
+      "tp": 7,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 2,
+      "fn": 0,
+      "precision": 0.7778,
+      "recall": 1.0,
+      "f1": 0.875
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Обмотка статора"
+     ],
+     "fn_components": [],
+     "fp_documents": [
+      "D10_RE_NA-200.pdf",
+      "D11_Passport_Bearing.txt"
+     ],
+     "fn_documents": [],
+     "violations": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S5",
+     "components": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "documents": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [],
+     "violations": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   ]
+  },
+  "M4_hybrid_direct_only": {
+   "micro": {
+    "components": {
+     "tp": 27,
+     "fp": 0,
+     "fn": 5,
+     "precision": 1.0,
+     "recall": 0.8438,
+     "f1": 0.9153
+    },
+    "documents": {
+     "tp": 33,
+     "fp": 2,
+     "fn": 1,
+     "precision": 0.9429,
+     "recall": 0.9706,
+     "f1": 0.9565
+    },
+    "tests": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "violations": {
+     "tp": 10,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    }
+   },
+   "macro_f1_components": 0.9046,
+   "chain_recall_mean": 0.62,
+   "supported_claims_share": 1.0,
+   "time_ms_mean": 1.02,
+   "per_scenario": [
+    {
+     "scenario": "S1",
+     "components": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.8571,
+      "f1": 0.9231
+     },
+     "documents": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.25,
+     "fp_components": [],
+     "fn_components": [
+      "Подшипник радиальный"
+     ],
+     "fp_documents": [],
+     "fn_documents": [],
+     "violations": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S2",
+     "components": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.875,
+      "f1": 0.9333
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.6,
+     "fp_components": [],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [
+      "doc:19f27195569e"
+     ],
+     "violations": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S3",
+     "components": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 4,
+      "precision": 1.0,
+      "recall": 0.4286,
+      "f1": 0.6
+     },
+     "documents": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.25,
+     "fp_components": [],
+     "fn_components": [
+      "Обмотка статора",
+      "Полумуфта",
+      "Рама опорная",
+      "Упругий элемент муфты"
+     ],
+     "fp_documents": [],
+     "fn_documents": [],
+     "violations": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S4",
+     "components": {
+      "tp": 7,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 2,
+      "fn": 0,
+      "precision": 0.7778,
+      "recall": 1.0,
+      "f1": 0.875
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [],
+     "fn_components": [],
+     "fp_documents": [
+      "D10_RE_NA-200.pdf",
+      "D11_Passport_Bearing.txt"
+     ],
+     "fn_documents": [],
+     "violations": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S5",
+     "components": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "documents": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [],
+     "violations": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   ]
+  },
+  "M4_ablation_no_physics": {
+   "micro": {
+    "components": {
+     "tp": 32,
+     "fp": 6,
+     "fn": 0,
+     "precision": 0.8421,
+     "recall": 1.0,
+     "f1": 0.9143
+    },
+    "documents": {
+     "tp": 33,
+     "fp": 2,
+     "fn": 1,
+     "precision": 0.9429,
+     "recall": 0.9706,
+     "f1": 0.9565
+    },
+    "tests": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "violations": {
+     "tp": 10,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    }
+   },
+   "macro_f1_components": 0.9138,
+   "chain_recall_mean": 0.92,
+   "supported_claims_share": 1.0,
+   "time_ms_mean": 0.99,
+   "per_scenario": [
+    {
+     "scenario": "S1",
+     "components": {
+      "tp": 7,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333
+     },
+     "documents": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Датчик температуры подшипника"
+     ],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [],
+     "violations": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S2",
+     "components": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.875,
+      "f1": 0.9333
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.6,
+     "fp_components": [],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [
+      "doc:19f27195569e"
+     ],
+     "violations": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S3",
+     "components": {
+      "tp": 7,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333
+     },
+     "documents": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Кожух муфты"
+     ],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [],
+     "violations": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S4",
+     "components": {
+      "tp": 7,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 2,
+      "fn": 0,
+      "precision": 0.7778,
+      "recall": 1.0,
+      "f1": 0.875
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Обмотка статора"
+     ],
+     "fn_components": [],
+     "fp_documents": [
+      "D10_RE_NA-200.pdf",
+      "D11_Passport_Bearing.txt"
+     ],
+     "fn_documents": [],
+     "violations": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S5",
+     "components": {
+      "tp": 5,
+      "fp": 3,
+      "fn": 0,
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692
+     },
+     "documents": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Кожух муфты",
+      "Полумуфта",
+      "Упругий элемент муфты"
+     ],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [],
+     "violations": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   ]
+  },
+  "M4_ablation_no_doc_filter": {
+   "micro": {
+    "components": {
+     "tp": 32,
+     "fp": 3,
+     "fn": 0,
+     "precision": 0.9143,
+     "recall": 1.0,
+     "f1": 0.9552
+    },
+    "documents": {
+     "tp": 33,
+     "fp": 18,
+     "fn": 1,
+     "precision": 0.6471,
+     "recall": 0.9706,
+     "f1": 0.7765
+    },
+    "tests": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "violations": {
+     "tp": 10,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    }
+   },
+   "macro_f1_components": 0.96,
+   "chain_recall_mean": 0.92,
+   "supported_claims_share": 1.0,
+   "time_ms_mean": 0.97,
+   "per_scenario": [
+    {
+     "scenario": "S1",
+     "components": {
+      "tp": 7,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333
+     },
+     "documents": {
+      "tp": 8,
+      "fp": 3,
+      "fn": 0,
+      "precision": 0.7273,
+      "recall": 1.0,
+      "f1": 0.8421
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Датчик температуры подшипника"
+     ],
+     "fn_components": [],
+     "fp_documents": [
+      "D02_Specification_NA-200.xlsx",
+      "D07_Calc_Casing.pdf",
+      "D14_ChangeLog.csv"
+     ],
+     "fn_documents": [],
+     "violations": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S2",
+     "components": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 3,
+      "fn": 1,
+      "precision": 0.7,
+      "recall": 0.875,
+      "f1": 0.7778
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.6,
+     "fp_components": [],
+     "fn_components": [],
+     "fp_documents": [
+      "D02_Specification_NA-200.xlsx",
+      "D04_Materials_NA-200.docx",
+      "D14_ChangeLog.csv"
+     ],
+     "fn_documents": [
+      "doc:19f27195569e"
+     ],
+     "violations": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S3",
+     "components": {
+      "tp": 7,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333
+     },
+     "documents": {
+      "tp": 6,
+      "fp": 3,
+      "fn": 0,
+      "precision": 0.6667,
+      "recall": 1.0,
+      "f1": 0.8
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Кожух муфты"
+     ],
+     "fn_components": [],
+     "fp_documents": [
+      "D02_Specification_NA-200.xlsx",
+      "D04_Materials_NA-200.docx",
+      "D10_RE_NA-200.pdf"
+     ],
+     "fn_documents": [],
+     "violations": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S4",
+     "components": {
+      "tp": 7,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 4,
+      "fn": 0,
+      "precision": 0.6364,
+      "recall": 1.0,
+      "f1": 0.7778
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Обмотка статора"
+     ],
+     "fn_components": [],
+     "fp_documents": [
+      "D02_Specification_NA-200.xlsx",
+      "D10_RE_NA-200.pdf",
+      "D11_Passport_Bearing.txt",
+      "D14_ChangeLog.csv"
+     ],
+     "fn_documents": [],
+     "violations": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S5",
+     "components": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "documents": {
+      "tp": 5,
+      "fp": 5,
+      "fn": 0,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [],
+     "fn_components": [],
+     "fp_documents": [
+      "D02_Specification_NA-200.xlsx",
+      "D04_Materials_NA-200.docx",
+      "D11_Passport_Bearing.txt",
+      "D12_TT_Coupling.docx",
+      "D14_ChangeLog.csv"
+     ],
+     "fn_documents": [],
+     "violations": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   ]
+  },
+  "M4_ablation_no_load_path": {
+   "micro": {
+    "components": {
+     "tp": 31,
+     "fp": 3,
+     "fn": 1,
+     "precision": 0.9118,
+     "recall": 0.9688,
+     "f1": 0.9394
+    },
+    "documents": {
+     "tp": 33,
+     "fp": 2,
+     "fn": 1,
+     "precision": 0.9429,
+     "recall": 0.9706,
+     "f1": 0.9565
+    },
+    "tests": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "violations": {
+     "tp": 10,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    }
+   },
+   "macro_f1_components": 0.9447,
+   "chain_recall_mean": 0.92,
+   "supported_claims_share": 1.0,
+   "time_ms_mean": 0.91,
+   "per_scenario": [
+    {
+     "scenario": "S1",
+     "components": {
+      "tp": 7,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333
+     },
+     "documents": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Датчик температуры подшипника"
+     ],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [],
+     "violations": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S2",
+     "components": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.875,
+      "f1": 0.9333
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.6,
+     "fp_components": [],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [
+      "doc:19f27195569e"
+     ],
+     "violations": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S3",
+     "components": {
+      "tp": 6,
+      "fp": 1,
+      "fn": 1,
+      "precision": 0.8571,
+      "recall": 0.8571,
+      "f1": 0.8571
+     },
+     "documents": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Кожух муфты"
+     ],
+     "fn_components": [
+      "Рама опорная"
+     ],
+     "fp_documents": [],
+     "fn_documents": [],
+     "violations": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S4",
+     "components": {
+      "tp": 7,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 2,
+      "fn": 0,
+      "precision": 0.7778,
+      "recall": 1.0,
+      "f1": 0.875
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Обмотка статора"
+     ],
+     "fn_components": [],
+     "fp_documents": [
+      "D10_RE_NA-200.pdf",
+      "D11_Passport_Bearing.txt"
+     ],
+     "fn_documents": [],
+     "violations": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    {
+     "scenario": "S5",
+     "components": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "documents": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [],
+     "violations": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   ]
+  },
+  "M4_ablation_no_checks": {
+   "micro": {
+    "components": {
+     "tp": 32,
+     "fp": 3,
+     "fn": 0,
+     "precision": 0.9143,
+     "recall": 1.0,
+     "f1": 0.9552
+    },
+    "documents": {
+     "tp": 33,
+     "fp": 2,
+     "fn": 1,
+     "precision": 0.9429,
+     "recall": 0.9706,
+     "f1": 0.9565
+    },
+    "tests": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "violations": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 10,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    }
+   },
+   "macro_f1_components": 0.96,
+   "chain_recall_mean": 0.92,
+   "supported_claims_share": 1.0,
+   "time_ms_mean": 0.82,
+   "per_scenario": [
+    {
+     "scenario": "S1",
+     "components": {
+      "tp": 7,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333
+     },
+     "documents": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Датчик температуры подшипника"
+     ],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [],
+     "violations": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    {
+     "scenario": "S2",
+     "components": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.875,
+      "f1": 0.9333
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 0.6,
+     "fp_components": [],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [
+      "doc:19f27195569e"
+     ],
+     "violations": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 3,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    {
+     "scenario": "S3",
+     "components": {
+      "tp": 7,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333
+     },
+     "documents": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Кожух муфты"
+     ],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [],
+     "violations": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    {
+     "scenario": "S4",
+     "components": {
+      "tp": 7,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333
+     },
+     "documents": {
+      "tp": 7,
+      "fp": 2,
+      "fn": 0,
+      "precision": 0.7778,
+      "recall": 1.0,
+      "f1": 0.875
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [
+      "Обмотка статора"
+     ],
+     "fn_components": [],
+     "fp_documents": [
+      "D10_RE_NA-200.pdf",
+      "D11_Passport_Bearing.txt"
+     ],
+     "fn_documents": [],
+     "violations": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 4,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    {
+     "scenario": "S5",
+     "components": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "documents": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "tests": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     },
+     "chain_recall": 1.0,
+     "fp_components": [],
+     "fn_components": [],
+     "fp_documents": [],
+     "fn_documents": [],
+     "violations": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   ]
+  }
+ }
+}

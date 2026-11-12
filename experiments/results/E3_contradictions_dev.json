@@ -1,0 +1,315 @@
+{
+ "experiment": "E3_contradictions",
+ "variant": "dev",
+ "dataset_hash": "e287a3da977e5457",
+ "commit": "cddd554",
+ "embedder": "intfloat/multilingual-e5-small",
+ "failed_documents": [
+  "D13_Setpoints_scan.png"
+ ],
+ "methods": {
+  "C3_hybrid": {
+   "found": 14,
+   "matched_found": 14,
+   "precision": 1.0,
+   "recall": 0.9,
+   "f1": 0.9474,
+   "detected": [
+    "K01",
+    "K02",
+    "K03",
+    "K04",
+    "K05",
+    "K06",
+    "K07",
+    "K08",
+    "K10"
+   ],
+   "missed": [
+    "K09"
+   ],
+   "distractor_hits": 0
+  },
+  "C2_formal": {
+   "found": 9,
+   "matched_found": 9,
+   "precision": 1.0,
+   "recall": 0.6,
+   "f1": 0.75,
+   "detected": [
+    "K01",
+    "K03",
+    "K05",
+    "K06",
+    "K07",
+    "K10"
+   ],
+   "missed": [
+    "K02",
+    "K04",
+    "K08",
+    "K09"
+   ],
+   "distractor_hits": 0
+  },
+  "C1_similarity": {
+   "found": 13,
+   "matched_found": 2,
+   "precision": 0.1538,
+   "recall": 0.2,
+   "f1": 0.1739,
+   "detected": [
+    "K01",
+    "K07"
+   ],
+   "missed": [
+    "K02",
+    "K03",
+    "K04",
+    "K05",
+    "K06",
+    "K08",
+    "K09",
+    "K10"
+   ],
+   "distractor_hits": 0,
+   "tau": 0.94,
+   "curve": {
+    "0.8": {
+     "found": 10319,
+     "precision": 0.0015,
+     "recall": 0.9,
+     "f1": 0.0029
+    },
+    "0.81": {
+     "found": 9765,
+     "precision": 0.0015,
+     "recall": 0.9,
+     "f1": 0.0031
+    },
+    "0.82": {
+     "found": 8657,
+     "precision": 0.0017,
+     "recall": 0.9,
+     "f1": 0.0035
+    },
+    "0.83": {
+     "found": 6967,
+     "precision": 0.0022,
+     "recall": 0.9,
+     "f1": 0.0043
+    },
+    "0.84": {
+     "found": 4987,
+     "precision": 0.003,
+     "recall": 0.9,
+     "f1": 0.006
+    },
+    "0.85": {
+     "found": 3256,
+     "precision": 0.0043,
+     "recall": 0.9,
+     "f1": 0.0086
+    },
+    "0.86": {
+     "found": 1955,
+     "precision": 0.0072,
+     "recall": 0.9,
+     "f1": 0.0142
+    },
+    "0.87": {
+     "found": 1128,
+     "precision": 0.0115,
+     "recall": 0.9,
+     "f1": 0.0228
+    },
+    "0.88": {
+     "found": 615,
+     "precision": 0.0179,
+     "recall": 0.7,
+     "f1": 0.0349
+    },
+    "0.89": {
+     "found": 338,
+     "precision": 0.0325,
+     "recall": 0.7,
+     "f1": 0.0622
+    },
+    "0.9": {
+     "found": 161,
+     "precision": 0.0373,
+     "recall": 0.5,
+     "f1": 0.0694
+    },
+    "0.91": {
+     "found": 100,
+     "precision": 0.04,
+     "recall": 0.4,
+     "f1": 0.0727
+    },
+    "0.92": {
+     "found": 47,
+     "precision": 0.0851,
+     "recall": 0.4,
+     "f1": 0.1404
+    },
+    "0.93": {
+     "found": 31,
+     "precision": 0.0968,
+     "recall": 0.3,
+     "f1": 0.1463
+    },
+    "0.94": {
+     "found": 13,
+     "precision": 0.1538,
+     "recall": 0.2,
+     "f1": 0.1739
+    },
+    "0.95": {
+     "found": 4,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "0.96": {
+     "found": 1,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "0.97": {
+     "found": 0,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "0.98": {
+     "found": 0,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "0.99": {
+     "found": 0,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    }
+   }
+  }
+ },
+ "hybrid_findings": [
+  {
+   "type": "demand_exceeds_capability",
+   "status": "confirmed",
+   "severity": "critical",
+   "description": "НА-200.00.000 ТЗ: <= 1.6 МПа; НА-200.01.001 РР: Корпус насоса — <= 1 МПа",
+   "detected_by": "graph",
+   "confidence": 0.72
+  },
+  {
+   "type": "demand_exceeds_capability",
+   "status": "confirmed",
+   "severity": "critical",
+   "description": "НА-200.00.000 РЭ: <= 1.6 МПа; НА-200.01.001 РР: Корпус насоса — <= 1 МПа",
+   "detected_by": "graph",
+   "confidence": 0.72
+  },
+  {
+   "type": "value_mismatch",
+   "status": "confirmed",
+   "severity": "high",
+   "description": "НА-200.00.000 ТЗ: 55 кВт ≠ НА-200.02.000 ТТ: 45 кВт",
+   "detected_by": "formal",
+   "confidence": 0.76
+  },
+  {
+   "type": "value_mismatch",
+   "status": "confirmed",
+   "severity": "high",
+   "description": "НА-200.00.000 ТЗ: <= 80 °C ≠ НА-200.00.000 РЭ: <= 90 °C",
+   "detected_by": "formal",
+   "confidence": 0.76
+  },
+  {
+   "type": "value_mismatch",
+   "status": "confirmed",
+   "severity": "high",
+   "description": "НА-200.00.000 ПМ: <= 80 °C ≠ НА-200.00.000 РЭ: <= 90 °C",
+   "detected_by": "formal",
+   "confidence": 0.76
+  },
+  {
+   "type": "unit_hidden_mismatch",
+   "status": "confirmed",
+   "severity": "high",
+   "description": "НА-200.00.000 ТЗ: 2.4 МПа ≠ НА-200.00.000 ПМ: 1.96133 МПа",
+   "detected_by": "formal",
+   "confidence": 0.76
+  },
+  {
+   "type": "value_mismatch",
+   "status": "confirmed",
+   "severity": "high",
+   "description": "НА-200.00.000 ТЗ: <= 4.5 мм/с ≠ НА-200.00.000 ПМ: <= 7.1 мм/с",
+   "detected_by": "formal",
+   "confidence": 0.76
+  },
+  {
+   "type": "value_mismatch",
+   "status": "confirmed",
+   "severity": "high",
+   "description": "НА-200.00.000 ПМ: <= 7.1 мм/с ≠ НА-200.00.000 РЭ: <= 4.5 мм/с",
+   "detected_by": "formal",
+   "confidence": 0.76
+  },
+  {
+   "type": "value_mismatch",
+   "status": "confirmed",
+   "severity": "high",
+   "description": "НА-200.00.000 ТЗ: >= IP55 ≠ НА-200.02.000 ТТ: >= IP54",
+   "detected_by": "formal",
+   "confidence": 0.76
+  },
+  {
+   "type": "demand_exceeds_capability",
+   "status": "confirmed",
+   "severity": "high",
+   "description": "НА-200.00.000 ТЗ: -40…40 °C; НА-200.03.000 ТТ: Упругий элемент муфты — -30…80 °C",
+   "detected_by": "graph",
+   "confidence": 0.72
+  },
+  {
+   "type": "material_limit",
+   "status": "confirmed",
+   "severity": "high",
+   "description": "НА-200.00.000 ТЗ: -40…40 °C; Резина маслобензостойкая МБС: -30…80 °C (НА-200.00.000 ВМ)",
+   "detected_by": "graph",
+   "confidence": 0.68
+  },
+  {
+   "type": "value_mismatch",
+   "status": "confirmed",
+   "severity": "medium",
+   "description": "НА-200.00.000 ТЗ: <= 90 °C ≠ НА-200.00.000 РЭ: <= 95 °C",
+   "detected_by": "formal",
+   "confidence": 0.855
+  },
+  {
+   "type": "material_mismatch",
+   "status": "confirmed",
+   "severity": "medium",
+   "description": "Резина NBR vs Резина FKM",
+   "detected_by": "graph",
+   "confidence": 0.85
+  },
+  {
+   "type": "value_mismatch",
+   "status": "confirmed",
+   "severity": "medium",
+   "description": "НА-200.00.000 РЭ: <= 95 °C ≠ НА-200.06.000 ПС: <= 90 °C",
+   "detected_by": "formal",
+   "confidence": 0.76
+  }
+ ]
+}

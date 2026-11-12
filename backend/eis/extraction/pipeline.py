@@ -44,6 +44,9 @@ DEP_LIST_TRIGGERS = [
      "vibration_velocity"),
     (re.compile(r"вклад\w*\s+в\s+масс|масс\w+\s+агрегат\w*\s+(?:в\s+основном\s+)?определя"), "mass"),
 ]
+CONTRIBUTION_PARAMS = {"mass"}   # «вклад в массу»: характеристика зависит от компонента, а не наоборот
+LOAD_RE = re.compile(r"(?P<who>.+?)\s+воспринима\w+\s+нагрузк\w*\s+от\s+(?P<src>.+)")
+LOAD_REV_RE = re.compile(r"нагрузк\w*\s+от\s+(?P<src>.+?)\s+воспринима\w+\s+(?P<who>.+)")
 DEP_SINGLE_RE = re.compile(r"(?P<who>.+?)\s+(?:завис\w+\s+от|определя\w+)\s+(?P<what>.+)")
 MONITOR_RE = re.compile(r"(?P<who>.+?)\s+(?:контролиру\w+|измеря\w+|отслежива\w+)\s+(?P<what>.+)")
 DERIVED_RE = re.compile(r"(?P<k>\d+(?:,\d+)?)\s+(?:от\s+)?(?:величины\s+)?$")
@@ -341,8 +344,18 @@ class Extractor:
                         subj = next((x.entity_id for x in self._comp_mentions(mentions, s0, s0 + colon)), subj)
                     cid = self._constraint(subj, param, ev(f, s0, s1, rule="dependency_list"))
                     for p in self._comp_mentions(mentions, s0 + colon, s1):
-                        self._rel(RelationType.DEPENDS_ON, p.entity_id, cid, ev(f, s0, s1, rule="dependency_list"), basis=param)
+                        a, b_ = (cid, p.entity_id) if param in CONTRIBUTION_PARAMS else (p.entity_id, cid)
+                        self._rel(RelationType.DEPENDS_ON, a, b_, ev(f, s0, s1, rule="dependency_list"), basis=param)
                     break
+            lm = LOAD_RE.search(sl) or LOAD_REV_RE.search(sl)
+            if lm and not hit_list:
+                hit_list = True
+                who = self._comp_mentions(mentions, s0 + lm.start("who"), s0 + lm.end("who"))
+                srcs = self._comp_mentions(mentions, s0 + lm.start("src"), s0 + lm.end("src"))
+                for w in who[:1]:
+                    for x in srcs:
+                        self._rel(RelationType.DEPENDS_ON, w.entity_id, x.entity_id, ev(f, s0, s1, rule="load_bearing"),
+                                  basis="load_bearing")
             if not hit_list:
                 for rx, rule in ((DEP_SINGLE_RE, "dependency_single"), (MONITOR_RE, "monitoring")):
                     m = rx.search(sl)
