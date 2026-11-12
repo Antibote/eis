@@ -70,10 +70,13 @@ def main():
     ap.add_argument("--embedder", default=None, help="tfidf | имя модели sentence-transformers")
     ap.add_argument("--k", type=int, default=10)
     ap.add_argument("--with-holdout", action="store_true", help="включить отложенные сценарии S18–S25")
+    ap.add_argument("--with-holdout2", action="store_true", help="включить второй отложенный набор S26–S33")
     a = ap.parse_args()
     gold = load_gold(a.variant)
     if not a.with_holdout:
-        gold["scenarios"] = [s for s in gold["scenarios"] if not s.get("holdout")]
+        gold["scenarios"] = [s for s in gold["scenarios"] if s.get("holdout") is not True]
+    if not a.with_holdout2:
+        gold["scenarios"] = [s for s in gold["scenarios"] if s.get("holdout") != 2]
     kb = build_kb(a.variant)
     g = build_graph(kb)
     idm = IdMap(gold, kb)
@@ -154,10 +157,14 @@ def main():
     names = [m.name for m in methods if not m.name.startswith("M4_") or m.name == "M4_hybrid"]
     per_by = {n: results[n]["per_scenario"] for n in names}
     bootstrap = {}
-    hold = {s["id"] for s in gold["scenarios"] if s.get("holdout")}
-    groups = [("S1-S5", lambda s: s in ORIGINAL), ("S6-S17", lambda s: s not in ORIGINAL and s not in hold)]
+    hold = {s["id"] for s in gold["scenarios"] if s.get("holdout") is True}
+    hold2 = {s["id"] for s in gold["scenarios"] if s.get("holdout") == 2}
+    groups = [("S1-S5", lambda s: s in ORIGINAL),
+              ("S6-S17", lambda s: s not in ORIGINAL and s not in hold and s not in hold2)]
     if hold:
         groups.append(("S18-S25 holdout", lambda s: s in hold))
+    if hold2:
+        groups.append(("S26-S33 holdout2", lambda s: s in hold2))
     groups.append(("all", lambda s: True))
     for label, sub in groups:
         bootstrap[label] = {k: boot(per_by, names, k, sub) for k in ("components", "documents")}
