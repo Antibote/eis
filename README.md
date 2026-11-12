@@ -26,7 +26,12 @@ EIS_PORT=8080 docker compose up --build  # если порт 8000 занят
 docker compose --profile llm up    # + локальная LLM через Ollama (EIS_LLM_PROVIDER=ollama)
 ```
 
-LLM необязательна: без неё система работает полностью. С локальной Ollama без Docker:
+LLM необязательна: без неё система работает полностью. Docker + Ollama на хосте:
+```bash
+OLLAMA_HOST=172.17.0.1:11434 ollama serve &       # адрес моста docker0 — доступен контейнерам, не локальной сети
+EIS_LLM_PROVIDER=ollama EIS_LLM_URL=http://host.docker.internal:11434 docker compose up -d
+```
+С локальной Ollama без Docker:
 ```bash
 ollama serve & ollama pull qwen2.5:3b
 EIS_LLM_PROVIDER=ollama EIS_LLM_URL=http://127.0.0.1:11434 EIS_LLM_MODEL=qwen2.5:3b \

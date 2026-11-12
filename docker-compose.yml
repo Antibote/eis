@@ -28,6 +28,9 @@ services:
       EIS_LLM_MODEL: ${EIS_LLM_MODEL:-qwen2.5:3b}
       EIS_ALLOW_EXTERNAL_LLM: "false"
     volumes: [eisdata:/data, models:/models]
+    # Ollama на хосте: EIS_LLM_PROVIDER=ollama EIS_LLM_URL=http://host.docker.internal:11434
+    # (на хосте: OLLAMA_HOST=172.17.0.1:11434 ollama serve — адрес моста docker0, вне локальной сети)
+    extra_hosts: ["host.docker.internal:host-gateway"]
     ports: ["${EIS_PORT:-8000}:8000"]
 
   ollama:
