@@ -137,6 +137,6 @@ class HybridMethod:
                     out.violations.add(it.entity_id)
         out.reached.add(pc.requirement.id)
         out.documents = {d.document_id for d in rep.documents}
-        out.tests = {t.test_id for t in rep.tests}
+        out.tests = {t.test_id for t in rep.tests if t.repeat_required}
         out.report = rep  # type: ignore[attr-defined]
         return out

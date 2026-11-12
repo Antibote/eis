@@ -67,6 +67,7 @@ class TestImpact(BaseModel):
     reason: str
     result: str | None = None
     result_still_valid: bool | None = None
+    repeat_required: bool = True
     evidence: list[Evidence] = Field(default_factory=list)
 
 
@@ -94,4 +95,6 @@ class ImpactReport(BaseModel):
     recommendations: list[str]
     settings: dict
     elapsed_ms: float
+    change_direction: str = "harsher"        # harsher | milder (см. engineering.change_is_harsher)
+    not_rechecked: list[str] = Field(default_factory=list)   # зависимые узлы, не требующие перепроверки при смягчении
     created_at: datetime = Field(default_factory=now)

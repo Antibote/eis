@@ -53,6 +53,37 @@ DERIVED_RULES = {
 
 MATERIAL_LIMITED = TEMPERATURE_PARAMS
 
+# Класс параметра определяет, в каком направлении изменение требует перепроверки зависимых узлов:
+#   load   — внешнее воздействие на узлы (нагрузка, режим): опасно расширение диапазона / рост номинала;
+#            смягчение не требует перепроверки (остаются только сохраняющиеся нарушения и производные);
+#   budget — предел суммарной характеристики изделия (масса, шум, ресурс): ужесточение затрагивает вкладчиков,
+#            смягчение — нет;
+#   state  — предел на состояние самого узла (нагрев, вибрация): в обе стороны — узел должен выдержать
+#            новое допустимое состояние, а контроль (уставки, испытания) — соответствовать новому пределу.
+PARAM_CLASS: dict[str, str] = {
+    "medium_temperature": "load", "ambient_temperature": "load", "working_pressure": "load", "test_pressure": "load",
+    "power": "load", "torque": "load", "rotation_speed": "load", "flow_rate": "load", "head": "load",
+    "mass": "budget", "noise_level": "budget", "service_life": "budget",
+    "bearing_temperature": "state", "vibration_velocity": "state",
+}
+
+# Законы подобия центробежных насосов: при изменении частоты вращения n подача ∝ n, напор ∝ n², мощность ∝ n³.
+AFFINITY: dict[str, dict[str, int]] = {"rotation_speed": {"flow_rate": 1, "head": 2, "power": 3}}
+
+
+def change_is_harsher(param: str, old: tuple[float, float], new: tuple[float, float], operator: str) -> bool:
+    """Требует ли изменение перепроверки зависимых узлов (см. PARAM_CLASS). Интервалы в единицах СИ."""
+    cls = PARAM_CLASS.get(param, "load")
+    if cls == "state":
+        return True
+    widened = new[0] < old[0] - 1e-12 or new[1] > old[1] + 1e-12
+    narrowed = new[0] > old[0] + 1e-12 or new[1] < old[1] - 1e-12
+    if cls == "budget":
+        return narrowed
+    if operator == "=":              # номинал нагрузки: опасен рост
+        return new[1] > old[1] + 1e-12
+    return widened
+
 # Минимальный относительный запас, ниже которого результат проверки считается «на пределе»
 MARGIN_WARN = 0.05
 

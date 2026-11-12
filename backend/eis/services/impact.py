@@ -16,7 +16,8 @@ import re
 import time
 from dataclasses import asdict, dataclass
 
-from eis.domain.engineering import DEFAULT_PROPAGATION, DERIVED_RULES, MARGIN_WARN, MATERIAL_LIMITED, PROPAGATION, related
+from eis.domain.engineering import (AFFINITY, DEFAULT_PROPAGATION, DERIVED_RULES, MARGIN_WARN, MATERIAL_LIMITED, PARAM_CLASS,
+                                    PROPAGATION, change_is_harsher, related)
 from eis.domain.models import EntityType, KnowledgeBase, RelationType, Requirement
 from eis.domain.results import (CheckResult, Contradiction, DerivedImpact, DocumentImpact, ImpactItem, ImpactReport,
                                 PathStep, TestImpact)
@@ -36,6 +37,7 @@ class ImpactSettings:
     use_checks: bool = True         # формальная перепроверка ограничений новым значением
     use_doc_filter: bool = True     # документы — только с утверждениями о релевантных параметрах
     use_load_path: bool = True      # путь нагрузки (DEPENDS_ON между компонентами)
+    use_direction: bool = True      # учитывать направление изменения (смягчение не требует перепроверки)
     min_confidence: float = 0.0
 
 
@@ -58,7 +60,8 @@ class ImpactAnalyzer:
 
     # ------------------------------------------------------------------ основной метод
     def analyze(self, requirement_id: str, new_value: float | None = None, new_low: float | None = None,
-                new_high: float | None = None, unit: str | None = None) -> ImpactReport:
+                new_high: float | None = None, unit: str | None = None, _rot: float | None = None,
+                _nested: bool = False) -> ImpactReport:
         t0 = time.perf_counter()
         r = self.kb.requirements[requirement_id]
         conv = (lambda x: x)
@@ -77,6 +80,11 @@ class ImpactAnalyzer:
         items: dict[str, ImpactItem] = {}
         derived: list[DerivedImpact] = []
         used_edges = []
+        old_i, new_i = r.interval(), new.interval()
+        harsher = (change_is_harsher(param, old_i, new_i, r.operator)
+                   if self.s.use_direction and old_i and new_i else True)
+        rot = _rot or self._nominal_value(subj, "rotation_speed")
+        not_rechecked: list[str] = []
 
         def put(eid, relation, conf, path, evidence, cls):
             if self._type(eid) not in COMPONENT_TYPES and self._type(eid) != EntityType.MATERIAL.value:
@@ -88,13 +96,49 @@ class ImpactAnalyzer:
                 items[eid] = ImpactItem(entity_id=eid, name=self._name(eid), entity_type=self._type(eid), impact_class=cls,
                                         relation=relation, confidence=round(conf, 3), path=path, evidence=evidence[:2])
 
+        def put_dep(eid, relation, conf, path, evidence, edge=None):
+            """Зависимый узел. При смягчении — только если формальная проверка показывает нарушение."""
+            if harsher:
+                if edge is not None:
+                    used_edges.append(edge)
+                put(eid, relation, conf, path, evidence, "direct")
+                return
+            if self._type(eid) not in COMPONENT_TYPES or self._type(eid) == EntityType.PRODUCT.value:
+                return
+            chk = self._check(eid, param, new, prop, rot) if self.s.use_checks else None
+            if chk and chk.verdict == "violation":
+                if edge is not None:
+                    used_edges.append(edge)
+                put(eid, relation, conf, path, evidence, "confirmed")
+                items[eid].check = chk
+            elif eid not in not_rechecked:
+                not_rechecked.append(eid)
+
+        base_path = [PathStep(node=r.id), PathStep(node=con, via="CONSTRAINS")]
         # 1) субъект требования
         put(subj, "subject", 1.0, [PathStep(node=r.id), PathStep(node=subj, via="CONSTRAINS")], r.evidence, "direct")
+        # 1б) компоненты, номинал которых задаёт ту же величину (частота вращения изделия = двигателя)
+        for (s_, p_), reqs in self.by_con.items():
+            if p_ == param and s_ != subj and any(x.kind == "nominal" for x in reqs):
+                x = next(x for x in reqs if x.kind == "nominal")
+                put(s_, "realizes", 0.9, base_path + [PathStep(node=x.id), PathStep(node=s_, via="CONSTRAINS")],
+                    x.evidence, "direct")
         # 2) компоненты, явно зависящие от изменяемой характеристики
         for e in self.g.in_edges(con, [RelationType.DEPENDS_ON]):
-            used_edges.append(e)
-            put(e.source, "dependent", e.weight * _econf(e), [PathStep(node=r.id), PathStep(node=con, via="CONSTRAINS"),
-                PathStep(node=e.source, via="DEPENDS_ON", reverse=True)], e.evidence, "direct")
+            put_dep(e.source, "dependent", e.weight * _econf(e), base_path + [
+                PathStep(node=e.source, via="DEPENDS_ON", reverse=True)], e.evidence, e)
+        # 2б) вкладчики: характеристика изделия зависит от компонентов (масса агрегата — от двигателя и рамы)
+        for e in self.g.out_edges(con, [RelationType.DEPENDS_ON]):
+            if self._type(e.target) in COMPONENT_TYPES:
+                put_dep(e.target, "contributor", e.weight * _econf(e), base_path + [
+                    PathStep(node=e.target, via="DEPENDS_ON")], e.evidence, e)
+        # 2в) компоненты с собственным ограничением по тому же параметру (ТУ уплотнения: до 3600 об/мин)
+        for (s_, p_), reqs in self.by_con.items():
+            if p_ == param and s_ != subj and self._type(s_) in COMPONENT_TYPES:
+                cap = next((x for x in reqs if x.kind == "capability"), None)
+                if cap is not None:
+                    put_dep(s_, "own_limit", 0.9 * cap.confidence, base_path + [PathStep(node=cap.id),
+                            PathStep(node=s_, via="CONSTRAINS")], cap.evidence)
         # 3) производные характеристики (испытательное давление, давление настройки клапана)
         for e in self.g.in_edges(con, [RelationType.DERIVED_FROM]):
             used_edges.append(e)
@@ -114,6 +158,34 @@ class ImpactAnalyzer:
                 put(dsubj, "derived", e.weight * _econf(e), [PathStep(node=r.id), PathStep(node=con, via="CONSTRAINS"),
                     PathStep(node=dcon, via="DERIVED_FROM", reverse=True), PathStep(node=dsubj, via="CHARACTERIZES")],
                     e.evidence, "direct")
+        # 3б) законы подобия: частота вращения → подача, напор, мощность (вложенный анализ производных изменений)
+        nested: list[ImpactReport] = []
+        if (not _nested and param in AFFINITY and r.operator == "=" and not isinstance(r.value, str)
+                and not isinstance(new.value, str) and r.value):
+            ratio = new.value / r.value
+            scope = [subj] + sorted(self.g.descendants(subj))
+            for tparam, k in AFFINITY[param].items():
+                for s_ in scope:
+                    x = next((y for y in self.by_con.get((s_, tparam), []) if y.kind == "nominal"
+                              and not isinstance(y.value, str)), None)
+                    if x is None:
+                        continue
+                    nv = x.value * ratio ** k
+                    derived.append(DerivedImpact(constraint_id=f"con:{s_}:{tparam}", factor=round(ratio ** k, 4),
+                                                 new_expected=round(nv, 3),
+                                                 description=f"{PARAM_RU.get(tparam, tparam)} «{self._name(s_)}» ∝ "
+                                                             f"n{'' if k == 1 else '²' if k == 2 else '³'} (законы подобия)",
+                                                 stated=[f"{fmt_req(x)} ({self._docname(x.document_id)})"],
+                                                 evidence=x.evidence[:1]))
+                    sub = self.analyze(x.id, new_value=nv, _rot=new.value, _nested=True)
+                    nested.append(sub)
+                    for it in sub.items:
+                        it = it.model_copy(update={"relation": "derived", "path": base_path + it.path,
+                                                   "confidence": round(it.confidence * 0.9, 3)})
+                        cur = items.get(it.entity_id)
+                        if cur is None or (it.impact_class == "confirmed" and cur.impact_class != "confirmed"):
+                            items[it.entity_id] = it
+                    break
         # 4) транзитивное распространение
         frontier = [(i.entity_id, i.confidence, i.path) for i in items.values()]
         for depth in range(1, self.s.max_depth + 1):
@@ -142,8 +214,9 @@ class ImpactAnalyzer:
                     put(m.target, "material", it.confidence * m.weight, it.path + [PathStep(node=m.target, via="USES_MATERIAL")],
                         m.evidence, "potential")
         # 5) формальная проверка новым значением
-        rot = self._nominal_value(subj, "rotation_speed")
         for it in list(items.values()):
+            if it.check is not None:
+                continue
             if it.entity_type == EntityType.MATERIAL.value:
                 it.check = self._check_material(it.entity_id, new) if self.s.use_checks else None
             else:
@@ -155,8 +228,14 @@ class ImpactAnalyzer:
         items = {k: v for k, v in items.items() if v.confidence >= self.s.min_confidence}
         # 6) испытания, документы, конфликты
         same = [x for x in self.by_con.get((subj, param), []) if x.id != r.id]
-        tests = self._tests([r] + same, new)
+        tests = self._tests([r] + same, new, harsher, derived)
         docs = self._documents(r, same, items, derived, used_edges, tests, param)
+        for sub in nested:
+            have_t = {t.test_id for t in tests}
+            tests += [t for t in sub.tests if t.test_id not in have_t]
+            have_d = {d.document_id for d in docs}
+            docs += [d for d in sub.documents if d.document_id not in have_d]
+            docs.sort(key=lambda d: d.filename)
         conflicts = self._conflicts(new, same)
         rec = self._recommendations(items, docs, tests, derived, conflicts)
         return ImpactReport(
@@ -164,7 +243,8 @@ class ImpactAnalyzer:
             items=sorted(items.values(), key=lambda i: ({"confirmed": 0, "direct": 1, "potential": 2, "documentary": 3}
                                                        [i.impact_class], -i.confidence)),
             documents=docs, tests=tests, derived=derived, conflicts_after_change=conflicts, recommendations=rec,
-            settings=asdict(self.s), elapsed_ms=round((time.perf_counter() - t0) * 1000, 2))
+            settings=asdict(self.s), elapsed_ms=round((time.perf_counter() - t0) * 1000, 2),
+            change_direction="harsher" if harsher else "milder", not_rechecked=[self._name(x) for x in not_rechecked])
 
     # ------------------------------------------------------------------ проверки
     def _nominal_value(self, subj, param):
@@ -187,6 +267,11 @@ class ImpactAnalyzer:
                     ok, margin = covers(interval, cap.interval(), new.operator)
                     checks.append(self._verdict(ok, margin, f"материал «{self._name(m.target)}»: {fmt_req(cap)} "
                                                             f"при {fmt_req(new)}", [cap.id, m.id]))
+        if new.kind == "demand" and interval:
+            for sp in (c for c in self.by_con.get((comp, param), []) if c.kind == "setpoint" and not isinstance(c.value, str)):
+                ok, margin = covers((sp.value, sp.value), interval, "=")
+                checks.append(self._verdict(ok, margin, f"уставка {fmt_req(sp)} ({self._docname(sp.document_id)}) "
+                                                        f"при новом пределе {fmt_req(new)}", [sp.id]))
         for rule in DERIVED_RULES.get(param, []):
             if rot and not isinstance(new.value, str) and new.value is not None:
                 val = rule["fn"](new.value, rot)
@@ -220,7 +305,17 @@ class ImpactAnalyzer:
         return CheckResult(verdict="ok", detail="соответствует — " + detail, against=against, margin=margin)
 
     # ------------------------------------------------------------------ испытания
-    def _tests(self, reqs: list[Requirement], new: Requirement) -> list[TestImpact]:
+    def _tests(self, reqs: list[Requirement], new: Requirement, harsher: bool = True,
+               derived: list[DerivedImpact] | None = None) -> list[TestImpact]:
+        """Испытания, проверяющие изменяемое требование; повторение — если прежний результат не подтверждает новое."""
+        targets = [(new.parameter, new.interval(), new.operator, new.dimension)]
+        for dv in derived or []:
+            ent = self.kb.entities.get(dv.constraint_id)
+            if ent and dv.new_expected is not None and dv.factor is not None:
+                dparam = ent.attrs.get("parameter")
+                dreq = next(iter(self.by_con.get((ent.attrs.get("subject_id"), dparam), [])), None)
+                if dreq is not None:
+                    targets.append((dparam, (dv.new_expected, dv.new_expected), "=", dreq.dimension))
         out: dict[str, TestImpact] = {}
         for x in reqs:
             for e in self.g.out_edges(x.id, [RelationType.VERIFIED_BY]):
@@ -228,29 +323,59 @@ class ImpactAnalyzer:
                 if not t or e.target in out:
                     continue
                 res = t.attrs.get("result")
-                valid = self._result_valid(res, new) if res else None
-                reason = "проверяет изменяемое требование — требуется повторение по новому значению"
-                if valid is False:
-                    reason = f"зафиксированный результат «{res}» не удовлетворяет новому значению {fmt_req(new)}"
+                valid = self._result_valid(res or "", new, targets, harsher)
+                if valid:
+                    reason = f"зафиксированный результат «{res}» подтверждает новое значение — повторение не требуется"
+                elif res and valid is False and new.kind != "nominal":
+                    reason = f"зафиксированный результат «{res}» не подтверждает новое значение {fmt_req(new)} — повторить"
+                else:
+                    reason = "проверяет изменяемое требование — требуется повторение по новому значению"
                 out[e.target] = TestImpact(test_id=e.target, name=t.name, reason=reason, result=res,
-                                           result_still_valid=valid, evidence=e.evidence[:1])
+                                           result_still_valid=valid, repeat_required=not valid, evidence=e.evidence[:1])
         return list(out.values())
 
     @staticmethod
-    def _result_valid(text: str, new: Requirement) -> bool | None:
-        """Сравнивает зафиксированный результат с новым значением, только если результат относится
-        к тому же параметру (иначе — None: нужна повторная проверка, вывод о годности не делается)."""
-        hits = [h for h in find_params(text.lower()) if h.key == new.parameter]
-        if not hits:
-            return None
-        text = text[hits[0].end:]
-        for m in NUM_RE.finditer(text):
+    def _result_valid(text: str, new: Requirement, targets, harsher: bool) -> bool:
+        """Подтверждает ли прежний результат испытания новое требование.
+        Номинал изменился → режим испытания другой → повторить. Для нагрузки (класс load) число в результате —
+        условие испытания: годно, если оно не мягче новой границы. Для состояния/бюджета — измеренный отклик:
+        годен, если укладывается в новый предел с запасом не менее MARGIN_WARN. Если результат не относится к
+        изменяемой величине — испытание проведено при прежнем значении: годно только при смягчении."""
+        if new.kind == "nominal":
+            return False
+        low = text.lower()
+        hits = find_params(low)
+        dims = {d for *_, d in targets}
+        if hits and not any(h.key == tp for h in hits for tp, *_ in targets):
+            return not harsher
+        start = hits[0].end if hits else 0
+        value = None
+        for m in NUM_RE.finditer(text, start):        # единицы — по исходному регистру («°C»)
             u = match_unit(text, m.end())
-            if u and u.dimension == new.dimension:
-                v = to_canonical(parse_number(m.group(0)), u)
-                ok, _ = covers((v, v), new.interval(), "=")
-                return ok
-        return None
+            if u and u.dimension in dims:
+                value, vdim = to_canonical(parse_number(m.group(0)), u), u.dimension
+                break
+        if value is None:
+            return not harsher
+        hit_keys = {h.key for h in hits}
+        ok_all = True
+        for tp, (lo, hi), op, dim in targets:
+            if dim != vdim or (hit_keys and tp not in hit_keys and len(targets) == 1):
+                continue
+            if PARAM_CLASS.get(tp, "load") == "load":
+                if op == "<=":
+                    ok = value >= hi - 1e-9
+                elif op == ">=":
+                    ok = value <= lo + 1e-9
+                elif op == "=":
+                    ok = value >= hi - 1e-9
+                else:
+                    ok = value <= lo + 1e-9 if abs(value - lo) <= abs(value - hi) else value >= hi - 1e-9
+            else:
+                ok, margin = covers((value, value), (lo, hi), "=")
+                ok = ok and (margin is None or margin >= MARGIN_WARN)
+            ok_all &= ok
+        return ok_all
 
     # ------------------------------------------------------------------ документы
     def _docname(self, doc_id):

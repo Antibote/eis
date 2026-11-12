@@ -69,8 +69,11 @@ def main():
     ap.add_argument("--variant", default="test")
     ap.add_argument("--embedder", default=None, help="tfidf | имя модели sentence-transformers")
     ap.add_argument("--k", type=int, default=10)
+    ap.add_argument("--with-holdout", action="store_true", help="включить отложенные сценарии S18–S25")
     a = ap.parse_args()
     gold = load_gold(a.variant)
+    if not a.with_holdout:
+        gold["scenarios"] = [s for s in gold["scenarios"] if not s.get("holdout")]
     kb = build_kb(a.variant)
     g = build_graph(kb)
     idm = IdMap(gold, kb)
@@ -98,6 +101,7 @@ def main():
         HybridMethod(kb, g, ImpactSettings(use_doc_filter=False), name="M4_ablation_no_doc_filter"),
         HybridMethod(kb, g, ImpactSettings(use_load_path=False), name="M4_ablation_no_load_path"),
         HybridMethod(kb, g, ImpactSettings(use_checks=False), name="M4_ablation_no_checks"),
+        HybridMethod(kb, g, ImpactSettings(use_direction=False), name="M4_ablation_no_direction"),
     ]
     methods[2].name, methods[3].name = "M3_graph_d2", "M3_graph_d3"
     results = {}
@@ -150,8 +154,12 @@ def main():
     names = [m.name for m in methods if not m.name.startswith("M4_") or m.name == "M4_hybrid"]
     per_by = {n: results[n]["per_scenario"] for n in names}
     bootstrap = {}
-    for label, sub in [("S1-S5", lambda s: s in ORIGINAL), ("S6-S17", lambda s: s not in ORIGINAL),
-                       ("all", lambda s: True)]:
+    hold = {s["id"] for s in gold["scenarios"] if s.get("holdout")}
+    groups = [("S1-S5", lambda s: s in ORIGINAL), ("S6-S17", lambda s: s not in ORIGINAL and s not in hold)]
+    if hold:
+        groups.append(("S18-S25 holdout", lambda s: s in hold))
+    groups.append(("all", lambda s: True))
+    for label, sub in groups:
         bootstrap[label] = {k: boot(per_by, names, k, sub) for k in ("components", "documents")}
     man = load_manifest(a.variant)
     res = {"experiment": "E2_impact", "variant": a.variant, "dataset_hash": man["dataset_hash"], "commit": git_commit(),
