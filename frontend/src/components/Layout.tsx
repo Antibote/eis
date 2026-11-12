@@ -1,4 +1,5 @@
-import { AlertTriangle, BotMessageSquare, FileText, GitBranch, LayoutDashboard, LogOut, Network, ScrollText } from "lucide-react";
+import { AlertTriangle, BotMessageSquare, FileText, GitBranch, KeyRound, LayoutDashboard, LogOut, Network, ScrollText } from "lucide-react";
+import { PasswordDialog } from "@/components/PasswordDialog";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { setToken } from "@/lib/api";
 import { useApp } from "@/lib/context";
@@ -51,6 +52,7 @@ export default function Layout() {
           </div>
           <div className="flex items-center gap-3 text-sm text-ink-soft">
             <span>{user?.username} <span className="text-ink-faint">· {user?.role}</span></span>
+            <PasswordDialog trigger={<KeyRound className="h-4 w-4" />} />
             <button className="rounded p-1 hover:bg-canvas" title="Выйти" onClick={() => { setToken(null); setUser(null); nav("/login"); }}>
               <LogOut className="h-4 w-4" />
             </button>

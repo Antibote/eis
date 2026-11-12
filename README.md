@@ -21,6 +21,7 @@ cd frontend && npm ci && npx vite                       # http://localhost:5173
 
 ## Docker
 ```bash
+cp .env.example .env               # задать EIS_SECRET_KEY и EIS_ADMIN_PASSWORD (файл не коммитится)
 docker compose up --build          # http://localhost:8000 (PostgreSQL + backend + собранный фронтенд)
 EIS_PORT=8080 docker compose up --build  # если порт 8000 занят
 docker compose --profile llm up    # + локальная LLM через Ollama (EIS_LLM_PROVIDER=ollama)

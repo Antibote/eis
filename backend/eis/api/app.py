@@ -4,7 +4,7 @@ from __future__ import annotations
 import logging
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -16,7 +16,8 @@ from eis.api.routers import analysis, documents
 from eis.config import ROOT, settings
 from eis.db.models import User
 from eis.db.session import session
-from eis.security.auth import issue_token, verify_password
+from eis.api.deps import CurrentUser, current_user
+from eis.security.auth import hash_password, issue_token, verify_password
 
 logging.basicConfig(level=logging.INFO)
 app = FastAPI(title="Engineering Intelligence System", version="0.1.0",
@@ -45,6 +46,27 @@ def login(body: LoginIn):
         role = u.role
     state.audit(body.username, "login")
     return {"token": issue_token(body.username, role), "username": body.username, "role": role}
+
+
+class PasswordIn(BaseModel):
+    old_password: str
+    new_password: str
+
+
+@app.post("/api/auth/password", tags=["auth"])
+def change_password(body: PasswordIn, user: CurrentUser = Depends(current_user)):
+    """Смена собственного пароля: нужен текущий пароль; новый — не короче 10 символов и не равен имени."""
+    new = body.new_password
+    if len(new) < 10 or new.lower() == user.username.lower() or new == body.old_password:
+        raise HTTPException(400, "Новый пароль: не короче 10 символов, не совпадает с именем и с прежним паролем")
+    with session() as s:
+        u = s.scalar(select(User).where(User.username == user.username))
+        if not u or not verify_password(body.old_password, u.password_hash):
+            state.audit(user.username, "password_change_failed")
+            raise HTTPException(403, "Текущий пароль указан неверно")
+        u.password_hash = hash_password(new)
+    state.audit(user.username, "password_changed")
+    return {"ok": True}
 
 
 @app.get("/api/health", tags=["auth"])
