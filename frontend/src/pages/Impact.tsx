@@ -119,14 +119,15 @@ function Result({ rep, counts, onGraph, project }: { rep: any; counts: Record<st
             <div key={c}><div className="label">{CLASS_RU[c]}</div><div className="text-xl font-semibold tabular">{counts[c] ?? 0}</div></div>
           ))}
           <div><div className="label">Документы</div><div className="text-xl font-semibold tabular">{rep.documents.length}</div></div>
-          <div><div className="label">Испытания</div><div className="text-xl font-semibold tabular">{rep.tests.length}</div></div>
+          <div><div className="label">Повторить испытаний</div><div className="text-xl font-semibold tabular">{rep.tests.filter((t: any) => t.repeat_required !== false).length}</div></div>
           <div className="ml-auto flex gap-2">
             <Button size="sm" onClick={onGraph}><Network className="h-3.5 w-3.5" />На графе</Button>
             <Button size="sm" onClick={() => download(`/projects/${project}/impact/${rep.id}/export?fmt=docx`, "impact_report.docx")}><Download className="h-3.5 w-3.5" />DOCX</Button>
             <Button size="sm" onClick={() => download(`/projects/${project}/impact/${rep.id}/export?fmt=pdf`, "impact_report.pdf")}><Download className="h-3.5 w-3.5" />PDF</Button>
           </div>
         </div>
-        <div className="border-t border-line px-4 py-2 text-xs text-ink-faint">Исходное требование: «{rep.requirement_text}» · расчёт {rep.elapsed_ms} мс · глубина {rep.settings.max_depth} · учёт физики параметра: {rep.settings.use_physics ? "да" : "нет"}</div>
+        <div className="border-t border-line px-4 py-2 text-xs text-ink-faint">Исходное требование: «{rep.requirement_text}» · расчёт {rep.elapsed_ms} мс · глубина {rep.settings.max_depth} · учёт физики параметра: {rep.settings.use_physics ? "да" : "нет"} · изменение: {rep.change_direction === "milder" ? "смягчение" : "ужесточение"}
+          {rep.change_direction === "milder" && rep.not_rechecked?.length > 0 && <div className="mt-1">Смягчение требования: перепроверка не требуется — {rep.not_rechecked.join(", ")} (формальная проверка нарушений не выявила)</div>}</div>
       </Card>
 
       <Card>
@@ -135,7 +136,7 @@ function Result({ rep, counts, onGraph, project }: { rep: any; counts: Record<st
           <thead><tr><th>Элемент</th><th>Класс</th><th>Достоверность</th><th>Проверка новым значением</th><th>Цепочка</th></tr></thead>
           <tbody>{rep.items.map((it: any) => (
             <tr key={it.entity_id}>
-              <td className="font-medium">{it.name}<div className="text-[11px] font-normal text-ink-faint">{it.entity_type === "Material" ? "материал" : ({ subject: "субъект требования", dependent: "явная зависимость", derived: "производная величина", contained: "входит в состав", load_path: "путь нагрузки", material: "материал детали" } as any)[it.relation]}</div></td>
+              <td className="font-medium">{it.name}<div className="text-[11px] font-normal text-ink-faint">{it.entity_type === "Material" ? "материал" : ({ subject: "субъект требования", dependent: "явная зависимость", derived: "производная величина", contained: "входит в состав", load_path: "путь нагрузки", material: "материал детали", contributor: "вклад в характеристику", own_limit: "собственное ограничение по параметру", realizes: "задаёт номинал" } as any)[it.relation]}</div></td>
               <td><Badge tone={CLASS_TONE[it.impact_class]}>{CLASS_RU[it.impact_class]}</Badge></td>
               <td><Confidence value={it.confidence} /></td>
               <td className="max-w-md">
@@ -167,7 +168,8 @@ function Result({ rep, counts, onGraph, project }: { rep: any; counts: Record<st
               <div key={t.test_id} className="px-4 py-2">
                 <div className="flex items-center gap-2"><span className="font-medium">{t.name}</span>
                   {t.result_still_valid === false && <Badge tone="crit">результат не подтверждает новое значение</Badge>}
-                  {t.result_still_valid === true && <Badge tone="ok">результат в пределах</Badge>}</div>
+                  {t.result_still_valid === true && <Badge tone="ok">повторение не требуется</Badge>}
+                  {t.result_still_valid !== true && t.result_still_valid !== false && <Badge tone="high">повторить</Badge>}</div>
                 <div className="text-xs text-ink-soft">{t.reason}{t.result && <> · результат: {t.result}</>}</div>
               </div>
             ))}</div>
