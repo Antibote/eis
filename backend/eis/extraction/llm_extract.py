@@ -98,6 +98,7 @@ def parse_answer(raw: str, frag_text: str, doc_id: str, frag_id: str, mentions, 
                 rejected.append(f"единица «{it.get('unit')}» не подходит к {key}")
                 continue
             raw_vals = [it.get(x) for x in ("value", "low", "high")]
+            raw_vals = [None, raw_vals[1], raw_vals[2]] if op == "range" else [raw_vals[0], None, None]
             try:
                 raw_vals = [None if x is None else float(str(x).replace(",", ".").replace("−", "-")) for x in raw_vals]
             except ValueError:
