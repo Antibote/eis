@@ -10,3 +10,4 @@ experiments/results/tmp/
 experiments/.noise_corpus/
 experiments/.scale_corpus/
 .env
+docs/competition/.video/
