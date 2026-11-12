@@ -37,4 +37,9 @@ class Workspace:
         d = self.kb.documents.get(ev.document_id)
         return {"document_id": ev.document_id, "filename": d.filename if d else None, "code": d.code if d else None,
                 "page": ev.page, "locator": ev.locator, "quote": ev.quote, "fragment_id": ev.fragment_id,
-                "method": ev.method, "rule": ev.rule, "confidence": ev.confidence}
+                "method": ev.method, "rule": ev.rule, "confidence": ev.confidence,
+                "ocr_confidence": self._ocr_conf(ev.fragment_id)}
+
+    def _ocr_conf(self, fragment_id):
+        f = self.kb.fragments.get(fragment_id) if fragment_id else None
+        return f.ocr_confidence if f is not None and f.ocr else None

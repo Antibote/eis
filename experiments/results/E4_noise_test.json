@@ -2,7 +2,7 @@
  "experiment": "E4_noise",
  "variant": "test",
  "dataset_hash": "67c5564e3f5e2d41",
- "commit": "f20ac2d",
+ "commit": "5b8b702",
  "scanned_formats": [
   "docx",
   "pdf",
@@ -11,164 +11,14 @@
  ],
  "levels": [
   {
-   "level": "native",
-   "params": null,
-   "seconds": 1.8,
-   "ingest_seconds": 1.7,
-   "failed_documents": [],
-   "text_similarity": null,
-   "requirements": {
-    "tp": 59,
-    "fp": 0,
-    "fn": 0,
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1": 1.0
-   },
-   "missed_requirements": [],
-   "impact": {
-    "components": {
-     "tp": 110,
-     "fp": 18,
-     "fn": 5,
-     "precision": 0.8594,
-     "recall": 0.9565,
-     "f1": 0.9053
-    },
-    "documents": {
-     "tp": 150,
-     "fp": 16,
-     "fn": 10,
-     "precision": 0.9036,
-     "recall": 0.9375,
-     "f1": 0.9202
-    },
-    "violations": {
-     "tp": 26,
-     "fp": 1,
-     "fn": 0,
-     "precision": 0.963,
-     "recall": 1.0,
-     "f1": 0.9811
-    },
-    "tests": {
-     "tp": 17,
-     "fp": 0,
-     "fn": 0,
-     "precision": 1.0,
-     "recall": 1.0,
-     "f1": 1.0
-    }
-   },
-   "impact_failures": [],
-   "contradictions": {
-    "found": 17,
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1": 1.0,
-    "detected": [
-     "K01",
-     "K02",
-     "K03",
-     "K04",
-     "K05",
-     "K06",
-     "K07",
-     "K08",
-     "K09",
-     "K10"
-    ],
-    "missed": [],
-    "distractor_hits": 0
-   }
-  },
-  {
-   "level": "scan_clean",
-   "params": {},
-   "seconds": 20.9,
-   "ingest_seconds": 20.8,
-   "failed_documents": [],
-   "text_similarity": 0.9948,
-   "requirements": {
-    "tp": 55,
-    "fp": 3,
-    "fn": 4,
-    "precision": 0.9483,
-    "recall": 0.9322,
-    "f1": 0.9402
-   },
-   "missed_requirements": [
-    "R46 D10 flow_rate",
-    "RM_M2 D04 material_temperature",
-    "RM_M3 D04 material_temperature",
-    "RM_M7 D04 material_temperature"
-   ],
-   "impact": {
-    "components": {
-     "tp": 110,
-     "fp": 18,
-     "fn": 5,
-     "precision": 0.8594,
-     "recall": 0.9565,
-     "f1": 0.9053
-    },
-    "documents": {
-     "tp": 138,
-     "fp": 16,
-     "fn": 22,
-     "precision": 0.8961,
-     "recall": 0.8625,
-     "f1": 0.879
-    },
-    "violations": {
-     "tp": 26,
-     "fp": 1,
-     "fn": 0,
-     "precision": 0.963,
-     "recall": 1.0,
-     "f1": 0.9811
-    },
-    "tests": {
-     "tp": 6,
-     "fp": 5,
-     "fn": 11,
-     "precision": 0.5455,
-     "recall": 0.3529,
-     "f1": 0.4286
-    }
-   },
-   "impact_failures": [],
-   "contradictions": {
-    "found": 22,
-    "precision": 0.7273,
-    "recall": 0.9,
-    "f1": 0.8045,
-    "detected": [
-     "K01",
-     "K02",
-     "K03",
-     "K04",
-     "K05",
-     "K06",
-     "K07",
-     "K09",
-     "K10"
-    ],
-    "missed": [
-     "K08"
-    ],
-    "distractor_hits": 0
-   }
-  },
-  {
    "level": "scan_typical",
    "params": {
     "noise": 0.004,
     "rot": 0.6,
     "blur": 0.6
    },
-   "seconds": 22.1,
-   "ingest_seconds": 22.0,
+   "seconds": 12.8,
+   "ingest_seconds": 12.8,
    "failed_documents": [],
    "text_similarity": 0.9914,
    "requirements": {
@@ -199,36 +49,36 @@
    ],
    "impact": {
     "components": {
-     "tp": 92,
-     "fp": 16,
-     "fn": 23,
-     "precision": 0.8519,
-     "recall": 0.8,
-     "f1": 0.8251
+     "tp": 125,
+     "fp": 24,
+     "fn": 30,
+     "precision": 0.8389,
+     "recall": 0.8065,
+     "f1": 0.8224
     },
     "documents": {
-     "tp": 127,
-     "fp": 7,
-     "fn": 33,
-     "precision": 0.9478,
-     "recall": 0.7937,
-     "f1": 0.8639
+     "tp": 175,
+     "fp": 11,
+     "fn": 35,
+     "precision": 0.9409,
+     "recall": 0.8333,
+     "f1": 0.8838
     },
     "violations": {
-     "tp": 18,
-     "fp": 5,
-     "fn": 8,
-     "precision": 0.7826,
-     "recall": 0.6923,
-     "f1": 0.7347
+     "tp": 24,
+     "fp": 7,
+     "fn": 10,
+     "precision": 0.7742,
+     "recall": 0.7059,
+     "f1": 0.7385
     },
     "tests": {
-     "tp": 9,
-     "fp": 8,
-     "fn": 8,
-     "precision": 0.5294,
-     "recall": 0.5294,
-     "f1": 0.5294
+     "tp": 12,
+     "fp": 11,
+     "fn": 11,
+     "precision": 0.5217,
+     "recall": 0.5217,
+     "f1": 0.5217
     }
    },
    "impact_failures": [],
@@ -255,777 +105,81 @@
    }
   },
   {
-   "level": "blur_1.5",
-   "params": {
-    "blur": 1.5
-   },
-   "seconds": 20.8,
-   "ingest_seconds": 20.8,
-   "failed_documents": [],
-   "text_similarity": 0.9838,
-   "requirements": {
-    "tp": 44,
-    "fp": 1,
-    "fn": 15,
-    "precision": 0.9778,
-    "recall": 0.7458,
-    "f1": 0.8462
-   },
-   "missed_requirements": [
-    "R07 D01 rotation_speed",
-    "R14 D01 ingress_protection",
-    "R35 D12 torque",
-    "R46 D10 flow_rate",
-    "R42 D08 test_pressure",
-    "RM_M2 D04 material_temperature",
-    "RM_M3 D04 material_temperature",
-    "RM_M4 D04 material_temperature",
-    "RM_M5 D04 material_temperature",
-    "RM_M6 D04 material_temperature",
-    "RM_M7 D04 material_temperature",
-    "RM_M9 D04 material_temperature",
-    "RM_M10 D04 material_temperature",
-    "RM_M11 D04 material_temperature",
-    "RM_M12 D04 material_temperature"
-   ],
-   "impact": {
-    "components": {
-     "tp": 103,
-     "fp": 8,
-     "fn": 12,
-     "precision": 0.9279,
-     "recall": 0.8957,
-     "f1": 0.9115
-    },
-    "documents": {
-     "tp": 112,
-     "fp": 12,
-     "fn": 48,
-     "precision": 0.9032,
-     "recall": 0.7,
-     "f1": 0.7887
-    },
-    "violations": {
-     "tp": 20,
-     "fp": 1,
-     "fn": 6,
-     "precision": 0.9524,
-     "recall": 0.7692,
-     "f1": 0.8511
-    },
-    "tests": {
-     "tp": 0,
-     "fp": 6,
-     "fn": 17,
-     "precision": 0.0,
-     "recall": 0.0,
-     "f1": 0.0
-    }
-   },
-   "impact_failures": [
-    "S14: ValueError",
-    "S25: ValueError"
-   ],
-   "contradictions": {
-    "found": 14,
-    "precision": 1.0,
-    "recall": 0.8,
-    "f1": 0.8889,
-    "detected": [
-     "K01",
-     "K02",
-     "K04",
-     "K05",
-     "K06",
-     "K07",
-     "K08",
-     "K09"
-    ],
-    "missed": [
-     "K03",
-     "K10"
-    ],
-    "distractor_hits": 0
-   }
-  },
-  {
-   "level": "blur_2.5",
-   "params": {
-    "blur": 2.5
-   },
-   "seconds": 25.3,
-   "ingest_seconds": 25.2,
-   "failed_documents": [],
-   "text_similarity": 0.9198,
-   "requirements": {
-    "tp": 21,
-    "fp": 2,
-    "fn": 38,
-    "precision": 0.913,
-    "recall": 0.3559,
-    "f1": 0.5122
-   },
-   "missed_requirements": [
-    "R01 D01 medium_temperature",
-    "R05 D01 flow_rate",
-    "R07 D01 rotation_speed",
-    "R09 D01 vibration_velocity",
-    "R11 D01 ambient_temperature",
-    "R14 D01 ingress_protection",
-    "R16 D01 bearing_temperature",
-    "R20 D05 medium_temperature",
-    "R22 D05 rotation_speed",
-    "R29 D03 bearing_temperature",
-    "R57 D03 power",
-    "R28 D11 bearing_temperature",
-    "R58 D11 rotation_speed",
-    "R31 D06 ingress_protection",
-    "R32 D06 rotation_speed",
-    "R33 D06 ambient_temperature",
-    "R35 D12 torque",
-    "R36 D12 ambient_temperature",
-    "R37 D12 ambient_temperature",
-    "R41 D10 medium_temperature",
-    "R40 D10 bearing_temperature",
-    "R46 D10 flow_rate",
-    "R48 D10 working_pressure",
-    "R53 D10 vibration_velocity",
-    "R42 D08 test_pressure",
-    "R54 D08 medium_temperature",
-    "R44 D13 bearing_temperature",
-    "RM_M1 D04 material_temperature",
-    "RM_M2 D04 material_temperature",
-    "RM_M3 D04 material_temperature",
-    "RM_M4 D04 material_temperature",
-    "RM_M5 D04 material_temperature",
-    "RM_M6 D04 material_temperature",
-    "RM_M7 D04 material_temperature",
-    "RM_M9 D04 material_temperature",
-    "RM_M10 D04 material_temperature",
-    "RM_M11 D04 material_temperature",
-    "RM_M12 D04 material_temperature"
-   ],
-   "impact": {
-    "components": {
-     "tp": 46,
-     "fp": 0,
-     "fn": 69,
-     "precision": 1.0,
-     "recall": 0.4,
-     "f1": 0.5714
-    },
-    "documents": {
-     "tp": 46,
-     "fp": 0,
-     "fn": 114,
-     "precision": 1.0,
-     "recall": 0.2875,
-     "f1": 0.4466
-    },
-    "violations": {
-     "tp": 8,
-     "fp": 1,
-     "fn": 18,
-     "precision": 0.8889,
-     "recall": 0.3077,
-     "f1": 0.4571
-    },
-    "tests": {
-     "tp": 0,
-     "fp": 0,
-     "fn": 17,
-     "precision": 0.0,
-     "recall": 0.0,
-     "f1": 0.0
-    }
-   },
-   "impact_failures": [
-    "S1: ValueError",
-    "S4: ValueError",
-    "S6: ValueError",
-    "S9: ValueError",
-    "S13: ValueError",
-    "S14: ValueError",
-    "S15: ValueError",
-    "S16: ValueError",
-    "S19: ValueError",
-    "S22: ValueError",
-    "S23: ValueError",
-    "S25: ValueError"
-   ],
-   "contradictions": {
-    "found": 6,
-    "precision": 0.3333,
-    "recall": 0.2,
-    "f1": 0.25,
-    "detected": [
-     "K02",
-     "K05"
-    ],
-    "missed": [
-     "K01",
-     "K03",
-     "K04",
-     "K06",
-     "K07",
-     "K08",
-     "K09",
-     "K10"
-    ],
-    "distractor_hits": 0
-   }
-  },
-  {
-   "level": "noise_5pct",
-   "params": {
-    "noise": 0.05
-   },
-   "seconds": 29.6,
-   "ingest_seconds": 29.6,
-   "failed_documents": [],
-   "text_similarity": 0.8537,
-   "requirements": {
-    "tp": 3,
-    "fp": 6,
-    "fn": 56,
-    "precision": 0.3333,
-    "recall": 0.0508,
-    "f1": 0.0882
-   },
-   "missed_requirements": [
-    "R01 D01 medium_temperature",
-    "R03 D01 working_pressure",
-    "R04 D01 test_pressure",
-    "R05 D01 flow_rate",
-    "R07 D01 rotation_speed",
-    "R09 D01 vibration_velocity",
-    "R10 D01 noise_level",
-    "R11 D01 ambient_temperature",
-    "R12 D01 service_life",
-    "R13 D01 mass",
-    "R14 D01 ingress_protection",
-    "R15 D01 voltage",
-    "R16 D01 bearing_temperature",
-    "R20 D05 medium_temperature",
-    "R21 D05 working_pressure",
-    "R22 D05 rotation_speed",
-    "R23 D07 working_pressure",
-    "R24 D07 working_pressure",
-    "R26 D03 working_pressure",
-    "R27 D03 working_pressure",
-    "R29 D03 bearing_temperature",
-    "R57 D03 power",
-    "R28 D11 bearing_temperature",
-    "R58 D11 rotation_speed",
-    "R31 D06 ingress_protection",
-    "R32 D06 rotation_speed",
-    "R33 D06 ambient_temperature",
-    "R34 D06 voltage",
-    "R35 D12 torque",
-    "R36 D12 ambient_temperature",
-    "R37 D12 ambient_temperature",
-    "R41 D10 medium_temperature",
-    "R40 D10 bearing_temperature",
-    "R46 D10 flow_rate",
-    "R47 D10 head",
-    "R48 D10 working_pressure",
-    "R52 D10 service_life",
-    "R53 D10 vibration_velocity",
-    "R42 D08 test_pressure",
-    "R43 D08 vibration_velocity",
-    "R51 D08 noise_level",
-    "R54 D08 medium_temperature",
-    "R44 D13 bearing_temperature",
-    "R45 D13 bearing_temperature",
-    "R55 D13 working_pressure",
-    "RM_M1 D04 material_temperature",
-    "RM_M2 D04 material_temperature",
-    "RM_M3 D04 material_temperature",
-    "RM_M4 D04 material_temperature",
-    "RM_M5 D04 material_temperature",
-    "RM_M6 D04 material_temperature",
-    "RM_M7 D04 material_temperature",
-    "RM_M9 D04 material_temperature",
-    "RM_M10 D04 material_temperature",
-    "RM_M11 D04 material_temperature",
-    "RM_M12 D04 material_temperature"
-   ],
-   "impact": {
-    "components": {
-     "tp": 6,
-     "fp": 0,
-     "fn": 109,
-     "precision": 1.0,
-     "recall": 0.0522,
-     "f1": 0.0992
-    },
-    "documents": {
-     "tp": 9,
-     "fp": 0,
-     "fn": 151,
-     "precision": 1.0,
-     "recall": 0.0563,
-     "f1": 0.1065
-    },
-    "violations": {
-     "tp": 0,
-     "fp": 0,
-     "fn": 26,
-     "precision": 0.0,
-     "recall": 0.0,
-     "f1": 0.0
-    },
-    "tests": {
-     "tp": 0,
-     "fp": 0,
-     "fn": 17,
-     "precision": 0.0,
-     "recall": 0.0,
-     "f1": 0.0
-    }
-   },
-   "impact_failures": [
-    "S1: ValueError",
-    "S2: ValueError",
-    "S4: ValueError",
-    "S6: ValueError",
-    "S7: ValueError",
-    "S9: ValueError",
-    "S11: ValueError",
-    "S12: ValueError",
-    "S13: ValueError",
-    "S14: ValueError",
-    "S15: ValueError",
-    "S16: ValueError",
-    "S17: ValueError",
-    "S18: ValueError",
-    "S19: ValueError",
-    "S22: ValueError",
-    "S23: ValueError",
-    "S24: ValueError",
-    "S25: ValueError"
-   ],
-   "contradictions": {
-    "found": 2,
-    "precision": 0.5,
-    "recall": 0.1,
-    "f1": 0.1667,
-    "detected": [
-     "K05"
-    ],
-    "missed": [
-     "K01",
-     "K02",
-     "K03",
-     "K04",
-     "K06",
-     "K07",
-     "K08",
-     "K09",
-     "K10"
-    ],
-    "distractor_hits": 0
-   }
-  },
-  {
    "level": "rot_3deg",
    "params": {
     "rot": 3.0
    },
-   "seconds": 19.7,
-   "ingest_seconds": 19.6,
+   "seconds": 13.3,
+   "ingest_seconds": 13.3,
    "failed_documents": [],
-   "text_similarity": 0.9277,
+   "text_similarity": 0.995,
    "requirements": {
-    "tp": 35,
+    "tp": 53,
     "fp": 4,
-    "fn": 24,
-    "precision": 0.8974,
-    "recall": 0.5932,
-    "f1": 0.7143
+    "fn": 6,
+    "precision": 0.9298,
+    "recall": 0.8983,
+    "f1": 0.9138
    },
    "missed_requirements": [
-    "R08 D01 power",
-    "R20 D05 medium_temperature",
-    "R28 D11 bearing_temperature",
-    "R30 D06 power",
     "R31 D06 ingress_protection",
-    "R32 D06 rotation_speed",
-    "R33 D06 ambient_temperature",
-    "R34 D06 voltage",
-    "R35 D12 torque",
-    "R37 D12 ambient_temperature",
     "R46 D10 flow_rate",
-    "R42 D08 test_pressure",
-    "R44 D13 bearing_temperature",
-    "RM_M1 D04 material_temperature",
     "RM_M2 D04 material_temperature",
     "RM_M3 D04 material_temperature",
-    "RM_M4 D04 material_temperature",
-    "RM_M5 D04 material_temperature",
-    "RM_M6 D04 material_temperature",
     "RM_M7 D04 material_temperature",
-    "RM_M9 D04 material_temperature",
-    "RM_M10 D04 material_temperature",
-    "RM_M11 D04 material_temperature",
-    "RM_M12 D04 material_temperature"
+    "RM_M11 D04 material_temperature"
    ],
    "impact": {
     "components": {
-     "tp": 89,
-     "fp": 7,
-     "fn": 26,
-     "precision": 0.9271,
-     "recall": 0.7739,
-     "f1": 0.8436
+     "tp": 149,
+     "fp": 27,
+     "fn": 6,
+     "precision": 0.8466,
+     "recall": 0.9613,
+     "f1": 0.9003
     },
     "documents": {
-     "tp": 81,
-     "fp": 11,
-     "fn": 79,
-     "precision": 0.8804,
-     "recall": 0.5062,
-     "f1": 0.6429
+     "tp": 204,
+     "fp": 28,
+     "fn": 6,
+     "precision": 0.8793,
+     "recall": 0.9714,
+     "f1": 0.9231
     },
     "violations": {
-     "tp": 13,
-     "fp": 1,
-     "fn": 13,
-     "precision": 0.9286,
-     "recall": 0.5,
-     "f1": 0.65
+     "tp": 34,
+     "fp": 2,
+     "fn": 0,
+     "precision": 0.9444,
+     "recall": 1.0,
+     "f1": 0.9714
     },
     "tests": {
-     "tp": 0,
-     "fp": 0,
-     "fn": 17,
-     "precision": 0.0,
-     "recall": 0.0,
-     "f1": 0.0
-    }
-   },
-   "impact_failures": [
-    "S3: ValueError",
-    "S8: ValueError",
-    "S20: ValueError"
-   ],
-   "contradictions": {
-    "found": 9,
-    "precision": 0.8889,
-    "recall": 0.5,
-    "f1": 0.64,
-    "detected": [
-     "K01",
-     "K02",
-     "K04",
-     "K06",
-     "K07"
-    ],
-    "missed": [
-     "K03",
-     "K05",
-     "K08",
-     "K09",
-     "K10"
-    ],
-    "distractor_hits": 0
-   }
-  },
-  {
-   "level": "lowres_100dpi",
-   "params": {
-    "scale": 0.5
-   },
-   "seconds": 14.4,
-   "ingest_seconds": 14.4,
-   "failed_documents": [],
-   "text_similarity": 0.9897,
-   "requirements": {
-    "tp": 41,
-    "fp": 13,
-    "fn": 18,
-    "precision": 0.7593,
-    "recall": 0.6949,
-    "f1": 0.7257
-   },
-   "missed_requirements": [
-    "R05 D01 flow_rate",
-    "R12 D01 service_life",
-    "R14 D01 ingress_protection",
-    "R30 D06 power",
-    "R31 D06 ingress_protection",
-    "R32 D06 rotation_speed",
-    "R34 D06 voltage",
-    "R46 D10 flow_rate",
-    "R42 D08 test_pressure",
-    "RM_M1 D04 material_temperature",
-    "RM_M2 D04 material_temperature",
-    "RM_M3 D04 material_temperature",
-    "RM_M5 D04 material_temperature",
-    "RM_M7 D04 material_temperature",
-    "RM_M9 D04 material_temperature",
-    "RM_M10 D04 material_temperature",
-    "RM_M11 D04 material_temperature",
-    "RM_M12 D04 material_temperature"
-   ],
-   "impact": {
-    "components": {
-     "tp": 110,
-     "fp": 21,
-     "fn": 5,
-     "precision": 0.8397,
-     "recall": 0.9565,
-     "f1": 0.8943
-    },
-    "documents": {
-     "tp": 140,
-     "fp": 16,
-     "fn": 20,
-     "precision": 0.8974,
-     "recall": 0.875,
-     "f1": 0.8861
-    },
-    "violations": {
-     "tp": 25,
-     "fp": 19,
-     "fn": 1,
-     "precision": 0.5682,
-     "recall": 0.9615,
-     "f1": 0.7143
-    },
-    "tests": {
-     "tp": 4,
+     "tp": 12,
      "fp": 11,
-     "fn": 13,
-     "precision": 0.2667,
-     "recall": 0.2353,
-     "f1": 0.25
+     "fn": 11,
+     "precision": 0.5217,
+     "recall": 0.5217,
+     "f1": 0.5217
     }
    },
    "impact_failures": [],
    "contradictions": {
-    "found": 30,
-    "precision": 0.4,
-    "recall": 0.6,
-    "f1": 0.48,
+    "found": 21,
+    "precision": 0.6667,
+    "recall": 0.8,
+    "f1": 0.7273,
     "detected": [
      "K01",
      "K02",
+     "K03",
      "K04",
+     "K05",
      "K06",
      "K07",
      "K09"
     ],
     "missed": [
-     "K03",
-     "K05",
-     "K08",
-     "K10"
-    ],
-    "distractor_hits": 0
-   }
-  },
-  {
-   "level": "jpeg_q10",
-   "params": {
-    "jpeg": 10
-   },
-   "seconds": 22.2,
-   "ingest_seconds": 22.1,
-   "failed_documents": [],
-   "text_similarity": 0.991,
-   "requirements": {
-    "tp": 45,
-    "fp": 0,
-    "fn": 14,
-    "precision": 1.0,
-    "recall": 0.7627,
-    "f1": 0.8654
-   },
-   "missed_requirements": [
-    "R35 D12 torque",
-    "R46 D10 flow_rate",
-    "R42 D08 test_pressure",
-    "RM_M1 D04 material_temperature",
-    "RM_M2 D04 material_temperature",
-    "RM_M3 D04 material_temperature",
-    "RM_M4 D04 material_temperature",
-    "RM_M5 D04 material_temperature",
-    "RM_M6 D04 material_temperature",
-    "RM_M7 D04 material_temperature",
-    "RM_M9 D04 material_temperature",
-    "RM_M10 D04 material_temperature",
-    "RM_M11 D04 material_temperature",
-    "RM_M12 D04 material_temperature"
-   ],
-   "impact": {
-    "components": {
-     "tp": 110,
-     "fp": 18,
-     "fn": 5,
-     "precision": 0.8594,
-     "recall": 0.9565,
-     "f1": 0.9053
-    },
-    "documents": {
-     "tp": 121,
-     "fp": 14,
-     "fn": 39,
-     "precision": 0.8963,
-     "recall": 0.7562,
-     "f1": 0.8203
-    },
-    "violations": {
-     "tp": 21,
-     "fp": 1,
-     "fn": 5,
-     "precision": 0.9545,
-     "recall": 0.8077,
-     "f1": 0.875
-    },
-    "tests": {
-     "tp": 2,
-     "fp": 6,
-     "fn": 15,
-     "precision": 0.25,
-     "recall": 0.1176,
-     "f1": 0.16
-    }
-   },
-   "impact_failures": [],
-   "contradictions": {
-    "found": 15,
-    "precision": 1.0,
-    "recall": 0.9,
-    "f1": 0.9474,
-    "detected": [
-     "K01",
-     "K02",
-     "K04",
-     "K05",
-     "K06",
-     "K07",
-     "K08",
-     "K09",
-     "K10"
-    ],
-    "missed": [
-     "K03"
-    ],
-    "distractor_hits": 0
-   }
-  },
-  {
-   "level": "stamps",
-   "params": {
-    "stamps": 3
-   },
-   "seconds": 19.8,
-   "ingest_seconds": 19.8,
-   "failed_documents": [],
-   "text_similarity": 0.886,
-   "requirements": {
-    "tp": 18,
-    "fp": 11,
-    "fn": 41,
-    "precision": 0.6207,
-    "recall": 0.3051,
-    "f1": 0.4091
-   },
-   "missed_requirements": [
-    "R05 D01 flow_rate",
-    "R06 D01 head",
-    "R07 D01 rotation_speed",
-    "R08 D01 power",
-    "R10 D01 noise_level",
-    "R12 D01 service_life",
-    "R16 D01 bearing_temperature",
-    "R20 D05 medium_temperature",
-    "R21 D05 working_pressure",
-    "R22 D05 rotation_speed",
-    "R23 D07 working_pressure",
-    "R24 D07 working_pressure",
-    "R26 D03 working_pressure",
-    "R27 D03 working_pressure",
-    "R29 D03 bearing_temperature",
-    "R28 D11 bearing_temperature",
-    "R58 D11 rotation_speed",
-    "R30 D06 power",
-    "R31 D06 ingress_protection",
-    "R32 D06 rotation_speed",
-    "R33 D06 ambient_temperature",
-    "R34 D06 voltage",
-    "R35 D12 torque",
-    "R36 D12 ambient_temperature",
-    "R41 D10 medium_temperature",
-    "R46 D10 flow_rate",
-    "R52 D10 service_life",
-    "R42 D08 test_pressure",
-    "R43 D08 vibration_velocity",
-    "R54 D08 medium_temperature",
-    "R45 D13 bearing_temperature",
-    "RM_M2 D04 material_temperature",
-    "RM_M3 D04 material_temperature",
-    "RM_M4 D04 material_temperature",
-    "RM_M5 D04 material_temperature",
-    "RM_M6 D04 material_temperature",
-    "RM_M7 D04 material_temperature",
-    "RM_M9 D04 material_temperature",
-    "RM_M10 D04 material_temperature",
-    "RM_M11 D04 material_temperature",
-    "RM_M12 D04 material_temperature"
-   ],
-   "impact": {
-    "components": {
-     "tp": 87,
-     "fp": 6,
-     "fn": 28,
-     "precision": 0.9355,
-     "recall": 0.7565,
-     "f1": 0.8365
-    },
-    "documents": {
-     "tp": 79,
-     "fp": 11,
-     "fn": 81,
-     "precision": 0.8778,
-     "recall": 0.4938,
-     "f1": 0.632
-    },
-    "violations": {
-     "tp": 8,
-     "fp": 1,
-     "fn": 18,
-     "precision": 0.8889,
-     "recall": 0.3077,
-     "f1": 0.4571
-    },
-    "tests": {
-     "tp": 0,
-     "fp": 3,
-     "fn": 17,
-     "precision": 0.0,
-     "recall": 0.0,
-     "f1": 0.0
-    }
-   },
-   "impact_failures": [],
-   "contradictions": {
-    "found": 3,
-    "precision": 0.3333,
-    "recall": 0.1,
-    "f1": 0.1538,
-    "detected": [
-     "K09"
-    ],
-    "missed": [
-     "K01",
-     "K02",
-     "K03",
-     "K04",
-     "K05",
-     "K06",
-     "K07",
      "K08",
      "K10"
     ],
@@ -1041,17 +195,17 @@
     "jpeg": 25,
     "stamps": 2
    },
-   "seconds": 25.6,
-   "ingest_seconds": 25.6,
+   "seconds": 16.1,
+   "ingest_seconds": 16.1,
    "failed_documents": [],
-   "text_similarity": 0.9227,
+   "text_similarity": 0.9123,
    "requirements": {
-    "tp": 19,
-    "fp": 3,
-    "fn": 40,
-    "precision": 0.8636,
-    "recall": 0.322,
-    "f1": 0.4691
+    "tp": 26,
+    "fp": 1,
+    "fn": 33,
+    "precision": 0.963,
+    "recall": 0.4407,
+    "f1": 0.6047
    },
    "missed_requirements": [
     "R04 D01 test_pressure",
@@ -1061,14 +215,11 @@
     "R08 D01 power",
     "R09 D01 vibration_velocity",
     "R10 D01 noise_level",
-    "R14 D01 ingress_protection",
     "R16 D01 bearing_temperature",
-    "R23 D07 working_pressure",
     "R24 D07 working_pressure",
     "R26 D03 working_pressure",
     "R27 D03 working_pressure",
     "R29 D03 bearing_temperature",
-    "R57 D03 power",
     "R28 D11 bearing_temperature",
     "R58 D11 rotation_speed",
     "R31 D06 ingress_protection",
@@ -1076,14 +227,10 @@
     "R34 D06 voltage",
     "R35 D12 torque",
     "R36 D12 ambient_temperature",
-    "R37 D12 ambient_temperature",
-    "R40 D10 bearing_temperature",
     "R46 D10 flow_rate",
-    "R52 D10 service_life",
     "R42 D08 test_pressure",
     "R54 D08 medium_temperature",
     "R45 D13 bearing_temperature",
-    "RM_M1 D04 material_temperature",
     "RM_M2 D04 material_temperature",
     "RM_M3 D04 material_temperature",
     "RM_M4 D04 material_temperature",
@@ -1097,61 +244,60 @@
    ],
    "impact": {
     "components": {
-     "tp": 95,
-     "fp": 12,
+     "tp": 135,
+     "fp": 15,
      "fn": 20,
-     "precision": 0.8879,
-     "recall": 0.8261,
-     "f1": 0.8559
+     "precision": 0.9,
+     "recall": 0.871,
+     "f1": 0.8852
     },
     "documents": {
-     "tp": 63,
-     "fp": 6,
-     "fn": 97,
-     "precision": 0.913,
-     "recall": 0.3937,
-     "f1": 0.5502
+     "tp": 117,
+     "fp": 15,
+     "fn": 93,
+     "precision": 0.8864,
+     "recall": 0.5571,
+     "f1": 0.6842
     },
     "violations": {
-     "tp": 3,
-     "fp": 5,
-     "fn": 23,
-     "precision": 0.375,
-     "recall": 0.1154,
-     "f1": 0.1765
+     "tp": 14,
+     "fp": 2,
+     "fn": 20,
+     "precision": 0.875,
+     "recall": 0.4118,
+     "f1": 0.56
     },
     "tests": {
      "tp": 0,
-     "fp": 0,
-     "fn": 17,
+     "fp": 4,
+     "fn": 23,
      "precision": 0.0,
      "recall": 0.0,
      "f1": 0.0
     }
    },
    "impact_failures": [
-    "S13: ValueError",
     "S14: ValueError",
-    "S22: ValueError",
-    "S25: ValueError"
+    "S25: ValueError",
+    "S33: ValueError"
    ],
    "contradictions": {
-    "found": 4,
-    "precision": 0.5,
-    "recall": 0.2,
-    "f1": 0.2857,
+    "found": 5,
+    "precision": 1.0,
+    "recall": 0.4,
+    "f1": 0.5714,
     "detected": [
      "K01",
-     "K06"
+     "K02",
+     "K06",
+     "K09"
     ],
     "missed": [
-     "K02",
      "K03",
      "K04",
      "K05",
      "K07",
      "K08",
-     "K09",
      "K10"
     ],
     "distractor_hits": 0

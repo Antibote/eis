@@ -66,6 +66,10 @@ export default function Documents() {
                       <td>
                         <Badge tone={STATUS[d.status]?.[1] ?? "neutral"}>{STATUS[d.status]?.[0] ?? d.status}</Badge>
                         {d.is_synthetic && <Badge className="ml-1">синт.</Badge>}
+                        {d.metadata?.ocr_confidence != null && <Badge tone={d.metadata.ocr_confidence < 0.8 ? "high" : "neutral"} className="ml-1"
+                          title={[d.metadata.ocr_confidence < 0.8 ? "Низкая уверенность OCR — сверьте числа с первоисточником." : "Документ распознан OCR.",
+                                  d.metadata.preprocessing?.length ? "Предобработка: " + d.metadata.preprocessing.join(", ") : ""].join(" ")}>
+                          OCR {Math.round(d.metadata.ocr_confidence * 100)}%</Badge>}
                         {d.injection_flags > 0 && <Badge tone="high" className="ml-1" title="Фрагменты с признаками инструкций для ИИ исключены из анализа"><AlertTriangle className="h-3 w-3" />инъекция</Badge>}
                         {d.error && <div className="mt-1 max-w-xs text-xs text-crit">{d.error}</div>}
                       </td>

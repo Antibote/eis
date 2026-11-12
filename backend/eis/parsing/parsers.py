@@ -25,6 +25,7 @@ class ParsedDocument:
     fragments: list[Fragment] = field(default_factory=list)
     pages: int | None = None
     header_lines: list[str] = field(default_factory=list)   # первые строки (обозначение, название)
+    preprocessing: list[str] = field(default_factory=list)  # применённая предобработка сканов
     warnings: list[str] = field(default_factory=list)
 
 
@@ -200,7 +201,11 @@ def _ocr_into(b: _Builder, image_bytes: bytes, page=None):
         raise ParseError("OCR недоступен: не установлен Tesseract (apt install tesseract-ocr tesseract-ocr-rus)")
     import pytesseract
     from PIL import Image
+    from eis.parsing.preprocess import prepare
     img = Image.open(io.BytesIO(image_bytes))
+    img.load()
+    img, steps = prepare(img)
+    b.out.preprocessing.extend(s for s in steps if s not in b.out.preprocessing)
     data = pytesseract.image_to_data(img, lang="rus+eng", output_type=pytesseract.Output.DICT)
     _layout_into(b, data, page)
 

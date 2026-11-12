@@ -56,7 +56,7 @@ def rebuild(pid: str) -> Workspace:
     with session() as s:
         rows = s.scalars(select(DocumentRow).where(DocumentRow.project_id == pid)).all()
         paths = [Path(r.path) for r in rows]
-    kb = ingest_paths(paths, pid)
+    kb = ingest_paths(paths, pid, cache_dir=settings.data_dir / "cache" / "parsed")
     ws = Workspace(kb)
     stats = {"documents": len(kb.documents), "requirements": len(kb.requirements), "relations": len(kb.relations)}
     with session() as s:

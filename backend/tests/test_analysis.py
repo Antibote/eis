@@ -80,3 +80,16 @@ def test_guard_ignores_designations_but_rejects_invented_numbers():
     bad = guard("Мощность электродвигателя НА-200 составляет 75 кВт [1].", ctx)
     assert len(ok.accepted) == 1 and not ok.rejected
     assert not bad.accepted and "75" in bad.rejected[0][1]
+
+
+def test_parse_cache_gives_same_result_and_is_used(tmp_path):
+    import time
+    from pathlib import Path
+    from eis.services.ingest import ingest_paths
+    src = Path(__file__).resolve().parents[2] / "dataset" / "out" / "dev" / "docs"
+    paths = sorted(p for p in src.iterdir() if p.is_file())
+    t = time.perf_counter(); kb1 = ingest_paths(paths, "t", cache_dir=tmp_path); t1 = time.perf_counter() - t
+    t = time.perf_counter(); kb2 = ingest_paths(paths, "t", cache_dir=tmp_path); t2 = time.perf_counter() - t
+    assert set(kb1.requirements) == set(kb2.requirements) and set(kb1.relations) == set(kb2.relations)
+    assert all(d.metadata.get("parse_cache") for d in kb2.documents.values() if d.status != "failed")
+    assert t2 < t1

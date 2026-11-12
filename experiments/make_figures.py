@@ -143,7 +143,7 @@ def fig_noise():
     rows = json.loads(p.read_text())["levels"]
     ru = {"native": "исходные\nформаты", "scan_clean": "чистый\nскан", "scan_typical": "типичный\nскан",
           "blur_1.5": "размытие\n1,5", "blur_2.5": "размытие\n2,5", "noise_5pct": "шум\n5 %", "rot_3deg": "наклон\n3°",
-          "lowres_100dpi": "100\ndpi", "jpeg_q10": "JPEG\nq=10", "stamps": "штампы", "combined": "всё\nвместе"}
+          "lowres_100dpi": "100\ndpi", "jpeg_q10": "JPEG\nq=10", "stamps": "серые\nштампы", "stamps_color": "синие\nпечати", "combined": "всё\nвместе"}
     series = [(lambda r: r["requirements"]["recall"], LIGHT, "полнота извлечения требований"),
               (lambda r: r["impact"]["components"]["f1"], NAVY, "F1 затронутых компонентов"),
               (lambda r: r["impact"]["violations"]["f1"], "#4a6b8c", "F1 нарушений"),

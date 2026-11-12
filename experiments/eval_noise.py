@@ -48,7 +48,8 @@ LEVELS: dict[str, dict | None] = {
     "rot_3deg": {"rot": 3.0},
     "lowres_100dpi": {"scale": 0.5},
     "jpeg_q10": {"jpeg": 10},
-    "stamps": {"stamps": 3},
+    "stamps": {"stamps": 3},                                 # серые штампы (цветом не отделить) — трудный случай
+    "stamps_color": {"stamps": 3, "stamp_color": (40, 70, 190)},   # синие печати, как на реальных документах
     "combined": {"blur": 1.2, "noise": 0.02, "rot": 2.0, "jpeg": 25, "stamps": 2},
 }
 W, MARGIN, SIZE, LEADING = 1654, 90, 30, 46     # A4 при 200 dpi, кегль ≈ 11 pt
@@ -117,14 +118,19 @@ def render_scan(lines: list, params: dict, seed: int) -> Image.Image:
         od.ellipse((cx - 210, cy - 95, cx + 210, cy + 95), outline=255, width=7)
         od.text((cx - 150, cy - 22), "КОПИЯ ВЕРНА", font=ImageFont.truetype(FONT_B, 40), fill=255)
         od.line((cx - 260, cy + 120, cx + 240, cy + 60), fill=255, width=5)   # подпись от руки
-        img = Image.composite(Image.new("L", (W, H), 110), img, ov.point(lambda v: int(v * 0.75)))
+        if params.get("stamp_color"):
+            img = img.convert("RGB")
+            img = Image.composite(Image.new("RGB", (W, H), params["stamp_color"]), img, ov.point(lambda v: int(v * 0.75)))
+        else:
+            img = Image.composite(Image.new("L", (W, H), 110), img, ov.point(lambda v: int(v * 0.75)))
     if params.get("noise"):
         n = int(W * H * params["noise"])
         px = img.load()
         for _ in range(n):
-            px[rng.randrange(W), rng.randrange(H)] = rng.choice((0, 255)) if rng.random() < 0.5 else rng.randrange(60, 230)
+            v = rng.choice((0, 255)) if rng.random() < 0.5 else rng.randrange(60, 230)
+            px[rng.randrange(W), rng.randrange(H)] = (v, v, v) if img.mode == "RGB" else v
     if params.get("rot"):
-        img = img.rotate(params["rot"], resample=Image.BICUBIC, expand=True, fillcolor=248)
+        img = img.rotate(params["rot"], resample=Image.BICUBIC, expand=True, fillcolor=(248, 248, 248) if img.mode == "RGB" else 248)
     if params.get("blur"):
         img = img.filter(ImageFilter.GaussianBlur(params["blur"]))
     if params.get("scale"):
@@ -133,7 +139,7 @@ def render_scan(lines: list, params: dict, seed: int) -> Image.Image:
     if params.get("jpeg"):
         buf = io.BytesIO()
         img.save(buf, "JPEG", quality=params["jpeg"])
-        img = Image.open(io.BytesIO(buf.getvalue())).convert("L")
+        img = Image.open(io.BytesIO(buf.getvalue()))
     return img
 
 
