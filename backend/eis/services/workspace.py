@@ -15,6 +15,7 @@ class Workspace:
     def __init__(self, kb: KnowledgeBase):
         self.kb = kb
         self.lock = threading.RLock()
+        self.semantic: list = []          # находки уровня 2 (LLM), запускаются по запросу инженера
 
     @cached_property
     def graph(self) -> NetworkXStore:

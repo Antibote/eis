@@ -120,13 +120,27 @@ def contradictions(pid: str, user: CurrentUser = Depends(project_access())):
     ws = state.get_ws(pid)
     rv = _reviews(pid)
     out = []
-    for c in ws.contradictions:
+    for c in list(ws.contradictions) + list(ws.semantic):
         d = c.model_dump(mode="json")
         d["evidence"] = [ws.evidence_context(e) for e in c.evidence]
         d["entity_names"] = [ws.kb.entities[e].name if e in ws.kb.entities else e for e in c.entities]
         d["review"] = rv.get(c.id)
         out.append(d)
     return out
+
+
+@router.post("/contradictions/semantic")
+def run_semantic(pid: str, user: CurrentUser = Depends(project_access("engineer"))):
+    """Уровень 2: семантическое сравнение пар фрагментов локальной LLM (статус находок — «потенциально»)."""
+    from eis.services.semantic import semantic_contradictions
+    llm = provider_from_env()
+    if not llm.available or (not llm.local and not user.allow_external_llm):
+        raise HTTPException(409, "Языковая модель не подключена или передача данных внешней модели не разрешена")
+    ws = state.get_ws(pid)
+    found, log = semantic_contradictions(ws.kb, llm, ws.retriever.embedder)
+    ws.semantic = found
+    state.audit(user.username, "semantic_contradictions", pid, pairs=len(log), found=len(found), llm=llm.name)
+    return {"pairs": len(log), "found": len(found)}
 
 
 @router.patch("/contradictions/{cid}")

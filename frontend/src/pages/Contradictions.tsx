@@ -1,4 +1,4 @@
-import { Check, Download, X } from "lucide-react";
+import { Check, Download, Sparkles, X } from "lucide-react";
 import { useMemo, useState } from "react";
 import { EvidenceQuote } from "@/components/Evidence";
 import { Badge, Button, Card, Confidence, Empty, ErrorBox, PageHeader, SEVERITY_RU, SEVERITY_TONE, STATUS_RU, Select, Spinner } from "@/components/ui";
@@ -20,14 +20,23 @@ export default function Contradictions() {
   const [sev, setSev] = useState(""); const [type, setType] = useState(""); const [rv, setRv] = useState("");
   const rows = useMemo(() => (data ?? []).filter((c) => (!sev || c.severity === sev) && (!type || c.type === type) &&
     (!rv || (c.review?.status ?? "new") === rv)), [data, sev, type, rv]);
+  const [sem, setSem] = useState<string | null>(null);
+  const runSemantic = async () => {
+    setSem("Идёт сравнение пар фрагментов языковой моделью…");
+    try { const r = await api<any>(`/projects/${project}/contradictions/semantic`, { method: "POST" });
+      setSem(`Проверено пар: ${r.pairs}; возможных противоречий: ${r.found} (статус «потенциально», требуют проверки инженером)`); reload(); }
+    catch (e: any) { setSem(String(e?.message ?? e)); }
+  };
   const review = async (id: string, status: string) => { await api(`/projects/${project}/contradictions/${id}`, { method: "PATCH", json: { status } }); reload(); };
   return (
     <div>
       <PageHeader title="Обнаруженные противоречия" sub="Формальные проверки после приведения единиц и проверки по графу зависимостей. Каждое — с двумя источниками."
         right={<>
+          <Button size="sm" onClick={runSemantic} title="Уровень 2: сравнение пар фрагментов локальной языковой моделью"><Sparkles className="h-3.5 w-3.5" />Семантическая проверка (LLM)</Button>
           <Button size="sm" onClick={() => download(`/projects/${project}/contradictions/export?fmt=docx`, "contradictions.docx")}><Download className="h-3.5 w-3.5" />DOCX</Button>
           <Button size="sm" onClick={() => download(`/projects/${project}/contradictions/export?fmt=pdf`, "contradictions.pdf")}><Download className="h-3.5 w-3.5" />PDF</Button>
         </>} />
+      {sem && <div className="border-b border-line bg-canvas px-6 py-2 text-xs text-ink-soft">{sem}</div>}
       <div className="flex flex-wrap items-center gap-2 border-b border-line bg-surface px-6 py-2">
         <Select className="w-44" value={sev} onChange={(e) => setSev(e.target.value)}><option value="">Любая серьёзность</option>{Object.entries(SEVERITY_RU).map(([k, v]) => <option key={k} value={k}>{v}</option>)}</Select>
         <Select className="w-64" value={type} onChange={(e) => setType(e.target.value)}><option value="">Все типы</option>{Object.entries(TYPE_RU).map(([k, v]) => <option key={k} value={k}>{v}</option>)}</Select>
