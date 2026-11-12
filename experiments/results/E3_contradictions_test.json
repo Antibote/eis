@@ -1,8 +1,8 @@
 {
  "experiment": "E3_contradictions",
  "variant": "test",
- "dataset_hash": "23d4656c9c0218d4",
- "commit": "8de9d41",
+ "dataset_hash": "67c5564e3f5e2d41",
+ "commit": "b8e2119",
  "embedder": "intfloat/multilingual-e5-small",
  "failed_documents": [],
  "methods": {

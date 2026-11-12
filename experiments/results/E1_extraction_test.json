@@ -1,9 +1,9 @@
 {
  "experiment": "E1_extraction",
  "variant": "test",
- "dataset_hash": "23d4656c9c0218d4",
- "commit": "8de9d41",
- "ingest_seconds": 0.99,
+ "dataset_hash": "67c5564e3f5e2d41",
+ "commit": "b8e2119",
+ "ingest_seconds": 1.63,
  "failed_documents": [],
  "requirements": {
   "tp": 59,
@@ -136,8 +136,8 @@
   "VERIFIED_BY": [],
   "SUPERSEDES": [],
   "DOCUMENTED_IN": [
-   "('cmp:НА-200.00.000', 'doc:6ce4db0aed22')",
-   "('cmp:НА-200.00.000', 'doc:991e64c68be0')",
+   "('cmp:НА-200.00.000', 'doc:ba949a064114')",
+   "('cmp:НА-200.00.000', 'doc:e0d4dfd7abc6')",
    "('cmp:НА-200.04.001', 'doc:79731775da00')"
   ]
  }

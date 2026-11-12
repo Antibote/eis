@@ -96,6 +96,10 @@ def file_path(pid: str, did: str) -> Path | None:
 
 
 def load_demo(user: str) -> Workspace:
+    """Демо-набор заменяет содержимое проекта demo (иначе после пересборки датасета — дубликаты)."""
+    with session() as s:
+        for row in s.scalars(select(DocumentRow).where(DocumentRow.project_id == "demo")).all():
+            s.delete(row)
     for p in sorted(settings.demo_dataset.iterdir()):
         if p.is_file():
             add_file("demo", p, p.name, user)

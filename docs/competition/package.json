@@ -1,0 +1,1 @@
+{ "name": "eis-competition-docs", "private": true, "dependencies": { "docx": "9.5.1", "pptxgenjs": "3.12.0" } }

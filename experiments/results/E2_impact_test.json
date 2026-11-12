@@ -1,11 +1,11 @@
 {
  "experiment": "E2_impact",
  "variant": "test",
- "dataset_hash": "23d4656c9c0218d4",
- "commit": "8de9d41",
+ "dataset_hash": "67c5564e3f5e2d41",
+ "commit": "b8e2119",
  "embedder": "intfloat/multilingual-e5-small",
  "k": 10,
- "index_seconds": 8.94,
+ "index_seconds": 15.03,
  "failed_documents": [],
  "methods": {
   "M1_keyword": {
@@ -38,7 +38,7 @@
    "macro_f1_components": 0.746,
    "chain_recall_mean": 0.65,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.13,
+   "time_ms_mean": 2.07,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -78,8 +78,8 @@
       "D14_ChangeLog.csv"
      ],
      "fn_documents": [
-      "doc:8aa71c0444e3",
-      "doc:f2eaa0a2729d"
+      "doc:84fe4f86ab8c",
+      "doc:8aa71c0444e3"
      ]
     },
     {
@@ -115,9 +115,9 @@
      ],
      "fp_documents": [],
      "fn_documents": [
-      "doc:8dd119ecf93f",
-      "doc:991e64c68be0",
-      "doc:c6fc21343086"
+      "doc:ba949a064114",
+      "doc:c6fc21343086",
+      "doc:eda1fb87aecc"
      ]
     },
     {
@@ -159,8 +159,8 @@
       "D10_RE_NA-200.pdf"
      ],
      "fn_documents": [
-      "doc:436d06b00f36",
-      "doc:8dd119ecf93f"
+      "doc:1a21fed4a759",
+      "doc:eda1fb87aecc"
      ]
     },
     {
@@ -200,8 +200,8 @@
      ],
      "fp_documents": [],
      "fn_documents": [
-      "doc:8dd119ecf93f",
-      "doc:991e64c68be0"
+      "doc:ba949a064114",
+      "doc:eda1fb87aecc"
      ]
     },
     {
@@ -276,7 +276,7 @@
    "macro_f1_components": 0.707,
    "chain_recall_mean": 0.6,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 17.5,
+   "time_ms_mean": 32.92,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -321,8 +321,8 @@
       "D14_ChangeLog.csv"
      ],
      "fn_documents": [
-      "doc:8aa71c0444e3",
-      "doc:f2eaa0a2729d"
+      "doc:84fe4f86ab8c",
+      "doc:8aa71c0444e3"
      ]
     },
     {
@@ -356,8 +356,8 @@
      "fn_components": [],
      "fp_documents": [],
      "fn_documents": [
-      "doc:8dd119ecf93f",
-      "doc:991e64c68be0"
+      "doc:ba949a064114",
+      "doc:eda1fb87aecc"
      ]
     },
     {
@@ -399,7 +399,7 @@
       "D10_RE_NA-200.pdf"
      ],
      "fn_documents": [
-      "doc:436d06b00f36"
+      "doc:1a21fed4a759"
      ]
     },
     {
@@ -440,8 +440,8 @@
       "D11_Passport_Bearing.txt"
      ],
      "fn_documents": [
-      "doc:8dd119ecf93f",
-      "doc:991e64c68be0"
+      "doc:ba949a064114",
+      "doc:eda1fb87aecc"
      ]
     },
     {
@@ -515,7 +515,7 @@
    "macro_f1_components": 0.8892,
    "chain_recall_mean": 0.51,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.22,
+   "time_ms_mean": 2.25,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -743,7 +743,7 @@
    "macro_f1_components": 0.7367,
    "chain_recall_mean": 0.9,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.29,
+   "time_ms_mean": 2.32,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -1004,7 +1004,7 @@
    "macro_f1_components": 0.96,
    "chain_recall_mean": 0.92,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.64,
+   "time_ms_mean": 2.95,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -1258,7 +1258,7 @@
    "macro_f1_components": 0.9046,
    "chain_recall_mean": 0.62,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.03,
+   "time_ms_mean": 2.22,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -1513,7 +1513,7 @@
    "macro_f1_components": 0.9138,
    "chain_recall_mean": 0.92,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.01,
+   "time_ms_mean": 1.83,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -1771,7 +1771,7 @@
    "macro_f1_components": 0.96,
    "chain_recall_mean": 0.92,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 0.98,
+   "time_ms_mean": 1.76,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -2044,7 +2044,7 @@
    "macro_f1_components": 0.9447,
    "chain_recall_mean": 0.92,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 0.92,
+   "time_ms_mean": 1.64,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -2300,7 +2300,7 @@
    "macro_f1_components": 0.96,
    "chain_recall_mean": 0.92,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 0.83,
+   "time_ms_mean": 1.45,
    "per_scenario": [
     {
      "scenario": "S1",

@@ -14,7 +14,7 @@ from __future__ import annotations
 import math
 from itertools import combinations
 
-from eis.domain.engineering import MATERIAL_LIMITED, TEMPERATURE_PARAMS
+from eis.domain.engineering import MATERIAL_LIMITED, PARAM_RU, TEMPERATURE_PARAMS  # noqa: F401 (PARAM_RU реэкспорт)
 from eis.domain.models import EntityType, KnowledgeBase, RelationType, Requirement, stable_id
 from eis.domain.results import Contradiction
 from eis.extraction.units import match_unit
@@ -24,14 +24,6 @@ CONFIRM_THRESHOLD = 0.75
 REL_TOL = 1e-3
 INF = math.inf
 
-PARAM_RU = {
-    "medium_temperature": "температура перекачиваемой среды", "ambient_temperature": "температура окружающего воздуха",
-    "bearing_temperature": "температура нагрева подшипникового узла", "working_pressure": "рабочее давление",
-    "test_pressure": "испытательное давление", "flow_rate": "подача", "head": "напор", "rotation_speed": "частота вращения",
-    "power": "мощность", "vibration_velocity": "виброскорость", "noise_level": "уровень звука", "service_life": "ресурс",
-    "mass": "масса", "ingress_protection": "степень защиты", "voltage": "напряжение", "torque": "крутящий момент",
-    "material_temperature": "температура применения материала",
-}
 
 
 def fmt_req(r: Requirement) -> str:

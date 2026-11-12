@@ -11,6 +11,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
+from eis.domain.engineering import PARAM_RU
 from eis.domain.models import (Document, Entity, EntityType, Evidence, EvidenceMethod, Fragment, KnowledgeBase,
                                Relation, RelationType, Requirement, now, stable_id)
 from eis.extraction.classify import classify
@@ -127,7 +128,7 @@ class Extractor:
     def _constraint(self, subject: str, param: str, evidence: Evidence) -> str:
         cid = f"con:{subject}:{param}"
         subj = self.kb.entities.get(subject)
-        self._entity(cid, EntityType.CONSTRAINT, f"{param} — {subj.name if subj else subject}", None,
+        self._entity(cid, EntityType.CONSTRAINT, f"{PARAM_RU.get(param, param)} — {subj.name if subj else subject}", None,
                      attrs={"subject_id": subject, "parameter": param})
         self._rel(RelationType.CHARACTERIZES, cid, subject, evidence)
         return cid

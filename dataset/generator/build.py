@@ -44,6 +44,24 @@ def header(doc):
     return [doc.code, doc.title, BANNER]
 
 
+
+FIXED_TS = (2026, 1, 1, 0, 0, 0)
+
+
+def normalize_zip(path):
+    """DOCX/XLSX — ZIP-архивы с датами создания; фиксируем даты, чтобы файл зависел только от содержимого."""
+    import datetime
+    import re as _re
+    import zipfile
+    with zipfile.ZipFile(path) as z:
+        items = [(i.filename, z.read(i.filename)) for i in z.infolist()]
+    stamp = datetime.datetime(*FIXED_TS).strftime("%Y-%m-%dT%H:%M:%SZ").encode()
+    with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
+        for name, data in items:
+            if name in ("docProps/core.xml",):
+                data = _re.sub(rb"(<dcterms:(?:created|modified)[^>]*>)[^<]*", lambda m: m.group(1) + stamp, data)
+            z.writestr(zipfile.ZipInfo(name, FIXED_TS), data, zipfile.ZIP_DEFLATED)
+
 def write_txt(path, doc, blocks):
     lines = header(doc) + [""]
     for kind, content, _ in blocks:
@@ -74,6 +92,7 @@ def write_xlsx(path, doc, blocks):
             for r in content:
                 ws.append(r)
     wb.save(path)
+    normalize_zip(path)
 
 
 def write_docx(path, doc, blocks):
@@ -96,6 +115,7 @@ def write_docx(path, doc, blocks):
                 for c, v in zip(cells, r):
                     c.text = v
     d.save(path)
+    normalize_zip(path)
 
 
 def write_pdf(path, doc, blocks):
@@ -104,8 +124,10 @@ def write_pdf(path, doc, blocks):
     from reportlab.lib.units import mm
     from reportlab.pdfbase import pdfmetrics
     from reportlab.pdfbase.ttfonts import TTFont
+    from reportlab import rl_config
     from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table
 
+    rl_config.invariant = 1  # без даты создания и случайного ID в PDF — воспроизводимый файл
     if "DejaVu" not in pdfmetrics.getRegisteredFontNames():
         pdfmetrics.registerFont(TTFont("DejaVu", FONT))
         pdfmetrics.registerFont(TTFont("DejaVuB", FONT_B))

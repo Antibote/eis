@@ -55,3 +55,13 @@ MATERIAL_LIMITED = TEMPERATURE_PARAMS
 
 # Минимальный относительный запас, ниже которого результат проверки считается «на пределе»
 MARGIN_WARN = 0.05
+
+# Русские названия параметров (для подписей узлов, отчётов, ответов помощника)
+PARAM_RU = {
+    "medium_temperature": "температура перекачиваемой среды", "ambient_temperature": "температура окружающего воздуха",
+    "bearing_temperature": "температура нагрева подшипникового узла", "working_pressure": "рабочее давление",
+    "test_pressure": "испытательное давление", "flow_rate": "подача", "head": "напор", "rotation_speed": "частота вращения",
+    "power": "мощность", "vibration_velocity": "виброскорость", "noise_level": "уровень звука", "service_life": "ресурс",
+    "mass": "масса", "ingress_protection": "степень защиты", "voltage": "напряжение", "torque": "крутящий момент",
+    "material_temperature": "температура применения материала",
+}
