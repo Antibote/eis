@@ -2,7 +2,7 @@
  "experiment": "E3_contradictions",
  "variant": "dev",
  "dataset_hash": "afc8275b99a4a3f2",
- "commit": "6b98fc8",
+ "commit": "ce47da2",
  "embedder": "intfloat/multilingual-e5-small",
  "failed_documents": [],
  "methods": {

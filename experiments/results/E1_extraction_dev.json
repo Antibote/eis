@@ -2,8 +2,8 @@
  "experiment": "E1_extraction",
  "variant": "dev",
  "dataset_hash": "afc8275b99a4a3f2",
- "commit": "6b98fc8",
- "ingest_seconds": 1.8,
+ "commit": "ce47da2",
+ "ingest_seconds": 1.05,
  "failed_documents": [],
  "requirements": {
   "tp": 59,

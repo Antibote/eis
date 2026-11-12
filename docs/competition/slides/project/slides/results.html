@@ -1,15 +1,15 @@
 <section id="results" data-transition="fade" style="background:#f6f5f0;color:#16273d;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
 <div style="display:flex;flex-direction:column;gap:16px">
 <p style="font-size:26px;color:#b4501c;letter-spacing:3px;text-transform:uppercase">Экспериментальные результаты</p>
-<h2 style="font-size:52px;font-weight:600;line-height:1.12">25 сценариев, 8 из них отложены до конца: гибрид точнее всех базовых методов</h2>
+<h2 style="font-size:52px;font-weight:600;line-height:1.12">33 сценария, 16 из них отложены до конца: гибрид точнее всех базовых методов</h2>
 </div>
 <div style="display:flex;gap:44px;align-items:start">
-<img src="/_blob/0bae47f638449e14c669f8fbf52e15ec" alt="Столбчатая диаграмма по 25 сценариям: F1 по компонентам 0,65 / 0,67 / 0,78 / 0,91, по документам 0,77 / 0,76 / 0,76 / 0,92 для BM25, RAG, графа и гибрида" style="width:1000px;height:475px;object-fit:contain;background:#ffffff;border-radius:12px">
+<img src="/_blob/738645bd964c7cf6924e70d2dd44bd20" alt="Столбчатая диаграмма по 33 сценариям: F1 по компонентам 0,68 / 0,68 / 0,78 / 0,90, по документам 0,77 / 0,76 / 0,76 / 0,94 для BM25, RAG, графа и гибрида" style="width:1000px;height:475px;object-fit:contain;background:#ffffff;border-radius:12px">
 <div style="flex:1;display:flex;flex-direction:column;gap:20px">
 <div style="background:#ffffff;border:1px solid #dcdcd2;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:6px">
-<p style="font-size:26px;color:#45505e">Отложенный набор, F1 компонентов</p>
-<p style="font-size:34px;font-weight:600">0,92 <span style="color:#7a8390">[0,79; 1,00]</span></p>
-<p style="font-size:24px;color:#45505e">граф без правил — 0,75</p>
+<p style="font-size:26px;color:#45505e">Два отложенных набора, F1 компонентов</p>
+<p style="font-size:34px;font-weight:600">0,92 и 0,89</p>
+<p style="font-size:24px;color:#45505e">граф без правил — 0,75 и 0,80</p>
 </div>
 <div style="background:#ffffff;border:1px solid #dcdcd2;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:6px">
 <p style="font-size:26px;color:#45505e">Противоречия, найдено из 10</p>
@@ -17,10 +17,10 @@
 </div>
 <div style="background:#ffffff;border:1px solid #dcdcd2;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:6px">
 <p style="font-size:26px;color:#45505e">Нарушения ограничений</p>
-<p style="font-size:30px"><b>26 из 26</b>, одно лишнее</p>
+<p style="font-size:30px"><b>34 из 34</b>, два лишних</p>
 </div>
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7a8390">7 · набор test, 95% интервалы — бутстреп по сценариям; первые прогоны и ошибки записаны в журнал до исправлений</p>
-<aside>Четыре метода сравнивались на одинаковых входах: ключевые слова, семантический RAG, обход того же графа без правил и гибрид. Граф у третьего и четвёртого метода один, поэтому выигрыш — заслуга алгоритма. Сценариев 25. Эталон я размечал до запуска системы. Важная деталь: первый прогон на новых сценариях показал, что по компонентам гибрид не лучше простого обхода графа. Я записал это в журнал, нашёл причину — система не учитывала направление изменения, — и доработал метод. Чтобы проверить доработку честно, восемь сценариев я отложил заранее и прогнал один раз в самом конце: F1 0,92 против 0,75 у графа. Противоречия — все 10 из 10 без ложных срабатываний на ловушках.</aside>
+<aside>Четыре метода сравнивались на одинаковых входах: ключевые слова, семантический RAG, обход того же графа без правил и гибрид. Граф у третьего и четвёртого метода один, поэтому выигрыш — заслуга алгоритма. Сценариев 33. Эталон я размечал до запуска системы. Важная деталь: первый прогон на новых сценариях показал, что по компонентам гибрид не лучше простого обхода графа. Я записал это в журнал, нашёл причину — система не учитывала направление изменения, — и доработал метод. Чтобы проверить доработки честно, я дважды откладывал по восемь сценариев заранее и прогонял их один раз после доработки: F1 0,92 и 0,89 против 0,75 и 0,80 у графа. Противоречия — все 10 из 10 без ложных срабатываний на ловушках.</aside>
 </section>
