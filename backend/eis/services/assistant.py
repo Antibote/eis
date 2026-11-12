@@ -43,6 +43,7 @@ class Answer:
     entities: list[str] = field(default_factory=list)
     llm_used: bool = False
     llm_text: str | None = None
+    llm_raw: str | None = None          # ответ LLM до фильтра цитирования (для аудита и экспериментов)
     guard: dict | None = None
     warnings: list[str] = field(default_factory=list)
 
@@ -274,6 +275,7 @@ class Assistant:
         except Exception as e:  # noqa: BLE001
             ans.warnings.append(f"LLM недоступна: {e}")
             return
+        ans.llm_raw = raw
         g = guard(raw, ctx)
         ans.guard = {"accepted": len(g.accepted), "rejected": [{"sentence": s, "reason": r} for s, r in g.rejected],
                      "unsupported_share": round(g.unsupported_share, 3)}
