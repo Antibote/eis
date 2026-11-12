@@ -1,0 +1,30 @@
+<section id="solution" data-transition="fade" style="background:#f6f5f0;color:#16273d;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:26px;color:#b4501c;letter-spacing:3px;text-transform:uppercase">Предлагаемое решение</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.12">Документы → проверяемый граф → формальная проверка изменения</h2>
+</div>
+<div style="display:flex;gap:0;align-items:stretch">
+<div style="flex:1;background:#ffffff;border:1px solid #dcdcd2;border-radius:16px;padding:36px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:40px;font-weight:700;color:#b4501c">1</p>
+<p style="font-size:30px;font-weight:600">Извлечь</p>
+<p style="font-size:26px;line-height:1.4;color:#45505e">требования, пределы, материалы и зависимости из PDF, DOCX, XLSX, CSV, TXT и сканов; единицы → СИ</p>
+</div>
+<x-connector style="width:72px" head="end"></x-connector>
+<div style="flex:1;background:#ffffff;border:1px solid #dcdcd2;border-radius:16px;padding:36px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:40px;font-weight:700;color:#b4501c">2</p>
+<p style="font-size:30px;font-weight:600">Связать</p>
+<p style="font-size:26px;line-height:1.4;color:#45505e">требование → характеристика → компонент → материал; у каждой связи — документ, страница и цитата</p>
+</div>
+<x-connector style="width:72px" head="end"></x-connector>
+<div style="flex:1;background:#ffffff;border:1px solid #dcdcd2;border-radius:16px;padding:36px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:40px;font-weight:700;color:#b4501c">3</p>
+<p style="font-size:30px;font-weight:600">Проверить</p>
+<p style="font-size:26px;line-height:1.4;color:#45505e">распространить изменение с учётом физики параметра и сравнить новое значение с каждым пределом</p>
+</div>
+</div>
+<div style="background:#16273d;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:30px;line-height:1.45;color:#f3f1ea"><b>Результат:</b> подтверждённое влияние (формальное нарушение), прямое, потенциальное и документарное — с цепочкой и цитатой. Транзитивная связь сама по себе не считается доказательством.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7a8390">4 · работает полностью локально; LLM подключается опционально, внешние модели — только с разрешения</p>
+<aside>Решение состоит из трёх шагов. Сначала извлекаем из документов требования и ограничения — по правилам на основе морфологии русского языка, с нормализацией единиц. Затем связываем их в граф, где центральный узел — характеристика: например, «температура среды насосного агрегата». К ней ссылаются требования из всех документов. Наконец, при изменении обходим граф по связям, которые соответствуют физике параметра, и формально сравниваем новое значение с каждым найденным пределом. Важно: система не выдаёт «возможно затронуто» за факт — нарушение подтверждается только формальной проверкой.</aside>
+</section>

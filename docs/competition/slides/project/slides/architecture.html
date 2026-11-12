@@ -1,0 +1,9 @@
+<section id="architecture" data-transition="fade" style="background:#ffffff;color:#16273d;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:26px;color:#b4501c;letter-spacing:3px;text-transform:uppercase">Архитектура системы</p>
+<h2 style="font-size:56px;font-weight:600;line-height:1.12">Модули за интерфейсами: граф, поиск и LLM заменяемы без переписывания алгоритмов</h2>
+</div>
+<img src="/_blob/73b08b214d1c71968491c697fb41f97c" alt="Схема архитектуры: документы, разбор и OCR, извлечение, граф знаний; от графа — анализ изменений, противоречия, гибридный поиск, интерфейс и API" style="width:1664px;height:560px;object-fit:contain">
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7a8390">5 · Python: FastAPI, NetworkX, PostgreSQL, pymorphy3, Tesseract, e5-small · React + React Flow · запуск одной командой Docker Compose</p>
+<aside>Документы разбираются с сохранением координат каждого фрагмента; сканы проходят OCR. Извлечение строит граф знаний, где у каждой связи обязательно есть доказательство: документ, страница, цитата и правило, по которому связь найдена. Над графом работают три модуля: анализ изменений, поиск противоречий и гибридный поиск для помощника. Всё работает локально, без внешних сервисов; LLM подключается через интерфейс и не обязательна.</aside>
+</section>
