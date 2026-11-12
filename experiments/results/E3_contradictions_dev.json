@@ -1,19 +1,17 @@
 {
  "experiment": "E3_contradictions",
  "variant": "dev",
- "dataset_hash": "812af97771c5397d",
- "commit": "18ef645",
+ "dataset_hash": "ff67622bc6da18af",
+ "commit": "8de9d41",
  "embedder": "intfloat/multilingual-e5-small",
- "failed_documents": [
-  "D13_Setpoints_scan.png"
- ],
+ "failed_documents": [],
  "methods": {
   "C3_hybrid": {
-   "found": 14,
-   "matched_found": 14,
+   "found": 17,
+   "matched_found": 17,
    "precision": 1.0,
-   "recall": 0.9,
-   "f1": 0.9474,
+   "recall": 1.0,
+   "f1": 1.0,
    "detected": [
     "K01",
     "K02",
@@ -22,142 +20,141 @@
     "K05",
     "K06",
     "K07",
-    "K08",
-    "K10"
-   ],
-   "missed": [
-    "K09"
-   ],
-   "distractor_hits": 0
-  },
-  "C2_formal": {
-   "found": 9,
-   "matched_found": 9,
-   "precision": 1.0,
-   "recall": 0.6,
-   "f1": 0.75,
-   "detected": [
-    "K01",
-    "K03",
-    "K05",
-    "K06",
-    "K07",
-    "K10"
-   ],
-   "missed": [
-    "K02",
-    "K04",
-    "K08",
-    "K09"
-   ],
-   "distractor_hits": 0
-  },
-  "C1_similarity": {
-   "found": 13,
-   "matched_found": 2,
-   "precision": 0.1538,
-   "recall": 0.2,
-   "f1": 0.1739,
-   "detected": [
-    "K01",
-    "K07"
-   ],
-   "missed": [
-    "K02",
-    "K03",
-    "K04",
-    "K05",
-    "K06",
     "K08",
     "K09",
     "K10"
    ],
-   "distractor_hits": 0,
-   "tau": 0.94,
+   "missed": [],
+   "distractor_hits": 0
+  },
+  "C2_formal": {
+   "found": 12,
+   "matched_found": 12,
+   "precision": 1.0,
+   "recall": 0.7,
+   "f1": 0.8235,
+   "detected": [
+    "K01",
+    "K03",
+    "K05",
+    "K06",
+    "K07",
+    "K09",
+    "K10"
+   ],
+   "missed": [
+    "K02",
+    "K04",
+    "K08"
+   ],
+   "distractor_hits": 0
+  },
+  "C1_similarity": {
+   "found": 54,
+   "matched_found": 6,
+   "precision": 0.1111,
+   "recall": 0.5,
+   "f1": 0.1818,
+   "detected": [
+    "K01",
+    "K05",
+    "K07",
+    "K09",
+    "K10"
+   ],
+   "missed": [
+    "K02",
+    "K03",
+    "K04",
+    "K06",
+    "K08"
+   ],
+   "distractor_hits": 1,
+   "tau": 0.92,
    "curve": {
     "0.8": {
-     "found": 10319,
-     "precision": 0.0015,
-     "recall": 0.9,
-     "f1": 0.0029
+     "found": 11048,
+     "precision": 0.0016,
+     "recall": 1.0,
+     "f1": 0.0033
     },
     "0.81": {
-     "found": 9765,
-     "precision": 0.0015,
-     "recall": 0.9,
-     "f1": 0.0031
+     "found": 10459,
+     "precision": 0.0017,
+     "recall": 1.0,
+     "f1": 0.0034
     },
     "0.82": {
-     "found": 8657,
-     "precision": 0.0017,
-     "recall": 0.9,
-     "f1": 0.0035
+     "found": 9252,
+     "precision": 0.0019,
+     "recall": 1.0,
+     "f1": 0.0039
     },
     "0.83": {
-     "found": 6967,
-     "precision": 0.0022,
-     "recall": 0.9,
-     "f1": 0.0043
+     "found": 7457,
+     "precision": 0.0024,
+     "recall": 1.0,
+     "f1": 0.0048
     },
     "0.84": {
-     "found": 4987,
-     "precision": 0.003,
-     "recall": 0.9,
-     "f1": 0.006
+     "found": 5346,
+     "precision": 0.0034,
+     "recall": 1.0,
+     "f1": 0.0067
     },
     "0.85": {
-     "found": 3256,
-     "precision": 0.0043,
-     "recall": 0.9,
-     "f1": 0.0086
+     "found": 3505,
+     "precision": 0.0049,
+     "recall": 1.0,
+     "f1": 0.0097
     },
     "0.86": {
-     "found": 1955,
-     "precision": 0.0072,
-     "recall": 0.9,
-     "f1": 0.0142
+     "found": 2121,
+     "precision": 0.008,
+     "recall": 1.0,
+     "f1": 0.0159
     },
     "0.87": {
-     "found": 1128,
-     "precision": 0.0115,
-     "recall": 0.9,
-     "f1": 0.0228
+     "found": 1226,
+     "precision": 0.0131,
+     "recall": 1.0,
+     "f1": 0.0258
     },
     "0.88": {
-     "found": 615,
-     "precision": 0.0179,
-     "recall": 0.7,
-     "f1": 0.0349
+     "found": 679,
+     "precision": 0.0206,
+     "recall": 0.8,
+     "f1": 0.0402
     },
     "0.89": {
-     "found": 338,
-     "precision": 0.0325,
-     "recall": 0.7,
-     "f1": 0.0622
+     "found": 371,
+     "precision": 0.0377,
+     "recall": 0.8,
+     "f1": 0.0721
     },
     "0.9": {
-     "found": 161,
-     "precision": 0.0373,
-     "recall": 0.5,
-     "f1": 0.0694
+     "found": 183,
+     "precision": 0.0492,
+     "recall": 0.6,
+     "f1": 0.0909
     },
     "0.91": {
-     "found": 100,
-     "precision": 0.04,
-     "recall": 0.4,
-     "f1": 0.0727
+     "found": 112,
+     "precision": 0.0536,
+     "recall": 0.5,
+     "f1": 0.0968
     },
     "0.92": {
-     "found": 47,
-     "precision": 0.0851,
-     "recall": 0.4,
-     "f1": 0.1404
+     "found": 54,
+     "precision": 0.1111,
+     "recall": 0.5,
+     "f1": 0.1818
     },
     "0.93": {
-     "found": 31,
-     "precision": 0.0968,
+     "found": 33,
+     "precision": 0.0909,
      "recall": 0.3,
-     "f1": 0.1463
+     "f1": 0.1395
     },
     "0.94": {
      "found": 13,
@@ -216,6 +213,22 @@
    "confidence": 0.72
   },
   {
+   "type": "setpoint_exceeds_limit",
+   "status": "confirmed",
+   "severity": "high",
+   "description": "НА-200.00.000 КУ: уставка 100 °C; НА-200.00.000 ТЗ: <= 90 °C",
+   "detected_by": "formal",
+   "confidence": 0.793
+  },
+  {
+   "type": "setpoint_exceeds_limit",
+   "status": "confirmed",
+   "severity": "high",
+   "description": "НА-200.00.000 КУ: уставка 100 °C; НА-200.00.000 РЭ: <= 95 °C",
+   "detected_by": "formal",
+   "confidence": 0.793
+  },
+  {
    "type": "value_mismatch",
    "status": "confirmed",
    "severity": "high",
@@ -268,6 +281,14 @@
    "status": "confirmed",
    "severity": "high",
    "description": "НА-200.00.000 ТЗ: >= IP55 ≠ НА-200.02.000 ТТ: >= IP54",
+   "detected_by": "formal",
+   "confidence": 0.76
+  },
+  {
+   "type": "setpoint_exceeds_limit",
+   "status": "confirmed",
+   "severity": "high",
+   "description": "НА-200.00.000 КУ: уставка 100 °C; НА-200.06.000 ПС: <= 90 °C",
    "detected_by": "formal",
    "confidence": 0.76
   },

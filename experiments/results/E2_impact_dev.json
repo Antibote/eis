@@ -1,14 +1,12 @@
 {
  "experiment": "E2_impact",
  "variant": "dev",
- "dataset_hash": "812af97771c5397d",
- "commit": "18ef645",
+ "dataset_hash": "ff67622bc6da18af",
+ "commit": "8de9d41",
  "embedder": "intfloat/multilingual-e5-small",
  "k": 10,
- "index_seconds": 9.24,
- "failed_documents": [
-  "D13_Setpoints_scan.png"
- ],
+ "index_seconds": 8.77,
+ "failed_documents": [],
  "methods": {
   "M1_keyword": {
    "micro": {
@@ -21,12 +19,12 @@
      "f1": 0.6429
     },
     "documents": {
-     "tp": 26,
+     "tp": 27,
      "fp": 5,
-     "fn": 8,
-     "precision": 0.8387,
-     "recall": 0.7647,
-     "f1": 0.8
+     "fn": 7,
+     "precision": 0.8438,
+     "recall": 0.7941,
+     "f1": 0.8182
     },
     "tests": {
      "tp": 3,
@@ -40,7 +38,7 @@
    "macro_f1_components": 0.5859,
    "chain_recall_mean": 0.5,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 0.6,
+   "time_ms_mean": 1.11,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -96,12 +94,12 @@
       "f1": 0.9091
      },
      "documents": {
-      "tp": 5,
+      "tp": 6,
       "fp": 0,
-      "fn": 3,
+      "fn": 2,
       "precision": 1.0,
-      "recall": 0.625,
-      "f1": 0.7692
+      "recall": 0.75,
+      "f1": 0.8571
      },
      "tests": {
       "tp": 0,
@@ -118,9 +116,8 @@
      ],
      "fp_documents": [],
      "fn_documents": [
-      "doc:0d274d511e03",
-      "doc:16f463d01d70",
-      "doc:19f27195569e"
+      "doc:0ef686e5b245",
+      "doc:991e64c68be0"
      ]
     },
     {
@@ -161,8 +158,8 @@
       "D10_RE_NA-200.pdf"
      ],
      "fn_documents": [
-      "doc:16f463d01d70",
-      "doc:eef89f84e872"
+      "doc:0ef686e5b245",
+      "doc:e5585daad7fb"
      ]
     },
     {
@@ -199,8 +196,8 @@
      "fn_components": [],
      "fp_documents": [],
      "fn_documents": [
-      "doc:0d274d511e03",
-      "doc:16f463d01d70"
+      "doc:0ef686e5b245",
+      "doc:991e64c68be0"
      ]
     },
     {
@@ -254,20 +251,20 @@
   "M2_rag": {
    "micro": {
     "components": {
-     "tp": 18,
+     "tp": 17,
      "fp": 4,
-     "fn": 14,
-     "precision": 0.8182,
-     "recall": 0.5625,
-     "f1": 0.6667
+     "fn": 15,
+     "precision": 0.8095,
+     "recall": 0.5312,
+     "f1": 0.6415
     },
     "documents": {
-     "tp": 27,
+     "tp": 28,
      "fp": 6,
-     "fn": 7,
-     "precision": 0.8182,
-     "recall": 0.7941,
-     "f1": 0.806
+     "fn": 6,
+     "precision": 0.8235,
+     "recall": 0.8235,
+     "f1": 0.8235
     },
     "tests": {
      "tp": 3,
@@ -278,10 +275,10 @@
      "f1": 0.75
     }
    },
-   "macro_f1_components": 0.6149,
+   "macro_f1_components": 0.597,
    "chain_recall_mean": 0.4,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 13.1,
+   "time_ms_mean": 17.58,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -328,20 +325,20 @@
     {
      "scenario": "S2",
      "components": {
-      "tp": 6,
+      "tp": 5,
       "fp": 1,
-      "fn": 0,
-      "precision": 0.8571,
-      "recall": 1.0,
-      "f1": 0.9231
+      "fn": 1,
+      "precision": 0.8333,
+      "recall": 0.8333,
+      "f1": 0.8333
      },
      "documents": {
-      "tp": 5,
+      "tp": 6,
       "fp": 0,
-      "fn": 3,
+      "fn": 2,
       "precision": 1.0,
-      "recall": 0.625,
-      "f1": 0.7692
+      "recall": 0.75,
+      "f1": 0.8571
      },
      "tests": {
       "tp": 0,
@@ -355,12 +352,13 @@
      "fp_components": [
       "Вал насоса"
      ],
-     "fn_components": [],
+     "fn_components": [
+      "Прокладка фланцевая"
+     ],
      "fp_documents": [],
      "fn_documents": [
-      "doc:0d274d511e03",
-      "doc:16f463d01d70",
-      "doc:19f27195569e"
+      "doc:0ef686e5b245",
+      "doc:991e64c68be0"
      ]
     },
     {
@@ -399,7 +397,7 @@
      ],
      "fp_documents": [],
      "fn_documents": [
-      "doc:eef89f84e872"
+      "doc:e5585daad7fb"
      ]
     },
     {
@@ -440,8 +438,8 @@
       "D11_Passport_Bearing.txt"
      ],
      "fn_documents": [
-      "doc:0d274d511e03",
-      "doc:16f463d01d70"
+      "doc:0ef686e5b245",
+      "doc:991e64c68be0"
      ]
     },
     {
@@ -501,12 +499,12 @@
      "f1": 0.8966
     },
     "documents": {
-     "tp": 33,
-     "fp": 18,
-     "fn": 1,
-     "precision": 0.6471,
-     "recall": 0.9706,
-     "f1": 0.7765
+     "tp": 34,
+     "fp": 20,
+     "fn": 0,
+     "precision": 0.6296,
+     "recall": 1.0,
+     "f1": 0.7727
     },
     "tests": {
      "tp": 5,
@@ -520,7 +518,7 @@
    "macro_f1_components": 0.8892,
    "chain_recall_mean": 0.51,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 0.74,
+   "time_ms_mean": 1.22,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -534,11 +532,11 @@
      },
      "documents": {
       "tp": 8,
-      "fp": 3,
+      "fp": 4,
       "fn": 0,
-      "precision": 0.7273,
+      "precision": 0.6667,
       "recall": 1.0,
-      "f1": 0.8421
+      "f1": 0.8
      },
      "tests": {
       "tp": 1,
@@ -556,6 +554,7 @@
      "fp_documents": [
       "D02_Specification_NA-200.xlsx",
       "D07_Calc_Casing.pdf",
+      "D13_Setpoints_scan.png",
       "D14_ChangeLog.csv"
      ],
      "fn_documents": []
@@ -571,12 +570,12 @@
       "f1": 1.0
      },
      "documents": {
-      "tp": 7,
+      "tp": 8,
       "fp": 3,
-      "fn": 1,
-      "precision": 0.7,
-      "recall": 0.875,
-      "f1": 0.7778
+      "fn": 0,
+      "precision": 0.7273,
+      "recall": 1.0,
+      "f1": 0.8421
      },
      "tests": {
       "tp": 1,
@@ -594,9 +593,7 @@
       "D04_Materials_NA-200.docx",
       "D14_ChangeLog.csv"
      ],
-     "fn_documents": [
-      "doc:19f27195569e"
-     ]
+     "fn_documents": []
     },
     {
      "scenario": "S3",
@@ -651,11 +648,11 @@
      },
      "documents": {
       "tp": 7,
-      "fp": 4,
+      "fp": 5,
       "fn": 0,
-      "precision": 0.6364,
+      "precision": 0.5833,
       "recall": 1.0,
-      "f1": 0.7778
+      "f1": 0.7368
      },
      "tests": {
       "tp": 1,
@@ -674,6 +671,7 @@
       "D02_Specification_NA-200.xlsx",
       "D10_RE_NA-200.pdf",
       "D11_Passport_Bearing.txt",
+      "D13_Setpoints_scan.png",
       "D14_ChangeLog.csv"
      ],
      "fn_documents": []
@@ -729,12 +727,12 @@
      "f1": 0.7356
     },
     "documents": {
-     "tp": 33,
-     "fp": 23,
-     "fn": 1,
-     "precision": 0.5893,
-     "recall": 0.9706,
-     "f1": 0.7333
+     "tp": 34,
+     "fp": 26,
+     "fn": 0,
+     "precision": 0.5667,
+     "recall": 1.0,
+     "f1": 0.7234
     },
     "tests": {
      "tp": 5,
@@ -748,7 +746,7 @@
    "macro_f1_components": 0.7367,
    "chain_recall_mean": 0.9,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 0.76,
+   "time_ms_mean": 1.3,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -762,11 +760,11 @@
      },
      "documents": {
       "tp": 8,
-      "fp": 5,
+      "fp": 6,
       "fn": 0,
-      "precision": 0.6154,
+      "precision": 0.5714,
       "recall": 1.0,
-      "f1": 0.7619
+      "f1": 0.7273
      },
      "tests": {
       "tp": 1,
@@ -791,6 +789,7 @@
       "D06_TT_Motor.txt",
       "D07_Calc_Casing.pdf",
       "D12_TT_Coupling.docx",
+      "D13_Setpoints_scan.png",
       "D14_ChangeLog.csv"
      ],
      "fn_documents": []
@@ -806,12 +805,12 @@
       "f1": 0.7059
      },
      "documents": {
-      "tp": 7,
+      "tp": 8,
       "fp": 5,
-      "fn": 1,
-      "precision": 0.5833,
-      "recall": 0.875,
-      "f1": 0.7
+      "fn": 0,
+      "precision": 0.6154,
+      "recall": 1.0,
+      "f1": 0.7619
      },
      "tests": {
       "tp": 1,
@@ -837,9 +836,7 @@
       "D12_TT_Coupling.docx",
       "D14_ChangeLog.csv"
      ],
-     "fn_documents": [
-      "doc:19f27195569e"
-     ]
+     "fn_documents": []
     },
     {
      "scenario": "S3",
@@ -892,11 +889,11 @@
      },
      "documents": {
       "tp": 7,
-      "fp": 4,
+      "fp": 5,
       "fn": 0,
-      "precision": 0.6364,
+      "precision": 0.5833,
       "recall": 1.0,
-      "f1": 0.7778
+      "f1": 0.7368
      },
      "tests": {
       "tp": 1,
@@ -918,6 +915,7 @@
       "D02_Specification_NA-200.xlsx",
       "D10_RE_NA-200.pdf",
       "D11_Passport_Bearing.txt",
+      "D13_Setpoints_scan.png",
       "D14_ChangeLog.csv"
      ],
      "fn_documents": []
@@ -934,11 +932,11 @@
      },
      "documents": {
       "tp": 5,
-      "fp": 6,
+      "fp": 7,
       "fn": 0,
-      "precision": 0.4545,
+      "precision": 0.4167,
       "recall": 1.0,
-      "f1": 0.625
+      "f1": 0.5882
      },
      "tests": {
       "tp": 1,
@@ -964,6 +962,7 @@
       "D06_TT_Motor.txt",
       "D11_Passport_Bearing.txt",
       "D12_TT_Coupling.docx",
+      "D13_Setpoints_scan.png",
       "D14_ChangeLog.csv"
      ],
      "fn_documents": []
@@ -981,12 +980,12 @@
      "f1": 0.9552
     },
     "documents": {
-     "tp": 33,
-     "fp": 2,
-     "fn": 1,
-     "precision": 0.9429,
-     "recall": 0.9706,
-     "f1": 0.9565
+     "tp": 34,
+     "fp": 4,
+     "fn": 0,
+     "precision": 0.8947,
+     "recall": 1.0,
+     "f1": 0.9444
     },
     "tests": {
      "tp": 5,
@@ -1008,7 +1007,7 @@
    "macro_f1_components": 0.96,
    "chain_recall_mean": 0.92,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 0.98,
+   "time_ms_mean": 1.82,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -1022,11 +1021,11 @@
      },
      "documents": {
       "tp": 8,
-      "fp": 0,
+      "fp": 1,
       "fn": 0,
-      "precision": 1.0,
+      "precision": 0.8889,
       "recall": 1.0,
-      "f1": 1.0
+      "f1": 0.9412
      },
      "tests": {
       "tp": 1,
@@ -1041,7 +1040,9 @@
       "Датчик температуры подшипника"
      ],
      "fn_components": [],
-     "fp_documents": [],
+     "fp_documents": [
+      "D13_Setpoints_scan.png"
+     ],
      "fn_documents": [],
      "violations": {
       "tp": 1,
@@ -1063,12 +1064,12 @@
       "f1": 1.0
      },
      "documents": {
-      "tp": 7,
+      "tp": 8,
       "fp": 0,
-      "fn": 1,
+      "fn": 0,
       "precision": 1.0,
-      "recall": 0.875,
-      "f1": 0.9333
+      "recall": 1.0,
+      "f1": 1.0
      },
      "tests": {
       "tp": 1,
@@ -1082,9 +1083,7 @@
      "fp_components": [],
      "fn_components": [],
      "fp_documents": [],
-     "fn_documents": [
-      "doc:19f27195569e"
-     ],
+     "fn_documents": [],
      "violations": {
       "tp": 3,
       "fp": 0,
@@ -1148,11 +1147,11 @@
      },
      "documents": {
       "tp": 7,
-      "fp": 2,
+      "fp": 3,
       "fn": 0,
-      "precision": 0.7778,
+      "precision": 0.7,
       "recall": 1.0,
-      "f1": 0.875
+      "f1": 0.8235
      },
      "tests": {
       "tp": 1,
@@ -1169,7 +1168,8 @@
      "fn_components": [],
      "fp_documents": [
       "D10_RE_NA-200.pdf",
-      "D11_Passport_Bearing.txt"
+      "D11_Passport_Bearing.txt",
+      "D13_Setpoints_scan.png"
      ],
      "fn_documents": [],
      "violations": {
@@ -1234,12 +1234,12 @@
      "f1": 0.9153
     },
     "documents": {
-     "tp": 33,
-     "fp": 2,
-     "fn": 1,
-     "precision": 0.9429,
-     "recall": 0.9706,
-     "f1": 0.9565
+     "tp": 34,
+     "fp": 4,
+     "fn": 0,
+     "precision": 0.8947,
+     "recall": 1.0,
+     "f1": 0.9444
     },
     "tests": {
      "tp": 5,
@@ -1261,7 +1261,7 @@
    "macro_f1_components": 0.9046,
    "chain_recall_mean": 0.62,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 0.96,
+   "time_ms_mean": 1.05,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -1275,11 +1275,11 @@
      },
      "documents": {
       "tp": 8,
-      "fp": 0,
+      "fp": 1,
       "fn": 0,
-      "precision": 1.0,
+      "precision": 0.8889,
       "recall": 1.0,
-      "f1": 1.0
+      "f1": 0.9412
      },
      "tests": {
       "tp": 1,
@@ -1294,7 +1294,9 @@
      "fn_components": [
       "Подшипник радиальный"
      ],
-     "fp_documents": [],
+     "fp_documents": [
+      "D13_Setpoints_scan.png"
+     ],
      "fn_documents": [],
      "violations": {
       "tp": 1,
@@ -1316,12 +1318,12 @@
       "f1": 1.0
      },
      "documents": {
-      "tp": 7,
+      "tp": 8,
       "fp": 0,
-      "fn": 1,
+      "fn": 0,
       "precision": 1.0,
-      "recall": 0.875,
-      "f1": 0.9333
+      "recall": 1.0,
+      "f1": 1.0
      },
      "tests": {
       "tp": 1,
@@ -1335,9 +1337,7 @@
      "fp_components": [],
      "fn_components": [],
      "fp_documents": [],
-     "fn_documents": [
-      "doc:19f27195569e"
-     ],
+     "fn_documents": [],
      "violations": {
       "tp": 3,
       "fp": 0,
@@ -1404,11 +1404,11 @@
      },
      "documents": {
       "tp": 7,
-      "fp": 2,
+      "fp": 3,
       "fn": 0,
-      "precision": 0.7778,
+      "precision": 0.7,
       "recall": 1.0,
-      "f1": 0.875
+      "f1": 0.8235
      },
      "tests": {
       "tp": 1,
@@ -1423,7 +1423,8 @@
      "fn_components": [],
      "fp_documents": [
       "D10_RE_NA-200.pdf",
-      "D11_Passport_Bearing.txt"
+      "D11_Passport_Bearing.txt",
+      "D13_Setpoints_scan.png"
      ],
      "fn_documents": [],
      "violations": {
@@ -1488,12 +1489,12 @@
      "f1": 0.9143
     },
     "documents": {
-     "tp": 33,
-     "fp": 2,
-     "fn": 1,
-     "precision": 0.9429,
-     "recall": 0.9706,
-     "f1": 0.9565
+     "tp": 34,
+     "fp": 4,
+     "fn": 0,
+     "precision": 0.8947,
+     "recall": 1.0,
+     "f1": 0.9444
     },
     "tests": {
      "tp": 5,
@@ -1515,7 +1516,7 @@
    "macro_f1_components": 0.9138,
    "chain_recall_mean": 0.92,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.03,
+   "time_ms_mean": 1.01,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -1529,11 +1530,11 @@
      },
      "documents": {
       "tp": 8,
-      "fp": 0,
+      "fp": 1,
       "fn": 0,
-      "precision": 1.0,
+      "precision": 0.8889,
       "recall": 1.0,
-      "f1": 1.0
+      "f1": 0.9412
      },
      "tests": {
       "tp": 1,
@@ -1548,7 +1549,9 @@
       "Датчик температуры подшипника"
      ],
      "fn_components": [],
-     "fp_documents": [],
+     "fp_documents": [
+      "D13_Setpoints_scan.png"
+     ],
      "fn_documents": [],
      "violations": {
       "tp": 1,
@@ -1570,12 +1573,12 @@
       "f1": 1.0
      },
      "documents": {
-      "tp": 7,
+      "tp": 8,
       "fp": 0,
-      "fn": 1,
+      "fn": 0,
       "precision": 1.0,
-      "recall": 0.875,
-      "f1": 0.9333
+      "recall": 1.0,
+      "f1": 1.0
      },
      "tests": {
       "tp": 1,
@@ -1589,9 +1592,7 @@
      "fp_components": [],
      "fn_components": [],
      "fp_documents": [],
-     "fn_documents": [
-      "doc:19f27195569e"
-     ],
+     "fn_documents": [],
      "violations": {
       "tp": 3,
       "fp": 0,
@@ -1655,11 +1656,11 @@
      },
      "documents": {
       "tp": 7,
-      "fp": 2,
+      "fp": 3,
       "fn": 0,
-      "precision": 0.7778,
+      "precision": 0.7,
       "recall": 1.0,
-      "f1": 0.875
+      "f1": 0.8235
      },
      "tests": {
       "tp": 1,
@@ -1676,7 +1677,8 @@
      "fn_components": [],
      "fp_documents": [
       "D10_RE_NA-200.pdf",
-      "D11_Passport_Bearing.txt"
+      "D11_Passport_Bearing.txt",
+      "D13_Setpoints_scan.png"
      ],
      "fn_documents": [],
      "violations": {
@@ -1745,12 +1747,12 @@
      "f1": 0.9552
     },
     "documents": {
-     "tp": 33,
-     "fp": 18,
-     "fn": 1,
-     "precision": 0.6471,
-     "recall": 0.9706,
-     "f1": 0.7765
+     "tp": 34,
+     "fp": 20,
+     "fn": 0,
+     "precision": 0.6296,
+     "recall": 1.0,
+     "f1": 0.7727
     },
     "tests": {
      "tp": 5,
@@ -1786,11 +1788,11 @@
      },
      "documents": {
       "tp": 8,
-      "fp": 3,
+      "fp": 4,
       "fn": 0,
-      "precision": 0.7273,
+      "precision": 0.6667,
       "recall": 1.0,
-      "f1": 0.8421
+      "f1": 0.8
      },
      "tests": {
       "tp": 1,
@@ -1808,6 +1810,7 @@
      "fp_documents": [
       "D02_Specification_NA-200.xlsx",
       "D07_Calc_Casing.pdf",
+      "D13_Setpoints_scan.png",
       "D14_ChangeLog.csv"
      ],
      "fn_documents": [],
@@ -1831,12 +1834,12 @@
       "f1": 1.0
      },
      "documents": {
-      "tp": 7,
+      "tp": 8,
       "fp": 3,
-      "fn": 1,
-      "precision": 0.7,
-      "recall": 0.875,
-      "f1": 0.7778
+      "fn": 0,
+      "precision": 0.7273,
+      "recall": 1.0,
+      "f1": 0.8421
      },
      "tests": {
       "tp": 1,
@@ -1854,9 +1857,7 @@
       "D04_Materials_NA-200.docx",
       "D14_ChangeLog.csv"
      ],
-     "fn_documents": [
-      "doc:19f27195569e"
-     ],
+     "fn_documents": [],
      "violations": {
       "tp": 3,
       "fp": 0,
@@ -1924,11 +1925,11 @@
      },
      "documents": {
       "tp": 7,
-      "fp": 4,
+      "fp": 5,
       "fn": 0,
-      "precision": 0.6364,
+      "precision": 0.5833,
       "recall": 1.0,
-      "f1": 0.7778
+      "f1": 0.7368
      },
      "tests": {
       "tp": 1,
@@ -1947,6 +1948,7 @@
       "D02_Specification_NA-200.xlsx",
       "D10_RE_NA-200.pdf",
       "D11_Passport_Bearing.txt",
+      "D13_Setpoints_scan.png",
       "D14_ChangeLog.csv"
      ],
      "fn_documents": [],
@@ -2018,12 +2020,12 @@
      "f1": 0.9394
     },
     "documents": {
-     "tp": 33,
-     "fp": 2,
-     "fn": 1,
-     "precision": 0.9429,
-     "recall": 0.9706,
-     "f1": 0.9565
+     "tp": 34,
+     "fp": 4,
+     "fn": 0,
+     "precision": 0.8947,
+     "recall": 1.0,
+     "f1": 0.9444
     },
     "tests": {
      "tp": 5,
@@ -2045,7 +2047,7 @@
    "macro_f1_components": 0.9447,
    "chain_recall_mean": 0.92,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 0.94,
+   "time_ms_mean": 0.91,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -2059,11 +2061,11 @@
      },
      "documents": {
       "tp": 8,
-      "fp": 0,
+      "fp": 1,
       "fn": 0,
-      "precision": 1.0,
+      "precision": 0.8889,
       "recall": 1.0,
-      "f1": 1.0
+      "f1": 0.9412
      },
      "tests": {
       "tp": 1,
@@ -2078,7 +2080,9 @@
       "Датчик температуры подшипника"
      ],
      "fn_components": [],
-     "fp_documents": [],
+     "fp_documents": [
+      "D13_Setpoints_scan.png"
+     ],
      "fn_documents": [],
      "violations": {
       "tp": 1,
@@ -2100,12 +2104,12 @@
       "f1": 1.0
      },
      "documents": {
-      "tp": 7,
+      "tp": 8,
       "fp": 0,
-      "fn": 1,
+      "fn": 0,
       "precision": 1.0,
-      "recall": 0.875,
-      "f1": 0.9333
+      "recall": 1.0,
+      "f1": 1.0
      },
      "tests": {
       "tp": 1,
@@ -2119,9 +2123,7 @@
      "fp_components": [],
      "fn_components": [],
      "fp_documents": [],
-     "fn_documents": [
-      "doc:19f27195569e"
-     ],
+     "fn_documents": [],
      "violations": {
       "tp": 3,
       "fp": 0,
@@ -2187,11 +2189,11 @@
      },
      "documents": {
       "tp": 7,
-      "fp": 2,
+      "fp": 3,
       "fn": 0,
-      "precision": 0.7778,
+      "precision": 0.7,
       "recall": 1.0,
-      "f1": 0.875
+      "f1": 0.8235
      },
      "tests": {
       "tp": 1,
@@ -2208,7 +2210,8 @@
      "fn_components": [],
      "fp_documents": [
       "D10_RE_NA-200.pdf",
-      "D11_Passport_Bearing.txt"
+      "D11_Passport_Bearing.txt",
+      "D13_Setpoints_scan.png"
      ],
      "fn_documents": [],
      "violations": {
@@ -2273,12 +2276,12 @@
      "f1": 0.9552
     },
     "documents": {
-     "tp": 33,
-     "fp": 2,
-     "fn": 1,
-     "precision": 0.9429,
-     "recall": 0.9706,
-     "f1": 0.9565
+     "tp": 34,
+     "fp": 4,
+     "fn": 0,
+     "precision": 0.8947,
+     "recall": 1.0,
+     "f1": 0.9444
     },
     "tests": {
      "tp": 5,
@@ -2314,11 +2317,11 @@
      },
      "documents": {
       "tp": 8,
-      "fp": 0,
+      "fp": 1,
       "fn": 0,
-      "precision": 1.0,
+      "precision": 0.8889,
       "recall": 1.0,
-      "f1": 1.0
+      "f1": 0.9412
      },
      "tests": {
       "tp": 1,
@@ -2333,7 +2336,9 @@
       "Датчик температуры подшипника"
      ],
      "fn_components": [],
-     "fp_documents": [],
+     "fp_documents": [
+      "D13_Setpoints_scan.png"
+     ],
      "fn_documents": [],
      "violations": {
       "tp": 0,
@@ -2355,12 +2360,12 @@
       "f1": 1.0
      },
      "documents": {
-      "tp": 7,
+      "tp": 8,
       "fp": 0,
-      "fn": 1,
+      "fn": 0,
       "precision": 1.0,
-      "recall": 0.875,
-      "f1": 0.9333
+      "recall": 1.0,
+      "f1": 1.0
      },
      "tests": {
       "tp": 1,
@@ -2374,9 +2379,7 @@
      "fp_components": [],
      "fn_components": [],
      "fp_documents": [],
-     "fn_documents": [
-      "doc:19f27195569e"
-     ],
+     "fn_documents": [],
      "violations": {
       "tp": 0,
       "fp": 0,
@@ -2440,11 +2443,11 @@
      },
      "documents": {
       "tp": 7,
-      "fp": 2,
+      "fp": 3,
       "fn": 0,
-      "precision": 0.7778,
+      "precision": 0.7,
       "recall": 1.0,
-      "f1": 0.875
+      "f1": 0.8235
      },
      "tests": {
       "tp": 1,
@@ -2461,7 +2464,8 @@
      "fn_components": [],
      "fp_documents": [
       "D10_RE_NA-200.pdf",
-      "D11_Passport_Bearing.txt"
+      "D11_Passport_Bearing.txt",
+      "D13_Setpoints_scan.png"
      ],
      "fn_documents": [],
      "violations": {

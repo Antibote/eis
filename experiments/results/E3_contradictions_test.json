@@ -1,19 +1,17 @@
 {
  "experiment": "E3_contradictions",
  "variant": "test",
- "dataset_hash": "800dea376b738cf3",
- "commit": "18ef645",
+ "dataset_hash": "23d4656c9c0218d4",
+ "commit": "8de9d41",
  "embedder": "intfloat/multilingual-e5-small",
- "failed_documents": [
-  "D13_Setpoints_scan.png"
- ],
+ "failed_documents": [],
  "methods": {
   "C3_hybrid": {
-   "found": 14,
-   "matched_found": 14,
+   "found": 17,
+   "matched_found": 17,
    "precision": 1.0,
-   "recall": 0.9,
-   "f1": 0.9474,
+   "recall": 1.0,
+   "f1": 1.0,
    "detected": [
     "K01",
     "K02",
@@ -23,32 +21,31 @@
     "K06",
     "K07",
     "K08",
+    "K09",
     "K10"
    ],
-   "missed": [
-    "K09"
-   ],
+   "missed": [],
    "distractor_hits": 0
   },
   "C2_formal": {
-   "found": 9,
-   "matched_found": 9,
+   "found": 12,
+   "matched_found": 12,
    "precision": 1.0,
-   "recall": 0.6,
-   "f1": 0.75,
+   "recall": 0.7,
+   "f1": 0.8235,
    "detected": [
     "K01",
     "K03",
     "K05",
     "K06",
     "K07",
+    "K09",
     "K10"
    ],
    "missed": [
     "K02",
     "K04",
-    "K08",
-    "K09"
+    "K08"
    ],
    "distractor_hits": 0
   },
@@ -76,94 +73,94 @@
    "tau": 0.96,
    "curve": {
     "0.8": {
-     "found": 10468,
-     "precision": 0.0014,
-     "recall": 0.9,
-     "f1": 0.0029
+     "found": 11217,
+     "precision": 0.0016,
+     "recall": 1.0,
+     "f1": 0.0032
     },
     "0.81": {
-     "found": 9999,
-     "precision": 0.0015,
-     "recall": 0.9,
-     "f1": 0.003
-    },
-    "0.82": {
-     "found": 8881,
+     "found": 10722,
      "precision": 0.0017,
-     "recall": 0.9,
+     "recall": 1.0,
      "f1": 0.0034
     },
+    "0.82": {
+     "found": 9550,
+     "precision": 0.0019,
+     "recall": 1.0,
+     "f1": 0.0038
+    },
     "0.83": {
-     "found": 7168,
-     "precision": 0.0021,
-     "recall": 0.9,
-     "f1": 0.0042
+     "found": 7759,
+     "precision": 0.0023,
+     "recall": 1.0,
+     "f1": 0.0046
     },
     "0.84": {
-     "found": 5183,
-     "precision": 0.0029,
-     "recall": 0.9,
-     "f1": 0.0058
+     "found": 5668,
+     "precision": 0.0032,
+     "recall": 1.0,
+     "f1": 0.0063
     },
     "0.85": {
-     "found": 3427,
-     "precision": 0.0041,
-     "recall": 0.9,
-     "f1": 0.0081
+     "found": 3768,
+     "precision": 0.0045,
+     "recall": 1.0,
+     "f1": 0.009
     },
     "0.86": {
-     "found": 2075,
-     "precision": 0.0067,
-     "recall": 0.9,
-     "f1": 0.0134
+     "found": 2287,
+     "precision": 0.0074,
+     "recall": 1.0,
+     "f1": 0.0148
     },
     "0.87": {
-     "found": 1215,
-     "precision": 0.0107,
-     "recall": 0.9,
-     "f1": 0.0211
+     "found": 1342,
+     "precision": 0.0119,
+     "recall": 1.0,
+     "f1": 0.0236
     },
     "0.88": {
-     "found": 657,
-     "precision": 0.0183,
-     "recall": 0.8,
-     "f1": 0.0357
+     "found": 734,
+     "precision": 0.0204,
+     "recall": 0.9,
+     "f1": 0.04
     },
     "0.89": {
-     "found": 366,
-     "precision": 0.0328,
-     "recall": 0.8,
-     "f1": 0.063
+     "found": 405,
+     "precision": 0.037,
+     "recall": 0.9,
+     "f1": 0.0711
     },
     "0.9": {
-     "found": 177,
-     "precision": 0.0508,
-     "recall": 0.5,
-     "f1": 0.0923
+     "found": 196,
+     "precision": 0.0612,
+     "recall": 0.6,
+     "f1": 0.1111
     },
     "0.91": {
-     "found": 104,
-     "precision": 0.0577,
-     "recall": 0.4,
-     "f1": 0.1008
+     "found": 116,
+     "precision": 0.0776,
+     "recall": 0.5,
+     "f1": 0.1343
     },
     "0.92": {
-     "found": 46,
-     "precision": 0.087,
-     "recall": 0.4,
-     "f1": 0.1429
+     "found": 53,
+     "precision": 0.1132,
+     "recall": 0.5,
+     "f1": 0.1846
     },
     "0.93": {
-     "found": 28,
-     "precision": 0.0714,
+     "found": 30,
+     "precision": 0.0667,
      "recall": 0.2,
-     "f1": 0.1053
+     "f1": 0.1
     },
     "0.94": {
-     "found": 13,
-     "precision": 0.1538,
+     "found": 14,
+     "precision": 0.1429,
      "recall": 0.2,
-     "f1": 0.1739
+     "f1": 0.1667
     },
     "0.95": {
      "found": 6,
@@ -214,6 +211,22 @@
    "description": "НА-200.00.000 РЭ: <= 1.6 МПа; НА-200.01.001 РР: Корпус насоса — <= 1 МПа",
    "detected_by": "graph",
    "confidence": 0.72
+  },
+  {
+   "type": "setpoint_exceeds_limit",
+   "status": "confirmed",
+   "severity": "high",
+   "description": "НА-200.00.000 КУ: уставка 100 °C; НА-200.00.000 ТЗ: <= 90 °C",
+   "detected_by": "formal",
+   "confidence": 0.805
+  },
+  {
+   "type": "setpoint_exceeds_limit",
+   "status": "confirmed",
+   "severity": "high",
+   "description": "НА-200.00.000 КУ: уставка 100 °C; НА-200.00.000 РЭ: <= 95 °C",
+   "detected_by": "formal",
+   "confidence": 0.805
   },
   {
    "type": "value_mismatch",
@@ -268,6 +281,14 @@
    "status": "confirmed",
    "severity": "high",
    "description": "НА-200.00.000 ТЗ: >= IP55 ≠ НА-200.02.000 ТТ: >= IP54",
+   "detected_by": "formal",
+   "confidence": 0.76
+  },
+  {
+   "type": "setpoint_exceeds_limit",
+   "status": "confirmed",
+   "severity": "high",
+   "description": "НА-200.00.000 КУ: уставка 100 °C; НА-200.06.000 ПС: <= 90 °C",
    "detected_by": "formal",
    "confidence": 0.76
   },

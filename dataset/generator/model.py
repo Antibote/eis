@@ -318,7 +318,7 @@ CONTRADICTIONS = [
      "description": "Температура нагрева подшипникового узла: ТЗ и паспорт ≤ 90 °C, РЭ ≤ 95 °C."},
     {"id": "K08", "type": "material_mismatch", "pairs": [["C07:M7", "C07:M8"]], "severity": "medium",
      "description": "Материал уплотнительного кольца: спецификация и ВМ — NBR, ТУ уплотнения — FKM."},
-    {"id": "K09", "type": "setpoint_exceeds_limit", "pairs": [["R44", "R16"], ["R44", "R28"]], "severity": "high",
+    {"id": "K09", "type": "setpoint_exceeds_limit", "pairs": [["R44", "R16"], ["R44", "R28"], ["R44", "R40"]], "severity": "high",
      "description": "Аварийная уставка температуры подшипникового узла 100 °C выше предельной 90 °C."},
     {"id": "K10", "type": "value_mismatch", "pairs": [["R14", "R31"]], "severity": "medium",
      "description": "Степень защиты электродвигателя: ТЗ не ниже IP55, ТТ — IP54."},

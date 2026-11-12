@@ -1,27 +1,25 @@
 {
  "experiment": "E1_extraction",
  "variant": "dev",
- "dataset_hash": "812af97771c5397d",
- "commit": "18ef645",
- "ingest_seconds": 0.38,
- "failed_documents": [
-  "D13_Setpoints_scan.png: OCR недоступен: не установлен Tesseract (apt install tesseract-ocr tesseract-ocr-rus)"
- ],
+ "dataset_hash": "ff67622bc6da18af",
+ "commit": "8de9d41",
+ "ingest_seconds": 1.01,
+ "failed_documents": [],
  "requirements": {
-  "tp": 56,
+  "tp": 59,
   "fp": 0,
-  "fn": 3,
+  "fn": 0,
   "precision": 1.0,
-  "recall": 0.9492,
-  "f1": 0.9739
+  "recall": 1.0,
+  "f1": 1.0
  },
  "requirements_loose_doc_subject_param": {
-  "tp": 56,
+  "tp": 58,
   "fp": 0,
-  "fn": 2,
+  "fn": 0,
   "precision": 1.0,
-  "recall": 0.9655,
-  "f1": 0.9825
+  "recall": 1.0,
+  "f1": 1.0
  },
  "requirements_by_kind": {
   "demand": {
@@ -49,12 +47,12 @@
    "f1": 1.0
   },
   "setpoint": {
-   "tp": 1,
+   "tp": 4,
    "fp": 0,
-   "fn": 3,
+   "fn": 0,
    "precision": 1.0,
-   "recall": 0.25,
-   "f1": 0.4
+   "recall": 1.0,
+   "f1": 1.0
   }
  },
  "relations": {
@@ -83,12 +81,12 @@
    "f1": 1.0
   },
   "DOCUMENTED_IN": {
-   "tp": 128,
+   "tp": 130,
    "fp": 3,
-   "fn": 3,
-   "precision": 0.9771,
-   "recall": 0.9771,
-   "f1": 0.9771
+   "fn": 1,
+   "precision": 0.9774,
+   "recall": 0.9924,
+   "f1": 0.9848
   },
   "SUPERSEDES": {
    "tp": 3,
@@ -116,11 +114,7 @@
   }
  },
  "errors": {
-  "missed": [
-   "R44 D13 bearing_temperature",
-   "R45 D13 bearing_temperature",
-   "R55 D13 working_pressure"
-  ],
+  "missed": [],
   "spurious": []
  },
  "relations_missed": {
@@ -131,8 +125,6 @@
   "VERIFIED_BY": [],
   "SUPERSEDES": [],
   "DOCUMENTED_IN": [
-   "('cmp:НА-200.01.007', 'doc:19f27195569e')",
-   "('cmp:НА-200.06.000', 'doc:19f27195569e')",
    "('mat:сталь_20', 'doc:79731775da00')"
   ]
  },
@@ -144,8 +136,8 @@
   "VERIFIED_BY": [],
   "SUPERSEDES": [],
   "DOCUMENTED_IN": [
-   "('cmp:НА-200.00.000', 'doc:0d274d511e03')",
-   "('cmp:НА-200.00.000', 'doc:92a2560f449e')",
+   "('cmp:НА-200.00.000', 'doc:2b2f8640ad9f')",
+   "('cmp:НА-200.00.000', 'doc:991e64c68be0')",
    "('cmp:НА-200.04.001', 'doc:79731775da00')"
   ]
  }
