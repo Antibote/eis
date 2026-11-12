@@ -24,8 +24,13 @@ TYPE_BY_TITLE = [
 def classify(header_lines: list[str], filename: str) -> tuple[str | None, str | None, str | None, float, str | None]:
     """→ (обозначение изделия/компонента, код документа, тип, уверенность, заголовок)."""
     text = "\n".join(header_lines)
-    title = next((ln for ln in header_lines if not DOC_CODE_RE.fullmatch(ln.strip()) and len(ln) > 8
-                  and "СИНТЕТИЧЕСКИЙ" not in ln), None)
+    cands = []
+    for ln in header_lines:
+        for part in re.split(r"\.\s+", ln):
+            part = DOC_CODE_RE.sub("", part).strip(" .")
+            if len(part) > 8 and "СИНТЕТИЧЕСКИЙ" not in part.upper() and "демонстрации" not in part:
+                cands.append(part)
+    title = cands[0] if cands else None
     m = DOC_CODE_RE.search(text)
     if m and m.group("code") in TYPE_BY_CODE:
         return m.group("des"), f"{m.group('des')} {m.group('code')}", TYPE_BY_CODE[m.group("code")], 0.95, title

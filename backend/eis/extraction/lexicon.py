@@ -16,6 +16,8 @@ PARAMETERS: list[tuple[str, str, str, str | None]] = [
     (r"температур\w*\s+перекачиваем\w+\s+(?:сред\w*|жидкост\w*)", "medium_temperature", "temperature", None),
     (r"температур\w*\s+(?:рабоч\w+\s+)?сред\w*(?!\s+окруж)", "medium_temperature", "temperature", None),
     (r"температур\w*\s+окружающ\w+\s+(?:воздух\w*|сред\w*)", "ambient_temperature", "temperature", None),
+    # «рабочая температура» насосного агрегата — температура перекачиваемой среды
+    (r"рабоч\w+\s+температур\w*", "medium_temperature", "temperature", None),
     (r"температур\w*\s+применени\w*", "material_temperature", "temperature", "capability"),
     (r"испытательн\w+\s+давлени\w*|давлени\w*\s+(?:гидравлическ\w+\s+)?испытани\w*", "test_pressure", "pressure", None),
     (r"давлени\w*\s+(?:настройки|срабатывани\w*)|срабатывани\w*\s+клапан\w*|настраива\w+\s+на\s+давлени\w*",
