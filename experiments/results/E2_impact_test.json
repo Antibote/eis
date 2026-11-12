@@ -2,10 +2,10 @@
  "experiment": "E2_impact",
  "variant": "test",
  "dataset_hash": "67c5564e3f5e2d41",
- "commit": "6b98fc8",
+ "commit": "e5e9587",
  "embedder": "intfloat/multilingual-e5-small",
  "k": 10,
- "index_seconds": 14.41,
+ "index_seconds": 9.5,
  "failed_documents": [],
  "methods": {
   "M1_keyword": {
@@ -38,7 +38,7 @@
    "macro_f1_components": 0.5711,
    "chain_recall_mean": 0.5864,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.42,
+   "time_ms_mean": 0.82,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -1129,7 +1129,7 @@
    "macro_f1_components": 0.5846,
    "chain_recall_mean": 0.5977,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 32.09,
+   "time_ms_mean": 12.75,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -2207,7 +2207,7 @@
    "macro_f1_components": 0.6583,
    "chain_recall_mean": 0.45,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.64,
+   "time_ms_mean": 0.57,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -3259,7 +3259,7 @@
    "macro_f1_components": 0.5651,
    "chain_recall_mean": 0.9045,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.4,
+   "time_ms_mean": 0.7,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -4445,7 +4445,7 @@
    "macro_f1_components": 0.8187,
    "chain_recall_mean": 0.9227,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.82,
+   "time_ms_mean": 0.92,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -5589,7 +5589,7 @@
    "macro_f1_components": 0.793,
    "chain_recall_mean": 0.6409,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.84,
+   "time_ms_mean": 0.9,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -6731,7 +6731,7 @@
    "macro_f1_components": 0.7776,
    "chain_recall_mean": 0.9227,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.7,
+   "time_ms_mean": 0.96,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -7890,7 +7890,7 @@
    "macro_f1_components": 0.8187,
    "chain_recall_mean": 0.9227,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.65,
+   "time_ms_mean": 1.13,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -9108,7 +9108,7 @@
    "macro_f1_components": 0.8179,
    "chain_recall_mean": 0.9227,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.55,
+   "time_ms_mean": 0.95,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -10257,7 +10257,7 @@
    "macro_f1_components": 0.7653,
    "chain_recall_mean": 0.8545,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.43,
+   "time_ms_mean": 0.84,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -11409,7 +11409,7 @@
    "macro_f1_components": 0.7391,
    "chain_recall_mean": 0.9227,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.65,
+   "time_ms_mean": 0.97,
    "per_scenario": [
     {
      "scenario": "S1",

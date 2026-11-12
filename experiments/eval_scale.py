@@ -59,8 +59,16 @@ def ingest_scale(n: int, work: Path) -> dict:
     kb = ingest_dir(d)
     dt = time.perf_counter() - t
     shutil.rmtree(d)
-    return {"copies": n, "documents": len(kb.documents), "size_mb": round(size, 1), "seconds": round(dt, 2),
-            "docs_per_second": round(len(kb.documents) / dt, 2), "failed": sum(x.status == "failed" for x in kb.documents.values())}
+    return {"copies": n, "files": n * len(files), "documents": len(kb.documents), "size_mb": round(size, 1),
+            "seconds": round(dt, 2), "files_per_second": round(n * len(files) / dt, 2), "failed": sum(x.status == "failed" for x in kb.documents.values())}
+
+
+def _suffix(i: str, k: int) -> str:
+    """Суффикс копии; у узла характеристики «con:<объект>:<параметр>» — к объекту (параметр читается из id)."""
+    if i.startswith("con:"):
+        head, param = i.rsplit(":", 1)
+        return f"{head}#{k}:{param}"
+    return f"{i}#{k}"
 
 
 def clone_kb(kb: KnowledgeBase, n: int) -> KnowledgeBase:
@@ -70,7 +78,7 @@ def clone_kb(kb: KnowledgeBase, n: int) -> KnowledgeBase:
     pat = re.compile(r'"((?:[^"\\]|\\.)*)"')
     big = json.loads(raw)
     for k in range(1, n):
-        s = pat.sub(lambda m: f'"{m.group(1)}#{k}"' if m.group(1) in ids else m.group(0), raw)
+        s = pat.sub(lambda m: f'"{_suffix(m.group(1), k)}"' if m.group(1) in ids else m.group(0), raw)
         part = json.loads(s)
         for key in ("documents", "fragments", "entities", "requirements", "relations"):
             big[key].update(part[key])
@@ -129,7 +137,7 @@ def main():
     for n in [int(x) for x in a.ingest.split(",") if x]:
         r = ingest_scale(n, work)
         ing.append(r)
-        print(f"загрузка ×{n}: {r['documents']} док., {r['seconds']} с, {r['docs_per_second']} док/с "
+        print(f"загрузка ×{n}: {r['files']} файлов, {r['seconds']} с, {r['files_per_second']} файл/с "
               f"(всего {time.perf_counter() - t0:.0f} с)", flush=True)
     base = ingest_dir(SRC)
     g0 = build_graph(base)
@@ -167,13 +175,15 @@ def main():
     out = ROOT / "experiments" / "results" / "E5_scale.json"
     out.write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
     lines = [f"# E5 — масштабируемость (датасет {man['dataset_hash']}, {res['cpu']})", "",
-             "| Копий | Документов | Объём, МБ | Загрузка, с | Док/с |", "|---|---|---|---|---|"]
-    lines += [f"| ×{r['copies']} | {r['documents']} | {r['size_mb']} | {r['seconds']} | {r['docs_per_second']} |" for r in ing]
-    lines += ["", "| Копий | Компонентов | Требований | Связей | Граф, с | Противоречия, с | Анализ изменения, мс (медиана / макс) | Поиск, мс | Эмбеддинги (оценка), с | Прирост памяти, МБ |",
-              "|---|---|---|---|---|---|---|---|---|---|"]
+             "Копии файлов одинаковы по содержимому и объединяются в 14 документов (дедупликация по SHA-256); "
+             "измеряется разбор, OCR и извлечение каждого файла.", "",
+             "| Копий | Файлов | Объём, МБ | Загрузка, с | Файлов/с |", "|---|---|---|---|---|"]
+    lines += [f"| ×{r['copies']} | {r['files']} | {r['size_mb']} | {r['seconds']} | {r['files_per_second']} |" for r in ing]
+    lines += ["", "| Копий | Компонентов | Требований | Связей | Граф, с | Противоречия, с | Анализ изменения, мс (медиана / макс) | Поиск, мс | Противоречий | Эмбеддинги (оценка), с | Прирост памяти, МБ |",
+              "|---|---|---|---|---|---|---|---|---|---|---|"]
     lines += [f"| ×{r['copies']} | {r['components']} | {r['requirements']} | {r['relations']} | {r['graph_seconds']} | "
               f"{r['contradictions_seconds']} | {r['impact_ms_median']} / {r['impact_ms_max']} | {r['search_ms_median']} | "
-              f"{r['embedding_seconds_estimate']} | {r['rss_increment_mb']} |" for r in kbs]
+              f"{r['contradictions_found']} | {r['embedding_seconds_estimate']} | {r['rss_increment_mb']} |" for r in kbs]
     out.with_suffix(".md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("\n".join(lines))
 

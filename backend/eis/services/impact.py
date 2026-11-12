@@ -46,9 +46,11 @@ class ImpactAnalyzer:
         self.kb, self.g = kb, graph
         self.s = settings or ImpactSettings()
         self.by_con: dict[tuple[str, str], list[Requirement]] = {}
+        self.by_param: dict[str, dict[str, list[Requirement]]] = {}     # параметр → объект → требования
         for r in kb.requirements.values():
             if r.status == "active":
                 self.by_con.setdefault((r.subject_id, r.parameter), []).append(r)
+                self.by_param.setdefault(r.parameter, {}).setdefault(r.subject_id, []).append(r)
 
     def _name(self, eid):
         e = self.kb.entities.get(eid)
@@ -118,8 +120,8 @@ class ImpactAnalyzer:
         # 1) субъект требования
         put(subj, "subject", 1.0, [PathStep(node=r.id), PathStep(node=subj, via="CONSTRAINS")], r.evidence, "direct")
         # 1б) компоненты, номинал которых задаёт ту же величину (частота вращения изделия = двигателя)
-        for (s_, p_), reqs in self.by_con.items():
-            if p_ == param and s_ != subj and any(x.kind == "nominal" for x in reqs):
+        for s_, reqs in self.by_param.get(param, {}).items():
+            if s_ != subj and any(x.kind == "nominal" for x in reqs):
                 x = next(x for x in reqs if x.kind == "nominal")
                 put(s_, "realizes", 0.9, base_path + [PathStep(node=x.id), PathStep(node=s_, via="CONSTRAINS")],
                     x.evidence, "direct")
@@ -133,8 +135,8 @@ class ImpactAnalyzer:
                 put_dep(e.target, "contributor", e.weight * _econf(e), base_path + [
                     PathStep(node=e.target, via="DEPENDS_ON")], e.evidence, e)
         # 2в) компоненты с собственным ограничением по тому же параметру (ТУ уплотнения: до 3600 об/мин)
-        for (s_, p_), reqs in self.by_con.items():
-            if p_ == param and s_ != subj and self._type(s_) in COMPONENT_TYPES:
+        for s_, reqs in self.by_param.get(param, {}).items():
+            if s_ != subj and self._type(s_) in COMPONENT_TYPES:
                 cap = next((x for x in reqs if x.kind == "capability"), None)
                 if cap is not None:
                     put_dep(s_, "own_limit", 0.9 * cap.confidence, base_path + [PathStep(node=cap.id),
@@ -417,11 +419,10 @@ class ImpactAnalyzer:
                 subjects = [it.entity_id] + ([m.target for m in self.g.materials(it.entity_id)]
                                              if param in MATERIAL_LIMITED else [])
                 for s in subjects:
-                    for (cs, cp), reqs in self.by_con.items():
-                        if cs == s and cp in rel:
-                            for x in reqs:
-                                add(x.document_id, f"ограничение «{self._name(s)}»: {PARAM_RU.get(cp, cp)} {fmt_req(x)}",
-                                    x.id, x.evidence[0])
+                    for cp in sorted(rel):
+                        for x in self.by_con.get((s, cp), []):
+                            add(x.document_id, f"ограничение «{self._name(s)}»: {PARAM_RU.get(cp, cp)} {fmt_req(x)}",
+                                x.id, x.evidence[0])
             else:
                 for e in self.g.documents_of(it.entity_id):
                     add(e.target, f"упоминает «{it.name}»", it.entity_id, e.evidence[0])
