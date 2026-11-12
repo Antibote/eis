@@ -118,7 +118,7 @@ const title = [
   center("Engineering Intelligence System (EIS)", { size: 26, after: 1800 }),
   new Paragraph({ alignment: AlignmentType.RIGHT, spacing: { after: 60 }, children: [new TextRun({ text: "Автор: Селивохин Ярослав Андреевич", size: 24 })] }),
   new Paragraph({ alignment: AlignmentType.RIGHT, spacing: { after: 60 }, children: [new TextRun({ text: "МГУ имени М. В. Ломоносова", size: 24 })] }),
-  new Paragraph({ alignment: AlignmentType.RIGHT, spacing: { after: 2600 }, children: [new TextRun({ text: "Научный руководитель: ______________________", size: 24 })] }),
+  new Paragraph({ alignment: AlignmentType.RIGHT, spacing: { after: 2600 }, children: [new TextRun({ text: "Прикладная математика и информатика, магистратура, 2 курс", size: 24 })] }),
   center("Исходный код и данные: github.com/Antibote/eis", { size: 22, after: 120 }),
   center("Саров — 2026", { size: 24 }),
   new Paragraph({ children: [new PageBreak()] }),
