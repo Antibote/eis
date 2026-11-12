@@ -38,6 +38,7 @@ class ImpactSettings:
     use_doc_filter: bool = True     # документы — только с утверждениями о релевантных параметрах
     use_load_path: bool = True      # путь нагрузки (DEPENDS_ON между компонентами)
     use_direction: bool = True      # учитывать направление изменения (смягчение не требует перепроверки)
+    use_composition_filter: bool = False  # по составу — только к деталям с данными (проверено: не улучшает F1, см. журнал)
     min_confidence: float = 0.0
 
 
@@ -196,7 +197,8 @@ class ImpactAnalyzer:
                 if prop["contains_down"]:
                     for e in self.g.out_edges(eid, [RelationType.CONTAINS]):
                         c = conf * e.weight * self.s.decay
-                        if e.target not in items:
+                        if e.target not in items and (not self.s.use_composition_filter
+                                                      or self._has_check_data(e.target, param)):
                             put(e.target, "contained", c, path + [PathStep(node=e.target, via="CONTAINS")], e.evidence, "potential")
                             nxt.append((e.target, c, items[e.target].path if e.target in items else path))
                 if self.s.use_load_path and depth == 1 and eid == subj:
@@ -232,6 +234,15 @@ class ImpactAnalyzer:
         same = [x for x in self.by_con.get((subj, param), []) if x.id != r.id]
         tests = self._tests([r] + same, new, harsher, derived)
         docs = self._documents(r, same, items, derived, used_edges, tests, param)
+        if not harsher and not _nested:
+            # смягчение: компоненты не перепроверяются, но документы, утверждающие изменяемую величину и
+            # ограничения зависимых узлов, приводятся в соответствие — перечень как при ужесточении
+            full = ImpactAnalyzer(self.kb, self.g, ImpactSettings(**{**asdict(self.s), "use_direction": False}))
+            full.by_con, full.by_param = self.by_con, self.by_param
+            fr = full.analyze(requirement_id, new_value=new_value, new_low=new_low, new_high=new_high, unit=unit,
+                              _rot=_rot, _nested=True)
+            have = {d.document_id for d in docs}
+            docs = sorted(docs + [d for d in fr.documents if d.document_id not in have], key=lambda d: d.filename)
         for sub in nested:
             have_t = {t.test_id for t in tests}
             tests += [t for t in sub.tests if t.test_id not in have_t]
@@ -249,6 +260,13 @@ class ImpactAnalyzer:
             change_direction="harsher" if harsher else "milder", not_rechecked=[self._name(x) for x in not_rechecked])
 
     # ------------------------------------------------------------------ проверки
+    def _has_check_data(self, comp: str, param: str) -> bool:
+        """Есть ли у детали данные для проверки: материал или ограничение по связанному параметру.
+        Деталь без таких данных не включается в затронутые по составу — проверить её нечем."""
+        if self.g.materials(comp) or self.g.out_edges(comp, [RelationType.CONTAINS]):
+            return True
+        return any(self.by_con.get((comp, p)) for p in related(param))
+
     def _nominal_value(self, subj, param):
         for s in [subj] + self.g.ancestors(subj):
             for x in self.by_con.get((s, param), []):

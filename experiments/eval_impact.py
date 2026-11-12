@@ -105,6 +105,7 @@ def main():
         HybridMethod(kb, g, ImpactSettings(use_load_path=False), name="M4_ablation_no_load_path"),
         HybridMethod(kb, g, ImpactSettings(use_checks=False), name="M4_ablation_no_checks"),
         HybridMethod(kb, g, ImpactSettings(use_direction=False), name="M4_ablation_no_direction"),
+        HybridMethod(kb, g, ImpactSettings(use_composition_filter=True), name="M4_variant_composition_filter"),
     ]
     methods[2].name, methods[3].name = "M3_graph_d2", "M3_graph_d3"
     results = {}
