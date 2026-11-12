@@ -1,23 +1,26 @@
-<section id="results" data-transition="fade" style="background:#f6f5f0;color:#16273d;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<section id="results" data-transition="fade" style="background:#f6f5f0;color:#16273d;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
 <div style="display:flex;flex-direction:column;gap:16px">
 <p style="font-size:26px;color:#b4501c;letter-spacing:3px;text-transform:uppercase">Экспериментальные результаты</p>
-<h2 style="font-size:56px;font-weight:600;line-height:1.12">Гибрид точнее поиска, RAG и обхода графа на одних и тех же данных</h2>
+<h2 style="font-size:52px;font-weight:600;line-height:1.12">25 сценариев, 8 из них отложены до конца: гибрид точнее всех базовых методов</h2>
 </div>
-<div style="display:flex;gap:48px;align-items:start">
-<img src="/_blob/f12d16686d34b56977cd7389a9c41288" alt="Столбчатая диаграмма: F1 по компонентам 0,76 / 0,74 / 0,90 / 0,96, по документам 0,77 / 0,77 / 0,77 / 0,94, полнота цепочек 0,65 / 0,60 / 0,51 / 0,92 для BM25, RAG, графа и гибрида" style="width:1040px;height:494px;object-fit:contain;background:#ffffff;border-radius:12px">
-<div style="flex:1;display:flex;flex-direction:column;gap:24px">
-<div style="background:#ffffff;border:1px solid #dcdcd2;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;gap:44px;align-items:start">
+<img src="/_blob/0bae47f638449e14c669f8fbf52e15ec" alt="Столбчатая диаграмма по 25 сценариям: F1 по компонентам 0,65 / 0,67 / 0,78 / 0,91, по документам 0,77 / 0,76 / 0,76 / 0,92 для BM25, RAG, графа и гибрида" style="width:1000px;height:475px;object-fit:contain;background:#ffffff;border-radius:12px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<div style="background:#ffffff;border:1px solid #dcdcd2;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:6px">
+<p style="font-size:26px;color:#45505e">Отложенный набор, F1 компонентов</p>
+<p style="font-size:34px;font-weight:600">0,92 <span style="color:#7a8390">[0,79; 1,00]</span></p>
+<p style="font-size:24px;color:#45505e">граф без правил — 0,75</p>
+</div>
+<div style="background:#ffffff;border:1px solid #dcdcd2;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:6px">
 <p style="font-size:26px;color:#45505e">Противоречия, найдено из 10</p>
-<p style="font-size:30px;line-height:1.4"><b>10</b> гибрид · <b>7</b> правила без графа · <b>2</b> сходство текста</p>
-<p style="font-size:26px;color:#45505e">0 срабатываний на 7 ловушках</p>
+<p style="font-size:30px"><b>10</b> гибрид · <b>7</b> правила · <b>2</b> сходство</p>
 </div>
-<div style="background:#ffffff;border:1px solid #dcdcd2;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:8px">
-<p style="font-size:26px;color:#45505e">Извлечение требований</p>
-<p style="font-size:30px;line-height:1.4"><b>59 из 59</b>, включая скан</p>
-</div>
+<div style="background:#ffffff;border:1px solid #dcdcd2;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:6px">
+<p style="font-size:26px;color:#45505e">Нарушения ограничений</p>
+<p style="font-size:30px"><b>26 из 26</b>, одно лишнее</p>
 </div>
 </div>
-<p style="font-size:26px;line-height:1.4;color:#45505e">Синтетический корпус: 14 документов, 5 сценариев, эталон размечен вручную. Правила разрабатывались на одном наборе формулировок, метрики — на другом.</p>
-<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7a8390">7 · набор test; первые прогоны и найденные ошибки записаны в журнал экспериментов до исправлений</p>
-<aside>Сравнивались четыре метода на одинаковых входах: поиск по ключевым словам, семантический RAG, обход того же графа без правил и наш гибрид. Важно: граф у третьего и четвёртого метода один и тот же, поэтому выигрыш — заслуга алгоритма, а не данных. F1 по затронутым компонентам 0,96 против 0,90 у графа и 0,74 у RAG; по документам 0,94 против 0,77. Противоречия: гибрид нашёл все 10 внесённых, правила без графа — 7. Скажу честно о главном ограничении: корпус синтетический и сделан мной. Чтобы снизить риск подгонки, у каждого требования два набора формулировок — правила я писал по одному, а меряю на другом.</aside>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7a8390">7 · набор test, 95% интервалы — бутстреп по сценариям; первые прогоны и ошибки записаны в журнал до исправлений</p>
+<aside>Четыре метода сравнивались на одинаковых входах: ключевые слова, семантический RAG, обход того же графа без правил и гибрид. Граф у третьего и четвёртого метода один, поэтому выигрыш — заслуга алгоритма. Сценариев 25. Эталон я размечал до запуска системы. Важная деталь: первый прогон на новых сценариях показал, что по компонентам гибрид не лучше простого обхода графа. Я записал это в журнал, нашёл причину — система не учитывала направление изменения, — и доработал метод. Чтобы проверить доработку честно, восемь сценариев я отложил заранее и прогнал один раз в самом конце: F1 0,92 против 0,75 у графа. Противоречия — все 10 из 10 без ложных срабатываний на ловушках.</aside>
 </section>
