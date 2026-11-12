@@ -78,10 +78,11 @@ def fig_contradictions():
 
 def fig_ablation():
     m = load("E2_impact_test.json")["methods"]
-    rows = [("M4_hybrid", "Полный метод", "components"), ("M4_ablation_no_physics", "без учёта физики параметра", "components"),
+    rows = [("M4_hybrid", "Полный метод", "components"), ("M4_ablation_no_direction", "без учёта направления изменения", "components"),
+            ("M4_ablation_no_physics", "без учёта физики параметра", "components"),
             ("M4_ablation_no_load_path", "без пути нагрузки", "components"),
             ("M4_hybrid", "Полный метод", "documents"), ("M4_ablation_no_doc_filter", "без фильтра документов", "documents")]
-    fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.3), dpi=200, gridspec_kw={"width_ratios": [3, 2]})
+    fig, axes = plt.subplots(1, 2, figsize=(7.4, 2.6), dpi=200, gridspec_kw={"width_ratios": [3, 2]})
     for ax, metric, title in [(axes[0], "components", "F1 по компонентам"), (axes[1], "documents", "F1 по документам")]:
         sel = [(lbl, m[k]["micro"][metric]["f1"]) for k, lbl, mt in rows if mt == metric]
         y = range(len(sel))[::-1]
@@ -135,7 +136,55 @@ def fig_architecture():
     plt.close(fig)
 
 
+def fig_noise():
+    p = RES / "E4_noise_test.json"
+    if not p.exists():
+        return
+    rows = json.loads(p.read_text())["levels"]
+    ru = {"native": "исходные\nформаты", "scan_clean": "чистый\nскан", "scan_typical": "типичный\nскан",
+          "blur_1.5": "размытие\n1,5", "blur_2.5": "размытие\n2,5", "noise_5pct": "шум\n5 %", "rot_3deg": "наклон\n3°",
+          "lowres_100dpi": "100\ndpi", "jpeg_q10": "JPEG\nq=10", "stamps": "штампы", "combined": "всё\nвместе"}
+    series = [(lambda r: r["requirements"]["recall"], LIGHT, "полнота извлечения требований"),
+              (lambda r: r["impact"]["components"]["f1"], NAVY, "F1 затронутых компонентов"),
+              (lambda r: r["impact"]["violations"]["f1"], "#4a6b8c", "F1 нарушений"),
+              (lambda r: r["contradictions"]["recall"], ACCENT, "доля найденных противоречий")]
+    fig, ax = plt.subplots(figsize=(7.6, 3.4), dpi=200)
+    w = 0.2
+    for k, (get, color, lbl) in enumerate(series):
+        ax.bar([i + (k - 1.5) * w for i in range(len(rows))], [get(r) for r in rows], w, color=color, label=lbl)
+    ax.set_xticks(range(len(rows)), [ru.get(r["level"], r["level"]).replace("\n", " ") for r in rows], fontsize=7.5,
+                  rotation=30, ha="right")
+    ax.set_ylim(0, 1.0)
+    ax.grid(axis="y", color="#e4e7eb", lw=0.6)
+    ax.set_axisbelow(True)
+    ax.legend(frameon=False, fontsize=7.5, ncol=2, loc="lower left", bbox_to_anchor=(0, 1.0))
+    fig.tight_layout()
+    fig.savefig(OUT / "chart_noise.png")
+    plt.close(fig)
+
+
+def fig_scale():
+    p = RES / "E5_scale.json"
+    if not p.exists():
+        return
+    rows = json.loads(p.read_text())["kb"]
+    comps = [r["components"] for r in rows]
+    fig, ax = plt.subplots(figsize=(5.6, 2.8), dpi=200)
+    ax.plot(comps, [r["impact_ms_median"] for r in rows], marker="o", color=NAVY, label="анализ изменения, мс (медиана)")
+    ax.plot(comps, [r["search_ms_median"] for r in rows], marker="s", color=GREY, label="поиск, мс")
+    ax.plot(comps, [r["contradictions_seconds"] * 1000 for r in rows], marker="^", color=ACCENT, label="все противоречия базы, мс")
+    ax.set_xscale("log"); ax.set_yscale("log")
+    ax.set_xlabel("компонентов в базе знаний")
+    ax.grid(color="#e4e7eb", lw=0.6)
+    ax.legend(frameon=False, fontsize=7.5)
+    fig.tight_layout()
+    fig.savefig(OUT / "chart_scale.png")
+    plt.close(fig)
+
+
 if __name__ == "__main__":
+    fig_noise()
+    fig_scale()
     fig_impact()
     fig_contradictions()
     fig_ablation()
