@@ -27,15 +27,26 @@ services:
       EIS_LLM_URL: ${EIS_LLM_URL:-http://ollama:11434}
       EIS_LLM_MODEL: ${EIS_LLM_MODEL:-qwen2.5:3b}
       EIS_ALLOW_EXTERNAL_LLM: "false"
+      EIS_GRAPH_BACKEND: ${EIS_GRAPH_BACKEND:-networkx}
+      EIS_NEO4J_URL: ${EIS_NEO4J_URL:-bolt://neo4j:7687}
+      EIS_NEO4J_USER: neo4j
+      EIS_NEO4J_PASSWORD: ${EIS_NEO4J_PASSWORD:-change-me-neo4j}
     volumes: [eisdata:/data, models:/models]
     # Ollama на хосте: EIS_LLM_PROVIDER=ollama EIS_LLM_URL=http://host.docker.internal:11434
     # (на хосте: OLLAMA_HOST=172.17.0.1:11434 ollama serve — адрес моста docker0, вне локальной сети)
     extra_hosts: ["host.docker.internal:host-gateway"]
     ports: ["${EIS_PORT:-8000}:8000"]
 
+  neo4j:                             # необязательно: docker compose --profile neo4j up; EIS_GRAPH_BACKEND=neo4j
+    image: neo4j:5.26.0
+    profiles: [neo4j]
+    environment:
+      NEO4J_AUTH: neo4j/${EIS_NEO4J_PASSWORD:-change-me-neo4j}
+    volumes: [neo4jdata:/data]
+
   ollama:
     image: ollama/ollama:0.5.4
     profiles: [llm]
     volumes: [ollama:/root/.ollama]
 
-volumes: { pgdata: {}, eisdata: {}, models: {}, ollama: {} }
+volumes: { pgdata: {}, eisdata: {}, models: {}, ollama: {}, neo4jdata: {} }

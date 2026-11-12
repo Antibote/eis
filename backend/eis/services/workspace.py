@@ -19,6 +19,11 @@ class Workspace:
 
     @cached_property
     def graph(self) -> NetworkXStore:
+        """NetworkX в памяти (по умолчанию) или Neo4j: EIS_GRAPH_BACKEND=neo4j (тот же протокол)."""
+        import os
+        if os.environ.get("EIS_GRAPH_BACKEND", "networkx").lower() == "neo4j":
+            from eis.graph.neo4j_store import neo4j_store_from_env
+            return neo4j_store_from_env(self.kb)
         return build_graph(self.kb)
 
     @cached_property
