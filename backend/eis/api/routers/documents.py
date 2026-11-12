@@ -126,4 +126,4 @@ def document_file(pid: str, did: str, user: CurrentUser = Depends(project_access
     if not p or not p.exists():
         raise HTTPException(404, "Файл не найден")
     state.audit(user.username, "download", pid, document=did)
-    return FileResponse(p, filename=p.name.split("_", 1)[-1])
+    return FileResponse(p, filename=p.name)

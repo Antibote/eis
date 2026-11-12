@@ -1,11 +1,11 @@
 {
  "experiment": "E2_impact",
  "variant": "test",
- "dataset_hash": "5e2d1a0b0d197005",
- "commit": "cddd554",
+ "dataset_hash": "800dea376b738cf3",
+ "commit": "18ef645",
  "embedder": "intfloat/multilingual-e5-small",
  "k": 10,
- "index_seconds": 8.74,
+ "index_seconds": 8.9,
  "failed_documents": [
   "D13_Setpoints_scan.png"
  ],
@@ -40,7 +40,7 @@
    "macro_f1_components": 0.6836,
    "chain_recall_mean": 0.65,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.09,
+   "time_ms_mean": 0.61,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -84,7 +84,7 @@
      ],
      "fn_documents": [
       "doc:8aa71c0444e3",
-      "doc:9b3db1b62ed5"
+      "doc:f4b8d94ea12c"
      ]
     },
     {
@@ -120,8 +120,8 @@
      ],
      "fp_documents": [],
      "fn_documents": [
-      "doc:bdc684e5d83d",
-      "doc:c253ff25d8cc",
+      "doc:0d274d511e03",
+      "doc:33597583cd8b",
       "doc:c6fc21343086"
      ]
     },
@@ -164,8 +164,8 @@
       "D10_RE_NA-200.pdf"
      ],
      "fn_documents": [
-      "doc:bdc684e5d83d",
-      "doc:e3cb2e6d54c7"
+      "doc:03f485366faf",
+      "doc:33597583cd8b"
      ]
     },
     {
@@ -205,8 +205,8 @@
      ],
      "fp_documents": [],
      "fn_documents": [
-      "doc:bdc684e5d83d",
-      "doc:c253ff25d8cc"
+      "doc:0d274d511e03",
+      "doc:33597583cd8b"
      ]
     },
     {
@@ -281,7 +281,7 @@
    "macro_f1_components": 0.707,
    "chain_recall_mean": 0.6,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 17.63,
+   "time_ms_mean": 13.4,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -326,7 +326,7 @@
      ],
      "fn_documents": [
       "doc:8aa71c0444e3",
-      "doc:9b3db1b62ed5"
+      "doc:f4b8d94ea12c"
      ]
     },
     {
@@ -360,8 +360,8 @@
      "fn_components": [],
      "fp_documents": [],
      "fn_documents": [
-      "doc:bdc684e5d83d",
-      "doc:c253ff25d8cc",
+      "doc:0d274d511e03",
+      "doc:33597583cd8b",
       "doc:c6fc21343086"
      ]
     },
@@ -404,7 +404,7 @@
       "D10_RE_NA-200.pdf"
      ],
      "fn_documents": [
-      "doc:e3cb2e6d54c7"
+      "doc:03f485366faf"
      ]
     },
     {
@@ -445,8 +445,8 @@
       "D11_Passport_Bearing.txt"
      ],
      "fn_documents": [
-      "doc:bdc684e5d83d",
-      "doc:c253ff25d8cc"
+      "doc:0d274d511e03",
+      "doc:33597583cd8b"
      ]
     },
     {
@@ -520,7 +520,7 @@
    "macro_f1_components": 0.8892,
    "chain_recall_mean": 0.51,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.21,
+   "time_ms_mean": 0.77,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -748,7 +748,7 @@
    "macro_f1_components": 0.7367,
    "chain_recall_mean": 0.9,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.28,
+   "time_ms_mean": 0.78,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -1008,7 +1008,7 @@
    "macro_f1_components": 0.96,
    "chain_recall_mean": 0.92,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.67,
+   "time_ms_mean": 1.01,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -1261,7 +1261,7 @@
    "macro_f1_components": 0.9046,
    "chain_recall_mean": 0.62,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.04,
+   "time_ms_mean": 0.97,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -1515,7 +1515,7 @@
    "macro_f1_components": 0.9138,
    "chain_recall_mean": 0.92,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 1.01,
+   "time_ms_mean": 1.07,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -1772,7 +1772,7 @@
    "macro_f1_components": 0.96,
    "chain_recall_mean": 0.92,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 0.97,
+   "time_ms_mean": 1.04,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -2045,7 +2045,7 @@
    "macro_f1_components": 0.9447,
    "chain_recall_mean": 0.92,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 0.91,
+   "time_ms_mean": 0.98,
    "per_scenario": [
     {
      "scenario": "S1",
@@ -2300,7 +2300,7 @@
    "macro_f1_components": 0.96,
    "chain_recall_mean": 0.92,
    "supported_claims_share": 1.0,
-   "time_ms_mean": 0.82,
+   "time_ms_mean": 0.86,
    "per_scenario": [
     {
      "scenario": "S1",

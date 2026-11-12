@@ -70,8 +70,9 @@ def add_file(pid: str, src: Path, filename: str, user: str) -> str:
     data = src.read_bytes()
     sha = hashlib.sha256(data).hexdigest()
     safe = "".join(ch for ch in Path(filename).name if ch.isalnum() or ch in "._-()") or "file"
-    dest = project_dir(pid) / f"{sha[:12]}_{safe}"
+    dest = project_dir(pid) / sha[:16] / safe
     if not dest.exists():
+        dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(src, dest)
     did = "doc:" + stable_id(pid, sha)
     with session() as s:
