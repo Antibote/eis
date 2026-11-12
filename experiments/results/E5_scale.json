@@ -1,0 +1,54 @@
+{
+ "experiment": "E5_scale",
+ "dataset_hash": "67c5564e3f5e2d41",
+ "commit": "f20ac2d",
+ "embedder": "intfloat/multilingual-e5-small",
+ "embedding_fragments_per_second": 74.7,
+ "ingest": [
+  {
+   "copies": 1,
+   "documents": 14,
+   "size_mb": 0.5,
+   "seconds": 1.68,
+   "docs_per_second": 8.34,
+   "failed": 0
+  }
+ ],
+ "kb": [
+  {
+   "copies": 1,
+   "components": 22,
+   "requirements": 59,
+   "relations": 389,
+   "fragments": 208,
+   "clone_seconds": 0.02,
+   "graph_seconds": 0.001,
+   "contradictions_seconds": 0.003,
+   "contradictions_found": 17,
+   "impact_ms_median": 0.63,
+   "impact_ms_max": 1.74,
+   "bm25_index_seconds": 0.0,
+   "search_ms_median": 0.21,
+   "peak_rss_mb": 1400.7,
+   "embedding_seconds_estimate": 2.8
+  },
+  {
+   "copies": 3,
+   "components": 66,
+   "requirements": 177,
+   "relations": 1167,
+   "fragments": 624,
+   "clone_seconds": 0.13,
+   "graph_seconds": 0.003,
+   "contradictions_seconds": 0.004,
+   "contradictions_found": 43,
+   "impact_ms_median": 0.96,
+   "impact_ms_max": 2.58,
+   "bm25_index_seconds": 0.01,
+   "search_ms_median": 0.46,
+   "peak_rss_mb": 1405.4,
+   "embedding_seconds_estimate": 8.4
+  }
+ ],
+ "cpu": "13th Gen Intel(R) Core(TM) i5-13420H"
+}

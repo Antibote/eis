@@ -202,17 +202,99 @@ def _ocr_into(b: _Builder, image_bytes: bytes, page=None):
     from PIL import Image
     img = Image.open(io.BytesIO(image_bytes))
     data = pytesseract.image_to_data(img, lang="rus+eng", output_type=pytesseract.Output.DICT)
+    _layout_into(b, data, page)
+
+
+def _layout_into(b: _Builder, data: dict, page=None):
+    """Восстановление структуры по геометрии слов OCR: строки с крупными промежутками между словами —
+    строки таблицы (ячейки); строки одного абзаца Tesseract склеиваются в абзац (кроме строк, начинающихся
+    с номера пункта). Без этого перенос строки разрывает требование, а таблица теряет ячейки."""
     lines: dict[tuple, list[int]] = {}
     for i, w in enumerate(data["text"]):
         if w.strip():
             lines.setdefault((data["block_num"][i], data["par_num"][i], data["line_num"][i]), []).append(i)
-    for n, (_, idx) in enumerate(sorted(lines.items()), 1):
-        words = [data["text"][i] for i in idx]
+    # Tesseract может отнести дальнюю колонку таблицы к другому блоку: строки, лежащие на одной высоте
+    # и не перекрывающиеся по горизонтали, объединяются в одну строку страницы.
+    groups: list[tuple[tuple, list[int]]] = []
+    for key, idx in sorted(lines.items(), key=lambda kv: min(data["top"][i] for i in kv[1])):
+        top = min(data["top"][i] for i in idx); bot = max(data["top"][i] + data["height"][i] for i in idx)
+        x0 = min(data["left"][i] for i in idx); x1 = max(data["left"][i] + data["width"][i] for i in idx)
+        for g in groups:
+            gi = g[1]
+            gt = min(data["top"][i] for i in gi); gb = max(data["top"][i] + data["height"][i] for i in gi)
+            gx0 = min(data["left"][i] for i in gi); gx1 = max(data["left"][i] + data["width"][i] for i in gi)
+            overlap = min(bot, gb) - max(top, gt)
+            if overlap > 0.5 * min(bot - top, gb - gt) and (x0 >= gx1 or x1 <= gx0):
+                gi.extend(idx)
+                break
+        else:
+            groups.append((key, list(idx)))
+    recs = []
+    for key, idx in groups:
+        idx.sort(key=lambda i: data["left"][i])
+        hs = sorted(data["height"][i] for i in idx)
+        h = hs[len(hs) // 2] or 20
+        cells: list[list[str]] = [[data["text"][idx[0]]]]
+        xs = [data["left"][idx[0]]]
+        for a, c in zip(idx, idx[1:]):
+            gap = data["left"][c] - (data["left"][a] + data["width"][a])
+            if gap > max(0.9 * h, 20):           # межсловный пробел ≈ 0,3–0,4 высоты строки
+                cells.append([])
+                xs.append(data["left"][c])
+            cells[-1].append(data["text"][c])
         confs = [float(data["conf"][i]) for i in idx if float(data["conf"][i]) >= 0]
-        x0 = min(data["left"][i] for i in idx); y0 = min(data["top"][i] for i in idx)
-        x1 = max(data["left"][i] + data["width"][i] for i in idx); y1 = max(data["top"][i] + data["height"][i] for i in idx)
-        b.add("line", " ".join(words), page=page, locator=f"строка {n} (OCR)", bbox=(x0, y0, x1, y1), ocr=True,
-              ocr_conf=round(sum(confs) / len(confs) / 100, 3) if confs else None)
+        recs.append({"key": key, "cells": [" ".join(c) for c in cells], "xs": xs, "text": " ".join(data["text"][i] for i in idx),
+                     "bbox": (min(data["left"][i] for i in idx), min(data["top"][i] for i in idx),
+                              max(data["left"][i] + data["width"][i] for i in idx),
+                              max(data["top"][i] + data["height"][i] for i in idx)),
+                     "conf": sum(confs) / len(confs) / 100 if confs else None})
+    buf: list[dict] = []
+
+    def flush():
+        if not buf:
+            return
+        text = ""
+        for r in buf:
+            text = text[:-1] + r["text"] if text.endswith("-") else (text + " " + r["text"]).strip()
+        bb = (min(r["bbox"][0] for r in buf), min(r["bbox"][1] for r in buf), max(r["bbox"][2] for r in buf),
+              max(r["bbox"][3] for r in buf))
+        confs = [r["conf"] for r in buf if r["conf"] is not None]
+        n0 = recs.index(buf[0]) + 1
+        b.add("paragraph" if len(buf) > 1 else "line", text, page=page,
+              locator=f"строки {n0}–{n0 + len(buf) - 1} (OCR)" if len(buf) > 1 else f"строка {n0} (OCR)", bbox=bb, ocr=True,
+              ocr_conf=round(sum(confs) / len(confs), 3) if confs else None)
+        buf.clear()
+
+    header: dict | None = None             # заголовок текущей таблицы: первая строка группы строк-таблиц
+    for n, r in enumerate(recs, 1):
+        if len(r["cells"]) >= 2:
+            flush()
+            if header is None:
+                header = r
+                b.add("line", " ".join(r["cells"]), page=page, locator=f"строка {n} (OCR, заголовок таблицы)",
+                      bbox=r["bbox"], ocr=True, ocr_conf=round(r["conf"], 3) if r["conf"] is not None else None)
+                continue
+            cols = _align_cells(r, header)
+            b.add("table_row", "; ".join(f"{h}: {c}" for h, c in zip(header["cells"], cols) if c), page=page,
+                  locator=f"строка {n} (OCR)", bbox=r["bbox"], cells=cols, header=header["cells"], ocr=True,
+                  ocr_conf=round(r["conf"], 3) if r["conf"] is not None else None)
+            continue
+        header = None
+        if buf and r["key"][:2] == buf[-1]["key"][:2] and not SECTION_RE.match(r["text"]):
+            buf.append(r)
+        else:
+            flush()
+            buf.append(r)
+    flush()
+
+
+def _align_cells(row: dict, header: dict) -> list[str]:
+    """Раскладывает ячейки строки по колонкам заголовка: ячейка — в колонку с ближайшим левым краем не правее неё."""
+    cols = [""] * len(header["cells"])
+    for x, cell in zip(row["xs"], row["cells"]):
+        j = max((i for i, hx in enumerate(header["xs"]) if hx <= x + 30), default=0)
+        cols[j] = (cols[j] + " " + cell).strip()
+    return cols
 
 
 def parse_image(path: Path, doc_id: str) -> ParsedDocument:

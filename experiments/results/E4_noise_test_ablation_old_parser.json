@@ -1,0 +1,347 @@
+{
+ "experiment": "E4_noise",
+ "variant": "test",
+ "dataset_hash": "67c5564e3f5e2d41",
+ "commit": "f20ac2d",
+ "scanned_formats": [
+  "docx",
+  "pdf",
+  "png",
+  "txt"
+ ],
+ "levels": [
+  {
+   "level": "scan_clean",
+   "params": {},
+   "seconds": 21.5,
+   "ingest_seconds": 21.4,
+   "failed_documents": [],
+   "text_similarity": 0.928,
+   "requirements": {
+    "tp": 39,
+    "fp": 0,
+    "fn": 20,
+    "precision": 1.0,
+    "recall": 0.661,
+    "f1": 0.7959
+   },
+   "missed_requirements": [
+    "R20 D05 medium_temperature",
+    "R22 D05 rotation_speed",
+    "R29 D03 bearing_temperature",
+    "R58 D11 rotation_speed",
+    "R32 D06 rotation_speed",
+    "R33 D06 ambient_temperature",
+    "R36 D12 ambient_temperature",
+    "R37 D12 ambient_temperature",
+    "R46 D10 flow_rate",
+    "RM_M1 D04 material_temperature",
+    "RM_M2 D04 material_temperature",
+    "RM_M3 D04 material_temperature",
+    "RM_M4 D04 material_temperature",
+    "RM_M5 D04 material_temperature",
+    "RM_M6 D04 material_temperature",
+    "RM_M7 D04 material_temperature",
+    "RM_M9 D04 material_temperature",
+    "RM_M10 D04 material_temperature",
+    "RM_M11 D04 material_temperature",
+    "RM_M12 D04 material_temperature"
+   ],
+   "impact": {
+    "components": {
+     "tp": 66,
+     "fp": 14,
+     "fn": 49,
+     "precision": 0.825,
+     "recall": 0.5739,
+     "f1": 0.6769
+    },
+    "documents": {
+     "tp": 109,
+     "fp": 5,
+     "fn": 51,
+     "precision": 0.9561,
+     "recall": 0.6813,
+     "f1": 0.7956
+    },
+    "violations": {
+     "tp": 13,
+     "fp": 0,
+     "fn": 13,
+     "precision": 1.0,
+     "recall": 0.5,
+     "f1": 0.6667
+    },
+    "tests": {
+     "tp": 6,
+     "fp": 5,
+     "fn": 11,
+     "precision": 0.5455,
+     "recall": 0.3529,
+     "f1": 0.4286
+    }
+   },
+   "impact_failures": [],
+   "contradictions": {
+    "found": 15,
+    "precision": 0.9333,
+    "recall": 0.8,
+    "f1": 0.8615,
+    "detected": [
+     "K01",
+     "K02",
+     "K03",
+     "K05",
+     "K06",
+     "K07",
+     "K09",
+     "K10"
+    ],
+    "missed": [
+     "K04",
+     "K08"
+    ],
+    "distractor_hits": 0
+   }
+  },
+  {
+   "level": "scan_typical",
+   "params": {
+    "noise": 0.004,
+    "rot": 0.6,
+    "blur": 0.6
+   },
+   "seconds": 22.8,
+   "ingest_seconds": 22.8,
+   "failed_documents": [],
+   "text_similarity": 0.9287,
+   "requirements": {
+    "tp": 29,
+    "fp": 2,
+    "fn": 30,
+    "precision": 0.9355,
+    "recall": 0.4915,
+    "f1": 0.6444
+   },
+   "missed_requirements": [
+    "R05 D01 flow_rate",
+    "R07 D01 rotation_speed",
+    "R14 D01 ingress_protection",
+    "R20 D05 medium_temperature",
+    "R22 D05 rotation_speed",
+    "R29 D03 bearing_temperature",
+    "R58 D11 rotation_speed",
+    "R30 D06 power",
+    "R31 D06 ingress_protection",
+    "R32 D06 rotation_speed",
+    "R33 D06 ambient_temperature",
+    "R34 D06 voltage",
+    "R35 D12 torque",
+    "R36 D12 ambient_temperature",
+    "R37 D12 ambient_temperature",
+    "R46 D10 flow_rate",
+    "R42 D08 test_pressure",
+    "R54 D08 medium_temperature",
+    "R45 D13 bearing_temperature",
+    "RM_M1 D04 material_temperature",
+    "RM_M2 D04 material_temperature",
+    "RM_M3 D04 material_temperature",
+    "RM_M4 D04 material_temperature",
+    "RM_M5 D04 material_temperature",
+    "RM_M6 D04 material_temperature",
+    "RM_M7 D04 material_temperature",
+    "RM_M9 D04 material_temperature",
+    "RM_M10 D04 material_temperature",
+    "RM_M11 D04 material_temperature",
+    "RM_M12 D04 material_temperature"
+   ],
+   "impact": {
+    "components": {
+     "tp": 62,
+     "fp": 5,
+     "fn": 53,
+     "precision": 0.9254,
+     "recall": 0.5391,
+     "f1": 0.6813
+    },
+    "documents": {
+     "tp": 97,
+     "fp": 3,
+     "fn": 63,
+     "precision": 0.97,
+     "recall": 0.6062,
+     "f1": 0.7462
+    },
+    "violations": {
+     "tp": 10,
+     "fp": 0,
+     "fn": 16,
+     "precision": 1.0,
+     "recall": 0.3846,
+     "f1": 0.5556
+    },
+    "tests": {
+     "tp": 7,
+     "fp": 6,
+     "fn": 10,
+     "precision": 0.5385,
+     "recall": 0.4118,
+     "f1": 0.4667
+    }
+   },
+   "impact_failures": [
+    "S14: ValueError",
+    "S25: ValueError"
+   ],
+   "contradictions": {
+    "found": 11,
+    "precision": 0.9091,
+    "recall": 0.5,
+    "f1": 0.6452,
+    "detected": [
+     "K01",
+     "K02",
+     "K06",
+     "K07",
+     "K09"
+    ],
+    "missed": [
+     "K03",
+     "K04",
+     "K05",
+     "K08",
+     "K10"
+    ],
+    "distractor_hits": 0
+   }
+  },
+  {
+   "level": "combined",
+   "params": {
+    "blur": 1.2,
+    "noise": 0.02,
+    "rot": 2.0,
+    "jpeg": 25,
+    "stamps": 2
+   },
+   "seconds": 25.1,
+   "ingest_seconds": 25.1,
+   "failed_documents": [],
+   "text_similarity": 0.9235,
+   "requirements": {
+    "tp": 16,
+    "fp": 2,
+    "fn": 43,
+    "precision": 0.8889,
+    "recall": 0.2712,
+    "f1": 0.4156
+   },
+   "missed_requirements": [
+    "R04 D01 test_pressure",
+    "R05 D01 flow_rate",
+    "R06 D01 head",
+    "R07 D01 rotation_speed",
+    "R08 D01 power",
+    "R09 D01 vibration_velocity",
+    "R10 D01 noise_level",
+    "R14 D01 ingress_protection",
+    "R16 D01 bearing_temperature",
+    "R20 D05 medium_temperature",
+    "R22 D05 rotation_speed",
+    "R23 D07 working_pressure",
+    "R24 D07 working_pressure",
+    "R26 D03 working_pressure",
+    "R27 D03 working_pressure",
+    "R29 D03 bearing_temperature",
+    "R57 D03 power",
+    "R28 D11 bearing_temperature",
+    "R58 D11 rotation_speed",
+    "R31 D06 ingress_protection",
+    "R32 D06 rotation_speed",
+    "R33 D06 ambient_temperature",
+    "R34 D06 voltage",
+    "R35 D12 torque",
+    "R36 D12 ambient_temperature",
+    "R37 D12 ambient_temperature",
+    "R40 D10 bearing_temperature",
+    "R46 D10 flow_rate",
+    "R52 D10 service_life",
+    "R42 D08 test_pressure",
+    "R54 D08 medium_temperature",
+    "R45 D13 bearing_temperature",
+    "RM_M1 D04 material_temperature",
+    "RM_M2 D04 material_temperature",
+    "RM_M3 D04 material_temperature",
+    "RM_M4 D04 material_temperature",
+    "RM_M5 D04 material_temperature",
+    "RM_M6 D04 material_temperature",
+    "RM_M7 D04 material_temperature",
+    "RM_M9 D04 material_temperature",
+    "RM_M10 D04 material_temperature",
+    "RM_M11 D04 material_temperature",
+    "RM_M12 D04 material_temperature"
+   ],
+   "impact": {
+    "components": {
+     "tp": 52,
+     "fp": 9,
+     "fn": 63,
+     "precision": 0.8525,
+     "recall": 0.4522,
+     "f1": 0.5909
+    },
+    "documents": {
+     "tp": 53,
+     "fp": 3,
+     "fn": 107,
+     "precision": 0.9464,
+     "recall": 0.3312,
+     "f1": 0.4907
+    },
+    "violations": {
+     "tp": 1,
+     "fp": 4,
+     "fn": 25,
+     "precision": 0.2,
+     "recall": 0.0385,
+     "f1": 0.0645
+    },
+    "tests": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 17,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    }
+   },
+   "impact_failures": [
+    "S13: ValueError",
+    "S14: ValueError",
+    "S22: ValueError",
+    "S25: ValueError"
+   ],
+   "contradictions": {
+    "found": 3,
+    "precision": 0.6667,
+    "recall": 0.2,
+    "f1": 0.3077,
+    "detected": [
+     "K01",
+     "K06"
+    ],
+    "missed": [
+     "K02",
+     "K03",
+     "K04",
+     "K05",
+     "K07",
+     "K08",
+     "K09",
+     "K10"
+    ],
+    "distractor_hits": 0
+   }
+  }
+ ]
+}
