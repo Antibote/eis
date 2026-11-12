@@ -1,0 +1,152 @@
+{
+ "experiment": "E1_extraction",
+ "variant": "dev",
+ "dataset_hash": "1fa9332e80491446",
+ "commit": "uncommitted",
+ "ingest_seconds": 0.37,
+ "failed_documents": [
+  "D13_Setpoints_scan.png: OCR недоступен: не установлен Tesseract (apt install tesseract-ocr tesseract-ocr-rus)"
+ ],
+ "requirements": {
+  "tp": 56,
+  "fp": 0,
+  "fn": 3,
+  "precision": 1.0,
+  "recall": 0.9492,
+  "f1": 0.9739
+ },
+ "requirements_loose_doc_subject_param": {
+  "tp": 56,
+  "fp": 0,
+  "fn": 2,
+  "precision": 1.0,
+  "recall": 0.9655,
+  "f1": 0.9825
+ },
+ "requirements_by_kind": {
+  "demand": {
+   "tp": 21,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "nominal": {
+   "tp": 10,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "capability": {
+   "tp": 24,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "setpoint": {
+   "tp": 1,
+   "fp": 0,
+   "fn": 3,
+   "precision": 1.0,
+   "recall": 0.25,
+   "f1": 0.4
+  }
+ },
+ "relations": {
+  "CONTAINS": {
+   "tp": 22,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "DEPENDS_ON": {
+   "tp": 28,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "DERIVED_FROM": {
+   "tp": 2,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "DOCUMENTED_IN": {
+   "tp": 128,
+   "fp": 3,
+   "fn": 3,
+   "precision": 0.9771,
+   "recall": 0.9771,
+   "f1": 0.9771
+  },
+  "SUPERSEDES": {
+   "tp": 3,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "USES_MATERIAL": {
+   "tp": 15,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "VERIFIED_BY": {
+   "tp": 11,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  }
+ },
+ "errors": {
+  "missed": [
+   "R44 D13 bearing_temperature",
+   "R45 D13 bearing_temperature",
+   "R55 D13 working_pressure"
+  ],
+  "spurious": []
+ },
+ "relations_missed": {
+  "CONTAINS": [],
+  "USES_MATERIAL": [],
+  "DEPENDS_ON": [],
+  "DERIVED_FROM": [],
+  "VERIFIED_BY": [],
+  "SUPERSEDES": [],
+  "DOCUMENTED_IN": [
+   "('cmp:НА-200.01.007', 'doc:19f27195569e')",
+   "('cmp:НА-200.06.000', 'doc:19f27195569e')",
+   "('mat:сталь_20', 'doc:79731775da00')"
+  ]
+ },
+ "relations_spurious": {
+  "CONTAINS": [],
+  "USES_MATERIAL": [],
+  "DEPENDS_ON": [],
+  "DERIVED_FROM": [],
+  "VERIFIED_BY": [],
+  "SUPERSEDES": [],
+  "DOCUMENTED_IN": [
+   "('cmp:НА-200.00.000', 'doc:292f7c4697b4')",
+   "('cmp:НА-200.00.000', 'doc:511fb10ca1c0')",
+   "('cmp:НА-200.04.001', 'doc:79731775da00')"
+  ]
+ }
+}

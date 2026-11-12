@@ -1,0 +1,96 @@
+{
+ "generator_version": "1.0",
+ "variant_set": "test",
+ "seed": 42,
+ "synthetic": true,
+ "files": [
+  {
+   "doc": "D01",
+   "file": "D01_TZ_NA-200.pdf",
+   "sha256": "a8c75c35fc47dc07c3221d40d10fd234ae1c5da20d0121cfbd9bb99d51e8f1ef"
+  },
+  {
+   "doc": "D02",
+   "file": "D02_Specification_NA-200.xlsx",
+   "sha256": "e47563dd57113437562a36dcbd4719aaf89777bbaee9dffad76374243b2a82f0"
+  },
+  {
+   "doc": "D03",
+   "file": "D03_PZ_NA-200.docx",
+   "sha256": "17b246692c484be0aa762c351e00215bf779105abebe76ea3fa728566c037781"
+  },
+  {
+   "doc": "D04",
+   "file": "D04_Materials_NA-200.docx",
+   "sha256": "8eea0f9d531af162f4ea1c2dc2db18586cec2653bf37c88e0407dc64813414b4"
+  },
+  {
+   "doc": "D05",
+   "file": "D05_TU_Seal.pdf",
+   "sha256": "c0b4bc3ae858fa0e8829a2b6bb67a8abfa12911f188c36b349eda2fb1a04d770"
+  },
+  {
+   "doc": "D06",
+   "file": "D06_TT_Motor.txt",
+   "sha256": "fe4d6a7f789c13eeddfefeb041a7a9870d547013a8709b1c65b8d5813cedd03c"
+  },
+  {
+   "doc": "D07",
+   "file": "D07_Calc_Casing.pdf",
+   "sha256": "a4a875c10f1b6a1089db6af469214a3be6ab122a08d61460859ebec90346f64d"
+  },
+  {
+   "doc": "D08",
+   "file": "D08_PMI_NA-200.docx",
+   "sha256": "38baaa2f4ff8a06fac42a250926e9b706ba36c2b0acfed11d752c654a73feb15"
+  },
+  {
+   "doc": "D09",
+   "file": "D09_TestReport_NA-200.xlsx",
+   "sha256": "b232a2f0463a1105d1c49976da6b20e8e7720fedf37db2b8f4835f04426eefe5"
+  },
+  {
+   "doc": "D10",
+   "file": "D10_RE_NA-200.pdf",
+   "sha256": "87d626aaa77a04f773c0f6f65aeb4a87db50bd26055ac512e11ede5166eddcec"
+  },
+  {
+   "doc": "D11",
+   "file": "D11_Passport_Bearing.txt",
+   "sha256": "d9bbbf82c9472cc10347d933e83fc858a8a1ca32d06eeae28a7f20a377bfb84b"
+  },
+  {
+   "doc": "D12",
+   "file": "D12_TT_Coupling.docx",
+   "sha256": "bd7eb59b11e4c88479befc8dacf35fb0950f06701095c1dbe183f49f018adc04"
+  },
+  {
+   "doc": "D13",
+   "file": "D13_Setpoints_scan.png",
+   "sha256": "868b56ab3274c644e1107b9bc3977b2a2eda15fa91b28ce4e0cf5596bec42811"
+  },
+  {
+   "doc": "D14",
+   "file": "D14_ChangeLog.csv",
+   "sha256": "3a0b503452272d8e08dc90343076835e34dbb9e73fd46d1991e7a6d598448cd9"
+  }
+ ],
+ "stats": {
+  "requirements": 59,
+  "components": 23,
+  "documents": 14,
+  "relations": 271,
+  "relations_by_type": {
+   "CONTAINS": 22,
+   "DEPENDS_ON": 28,
+   "DERIVED_FROM": 2,
+   "DOCUMENTED_IN": 190,
+   "SUPERSEDES": 3,
+   "USES_MATERIAL": 15,
+   "VERIFIED_BY": 11
+  },
+  "contradictions": 10,
+  "scenarios": 5
+ },
+ "dataset_hash": "755cab5490793d17"
+}

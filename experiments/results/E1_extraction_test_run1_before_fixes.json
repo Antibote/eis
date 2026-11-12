@@ -1,0 +1,174 @@
+{
+ "experiment": "E1_extraction",
+ "variant": "test",
+ "dataset_hash": "755cab5490793d17",
+ "commit": "uncommitted",
+ "ingest_seconds": 0.37,
+ "failed_documents": [
+  "D13_Setpoints_scan.png: OCR недоступен: не установлен Tesseract (apt install tesseract-ocr tesseract-ocr-rus)"
+ ],
+ "requirements": {
+  "tp": 52,
+  "fp": 4,
+  "fn": 7,
+  "precision": 0.9286,
+  "recall": 0.8814,
+  "f1": 0.9043
+ },
+ "requirements_loose_doc_subject_param": {
+  "tp": 56,
+  "fp": 0,
+  "fn": 2,
+  "precision": 1.0,
+  "recall": 0.9655,
+  "f1": 0.9825
+ },
+ "requirements_by_kind": {
+  "demand": {
+   "tp": 17,
+   "fp": 4,
+   "fn": 4,
+   "precision": 0.8095,
+   "recall": 0.8095,
+   "f1": 0.8095
+  },
+  "nominal": {
+   "tp": 10,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "capability": {
+   "tp": 24,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "setpoint": {
+   "tp": 1,
+   "fp": 0,
+   "fn": 3,
+   "precision": 1.0,
+   "recall": 0.25,
+   "f1": 0.4
+  }
+ },
+ "relations": {
+  "CONTAINS": {
+   "tp": 22,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "DEPENDS_ON": {
+   "tp": 23,
+   "fp": 0,
+   "fn": 5,
+   "precision": 1.0,
+   "recall": 0.8214,
+   "f1": 0.902
+  },
+  "DERIVED_FROM": {
+   "tp": 2,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "DOCUMENTED_IN": {
+   "tp": 126,
+   "fp": 4,
+   "fn": 5,
+   "precision": 0.9692,
+   "recall": 0.9618,
+   "f1": 0.9655
+  },
+  "SUPERSEDES": {
+   "tp": 3,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "USES_MATERIAL": {
+   "tp": 15,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "VERIFIED_BY": {
+   "tp": 10,
+   "fp": 1,
+   "fn": 1,
+   "precision": 0.9091,
+   "recall": 0.9091,
+   "f1": 0.9091
+  }
+ },
+ "errors": {
+  "missed": [
+   "R10 D01 noise_level",
+   "R12 D01 service_life",
+   "R52 D10 service_life",
+   "R51 D08 noise_level",
+   "R44 D13 bearing_temperature",
+   "R45 D13 bearing_temperature",
+   "R55 D13 working_pressure"
+  ],
+  "spurious": [
+   "D01 noise_level cmp:НА-200.00.000 = 85.0/None/None «3.3.2 Уровень звука не должен превышать 85 дБА.»",
+   "D01 service_life cmp:НА-200.00.000 = 25000.0/None/None «3.5.1 Назначенный ресурс не должен быть менее 25000 ч.»",
+   "D08 noise_level cmp:НА-200.00.000 = 85.0/None/None «Критерий приёмки: уровень звука не должен превышать 85 дБА.»",
+   "D10 service_life cmp:НА-200.00.000 = 25000.0/None/None «1.5 Назначенный ресурс не должен быть менее 25000 ч.»"
+  ]
+ },
+ "relations_missed": {
+  "CONTAINS": [],
+  "USES_MATERIAL": [],
+  "DEPENDS_ON": [
+   "('cmp:НА-200.01.002', 'con:cmp:НА-200.00.000:vibration_velocity')",
+   "('cmp:НА-200.03.000', 'con:cmp:НА-200.00.000:vibration_velocity')",
+   "('cmp:НА-200.04.000', 'con:cmp:НА-200.00.000:vibration_velocity')",
+   "('cmp:НА-200.04.001', 'con:cmp:НА-200.00.000:vibration_velocity')",
+   "('cmp:НА-200.06.001', 'con:cmp:НА-200.00.000:vibration_velocity')"
+  ],
+  "DERIVED_FROM": [],
+  "VERIFIED_BY": [
+   "('missing:R10', 'test:T04')"
+  ],
+  "SUPERSEDES": [],
+  "DOCUMENTED_IN": [
+   "('cmp:НА-200.01.007', 'doc:c6fc21343086')",
+   "('cmp:НА-200.06.000', 'doc:c6fc21343086')",
+   "('mat:смазка_литол-24', 'doc:86085e1ed3c5')",
+   "('mat:сталь_20', 'doc:79731775da00')",
+   "('mat:сталь_шх15', 'doc:86085e1ed3c5')"
+  ]
+ },
+ "relations_spurious": {
+  "CONTAINS": [],
+  "USES_MATERIAL": [],
+  "DEPENDS_ON": [],
+  "DERIVED_FROM": [],
+  "VERIFIED_BY": [
+   "('req:7928210f2b14', 'test:T04')"
+  ],
+  "SUPERSEDES": [],
+  "DOCUMENTED_IN": [
+   "('cmp:НА-200.00.000', 'doc:292f7c4697b4')",
+   "('cmp:НА-200.00.000', 'doc:da96ad3b95ba')",
+   "('cmp:НА-200.04.001', 'doc:79731775da00')",
+   "('mat:сталь_шх15_смазка_литол-24', 'doc:86085e1ed3c5')"
+  ]
+ }
+}

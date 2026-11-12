@@ -1,0 +1,138 @@
+[
+ {
+  "id": "K01",
+  "type": "value_mismatch",
+  "pairs": [
+   [
+    "R01",
+    "R41"
+   ]
+  ],
+  "severity": "high",
+  "description": "ТЗ: температура среды ≤ 80 °C; РЭ: ≤ 90 °C."
+ },
+ {
+  "id": "K02",
+  "type": "demand_exceeds_capability",
+  "pairs": [
+   [
+    "R03",
+    "R23"
+   ],
+   [
+    "R48",
+    "R23"
+   ]
+  ],
+  "severity": "critical",
+  "description": "Рабочее давление 1,6 МПа превышает расчётное давление корпуса 1,0 МПа."
+ },
+ {
+  "id": "K03",
+  "type": "unit_hidden_mismatch",
+  "pairs": [
+   [
+    "R04",
+    "R42"
+   ]
+  ],
+  "severity": "high",
+  "description": "ТЗ: испытательное давление 2,4 МПа; ПМИ: 20 кгс/см² (≈1,96 МПа)."
+ },
+ {
+  "id": "K04",
+  "type": "demand_exceeds_capability",
+  "pairs": [
+   [
+    "R11",
+    "R36"
+   ]
+  ],
+  "severity": "high",
+  "description": "Нижняя граница температуры окружающего воздуха −40 °C ниже допустимой для упругого элемента муфты (−30 °C)."
+ },
+ {
+  "id": "K05",
+  "type": "value_mismatch",
+  "pairs": [
+   [
+    "R08",
+    "R30"
+   ]
+  ],
+  "severity": "critical",
+  "description": "Мощность электродвигателя: ТЗ 55 кВт, ТТ 45 кВт."
+ },
+ {
+  "id": "K06",
+  "type": "value_mismatch",
+  "pairs": [
+   [
+    "R09",
+    "R43"
+   ],
+   [
+    "R53",
+    "R43"
+   ]
+  ],
+  "severity": "medium",
+  "description": "Критерий виброскорости: ТЗ ≤ 4,5 мм/с, ПМИ ≤ 7,1 мм/с."
+ },
+ {
+  "id": "K07",
+  "type": "value_mismatch",
+  "pairs": [
+   [
+    "R16",
+    "R40"
+   ],
+   [
+    "R28",
+    "R40"
+   ]
+  ],
+  "severity": "medium",
+  "description": "Температура нагрева подшипникового узла: ТЗ и паспорт ≤ 90 °C, РЭ ≤ 95 °C."
+ },
+ {
+  "id": "K08",
+  "type": "material_mismatch",
+  "pairs": [
+   [
+    "C07:M7",
+    "C07:M8"
+   ]
+  ],
+  "severity": "medium",
+  "description": "Материал уплотнительного кольца: спецификация и ВМ — NBR, ТУ уплотнения — FKM."
+ },
+ {
+  "id": "K09",
+  "type": "setpoint_exceeds_limit",
+  "pairs": [
+   [
+    "R44",
+    "R16"
+   ],
+   [
+    "R44",
+    "R28"
+   ]
+  ],
+  "severity": "high",
+  "description": "Аварийная уставка температуры подшипникового узла 100 °C выше предельной 90 °C."
+ },
+ {
+  "id": "K10",
+  "type": "value_mismatch",
+  "pairs": [
+   [
+    "R14",
+    "R31"
+   ]
+  ],
+  "severity": "medium",
+  "description": "Степень защиты электродвигателя: ТЗ не ниже IP55, ТТ — IP54."
+ }
+]

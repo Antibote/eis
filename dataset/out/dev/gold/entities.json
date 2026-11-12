@@ -1,0 +1,527 @@
+{
+ "components": [
+  {
+   "id": "P",
+   "designation": "НА-200.00.000",
+   "kind": "Product",
+   "nom": "насосный агрегат НА-200",
+   "gen": "насосного агрегата НА-200",
+   "parent": null,
+   "material": null
+  },
+  {
+   "id": "A1",
+   "designation": "НА-200.01.000",
+   "kind": "Assembly",
+   "nom": "насос центробежный",
+   "gen": "насоса центробежного",
+   "parent": "P",
+   "material": null
+  },
+  {
+   "id": "A2",
+   "designation": "НА-200.02.000",
+   "kind": "Assembly",
+   "nom": "электродвигатель",
+   "gen": "электродвигателя",
+   "parent": "P",
+   "material": null
+  },
+  {
+   "id": "A3",
+   "designation": "НА-200.03.000",
+   "kind": "Assembly",
+   "nom": "муфта соединительная",
+   "gen": "муфты соединительной",
+   "parent": "P",
+   "material": null
+  },
+  {
+   "id": "A4",
+   "designation": "НА-200.04.000",
+   "kind": "Assembly",
+   "nom": "рама опорная",
+   "gen": "рамы опорной",
+   "parent": "P",
+   "material": null
+  },
+  {
+   "id": "A5",
+   "designation": "НА-200.05.000",
+   "kind": "Assembly",
+   "nom": "узел уплотнения вала",
+   "gen": "узла уплотнения вала",
+   "parent": "A1",
+   "material": null
+  },
+  {
+   "id": "A6",
+   "designation": "НА-200.06.000",
+   "kind": "Assembly",
+   "nom": "подшипниковый узел",
+   "gen": "подшипникового узла",
+   "parent": "A1",
+   "material": null
+  },
+  {
+   "id": "C01",
+   "designation": "НА-200.01.001",
+   "kind": "Component",
+   "nom": "корпус насоса",
+   "gen": "корпуса насоса",
+   "parent": "A1",
+   "material": "M1"
+  },
+  {
+   "id": "C02",
+   "designation": "НА-200.01.002",
+   "kind": "Component",
+   "nom": "рабочее колесо",
+   "gen": "рабочего колеса",
+   "parent": "A1",
+   "material": "M2"
+  },
+  {
+   "id": "C03",
+   "designation": "НА-200.01.003",
+   "kind": "Component",
+   "nom": "вал насоса",
+   "gen": "вала насоса",
+   "parent": "A1",
+   "material": "M3"
+  },
+  {
+   "id": "C04",
+   "designation": "НА-200.01.004",
+   "kind": "Component",
+   "nom": "фланец напорный",
+   "gen": "фланца напорного",
+   "parent": "A1",
+   "material": "M4"
+  },
+  {
+   "id": "C05",
+   "designation": "НА-200.01.005",
+   "kind": "Component",
+   "nom": "прокладка фланцевая",
+   "gen": "прокладки фланцевой",
+   "parent": "A1",
+   "material": "M5"
+  },
+  {
+   "id": "C11",
+   "designation": "НА-200.01.006",
+   "kind": "Component",
+   "nom": "датчик давления",
+   "gen": "датчика давления",
+   "parent": "A1",
+   "material": null
+  },
+  {
+   "id": "C14",
+   "designation": "НА-200.01.007",
+   "kind": "Component",
+   "nom": "клапан предохранительный",
+   "gen": "клапана предохранительного",
+   "parent": "A1",
+   "material": "M4"
+  },
+  {
+   "id": "C10",
+   "designation": "НА-200.02.001",
+   "kind": "Component",
+   "nom": "обмотка статора",
+   "gen": "обмотки статора",
+   "parent": "A2",
+   "material": null
+  },
+  {
+   "id": "C12",
+   "designation": "НА-200.03.001",
+   "kind": "Component",
+   "nom": "упругий элемент муфты",
+   "gen": "упругого элемента муфты",
+   "parent": "A3",
+   "material": "M11"
+  },
+  {
+   "id": "C13",
+   "designation": "НА-200.03.002",
+   "kind": "Component",
+   "nom": "полумуфта",
+   "gen": "полумуфты",
+   "parent": "A3",
+   "material": "M3"
+  },
+  {
+   "id": "C15",
+   "designation": "НА-200.03.003",
+   "kind": "Component",
+   "nom": "кожух муфты",
+   "gen": "кожуха муфты",
+   "parent": "A3",
+   "material": "M4"
+  },
+  {
+   "id": "C16",
+   "designation": "НА-200.04.001",
+   "kind": "Component",
+   "nom": "виброопора",
+   "gen": "виброопоры",
+   "parent": "A4",
+   "material": "M12"
+  },
+  {
+   "id": "C06",
+   "designation": "НА-200.05.001",
+   "kind": "Component",
+   "nom": "торцевое уплотнение",
+   "gen": "торцевого уплотнения",
+   "parent": "A5",
+   "material": "M6"
+  },
+  {
+   "id": "C07",
+   "designation": "НА-200.05.002",
+   "kind": "Component",
+   "nom": "кольцо уплотнительное",
+   "gen": "кольца уплотнительного",
+   "parent": "A5",
+   "material": "M7"
+  },
+  {
+   "id": "C08",
+   "designation": "НА-200.06.001",
+   "kind": "Component",
+   "nom": "подшипник радиальный",
+   "gen": "подшипника радиального",
+   "parent": "A6",
+   "material": "M9"
+  },
+  {
+   "id": "C09",
+   "designation": "НА-200.06.002",
+   "kind": "Component",
+   "nom": "датчик температуры подшипника",
+   "gen": "датчика температуры подшипника",
+   "parent": "A6",
+   "material": null
+  }
+ ],
+ "materials": [
+  {
+   "id": "M1",
+   "name": "Сталь 25Л",
+   "t_low": -40,
+   "t_high": 450,
+   "note": "ГОСТ 977-88"
+  },
+  {
+   "id": "M2",
+   "name": "Сталь 12Х18Н10Т",
+   "t_low": -196,
+   "t_high": 600,
+   "note": "ГОСТ 5632-2014"
+  },
+  {
+   "id": "M3",
+   "name": "Сталь 40Х",
+   "t_low": -40,
+   "t_high": 400,
+   "note": "ГОСТ 4543-2016"
+  },
+  {
+   "id": "M4",
+   "name": "Сталь 20",
+   "t_low": -40,
+   "t_high": 425,
+   "note": "ГОСТ 1050-2013"
+  },
+  {
+   "id": "M5",
+   "name": "Паронит ПОН-Б",
+   "t_low": -50,
+   "t_high": 450,
+   "note": "ГОСТ 481-80"
+  },
+  {
+   "id": "M6",
+   "name": "Карбид кремния SiC",
+   "t_low": -100,
+   "t_high": 400,
+   "note": "пара трения торцевого уплотнения"
+  },
+  {
+   "id": "M7",
+   "name": "Резина NBR",
+   "t_low": -30,
+   "t_high": 100,
+   "note": "бутадиен-нитрильный каучук"
+  },
+  {
+   "id": "M8",
+   "name": "Резина FKM",
+   "t_low": -20,
+   "t_high": 200,
+   "note": "фторкаучук"
+  },
+  {
+   "id": "M9",
+   "name": "Сталь ШХ15",
+   "t_low": -60,
+   "t_high": 150,
+   "note": "ГОСТ 801-78"
+  },
+  {
+   "id": "M10",
+   "name": "Смазка Литол-24",
+   "t_low": -40,
+   "t_high": 120,
+   "note": "ГОСТ 21150-2017"
+  },
+  {
+   "id": "M11",
+   "name": "Резина маслобензостойкая МБС",
+   "t_low": -30,
+   "t_high": 80,
+   "note": "упругие элементы муфт"
+  },
+  {
+   "id": "M12",
+   "name": "Резина виброизолирующая",
+   "t_low": -40,
+   "t_high": 70,
+   "note": "виброопоры"
+  }
+ ],
+ "documents": [
+  {
+   "id": "D01",
+   "code": "НА-200.00.000 ТЗ",
+   "title": "Техническое задание на насосный агрегат НА-200",
+   "doc_type": "TechnicalSpecification",
+   "fmt": "pdf",
+   "subject": "P",
+   "filename": "D01_TZ_NA-200.pdf",
+   "is_synthetic": true
+  },
+  {
+   "id": "D02",
+   "code": "НА-200.00.000 СП",
+   "title": "Спецификация насосного агрегата НА-200",
+   "doc_type": "Specification",
+   "fmt": "xlsx",
+   "subject": "P",
+   "filename": "D02_Specification_NA-200.xlsx",
+   "is_synthetic": true
+  },
+  {
+   "id": "D03",
+   "code": "НА-200.00.000 ПЗ",
+   "title": "Пояснительная записка. Описание сборочных единиц",
+   "doc_type": "ExplanatoryNote",
+   "fmt": "docx",
+   "subject": "P",
+   "filename": "D03_PZ_NA-200.docx",
+   "is_synthetic": true
+  },
+  {
+   "id": "D04",
+   "code": "НА-200.00.000 ВМ",
+   "title": "Ведомость и требования к материалам",
+   "doc_type": "MaterialRequirements",
+   "fmt": "docx",
+   "subject": "P",
+   "filename": "D04_Materials_NA-200.docx",
+   "is_synthetic": true
+  },
+  {
+   "id": "D05",
+   "code": "НА-200.05.001 ТУ",
+   "title": "Технические условия на торцевое уплотнение",
+   "doc_type": "ComponentSpecification",
+   "fmt": "pdf",
+   "subject": "C06",
+   "filename": "D05_TU_Seal.pdf",
+   "is_synthetic": true
+  },
+  {
+   "id": "D06",
+   "code": "НА-200.02.000 ТТ",
+   "title": "Технические требования к электродвигателю",
+   "doc_type": "ComponentSpecification",
+   "fmt": "txt",
+   "subject": "A2",
+   "filename": "D06_TT_Motor.txt",
+   "is_synthetic": true
+  },
+  {
+   "id": "D07",
+   "code": "НА-200.01.001 РР",
+   "title": "Расчёт на прочность корпуса насоса",
+   "doc_type": "Calculation",
+   "fmt": "pdf",
+   "subject": "C01",
+   "filename": "D07_Calc_Casing.pdf",
+   "is_synthetic": true
+  },
+  {
+   "id": "D08",
+   "code": "НА-200.00.000 ПМ",
+   "title": "Программа и методика испытаний",
+   "doc_type": "TestProgram",
+   "fmt": "docx",
+   "subject": "P",
+   "filename": "D08_PMI_NA-200.docx",
+   "is_synthetic": true
+  },
+  {
+   "id": "D09",
+   "code": "НА-200.00.000 ПИ",
+   "title": "Протокол приёмо-сдаточных испытаний (синтетические значения)",
+   "doc_type": "TestReport",
+   "fmt": "xlsx",
+   "subject": "P",
+   "filename": "D09_TestReport_NA-200.xlsx",
+   "is_synthetic": true
+  },
+  {
+   "id": "D10",
+   "code": "НА-200.00.000 РЭ",
+   "title": "Руководство по эксплуатации",
+   "doc_type": "OperationManual",
+   "fmt": "pdf",
+   "subject": "P",
+   "filename": "D10_RE_NA-200.pdf",
+   "is_synthetic": true
+  },
+  {
+   "id": "D11",
+   "code": "НА-200.06.000 ПС",
+   "title": "Паспорт подшипникового узла",
+   "doc_type": "Passport",
+   "fmt": "txt",
+   "subject": "A6",
+   "filename": "D11_Passport_Bearing.txt",
+   "is_synthetic": true
+  },
+  {
+   "id": "D12",
+   "code": "НА-200.03.000 ТТ",
+   "title": "Технические требования к муфте и опорам",
+   "doc_type": "ComponentSpecification",
+   "fmt": "docx",
+   "subject": "A3",
+   "filename": "D12_TT_Coupling.docx",
+   "is_synthetic": true
+  },
+  {
+   "id": "D13",
+   "code": "НА-200.00.000 КУ",
+   "title": "Карта уставок датчиков (скан)",
+   "doc_type": "Setpoints",
+   "fmt": "png",
+   "subject": "P",
+   "filename": "D13_Setpoints_scan.png",
+   "is_synthetic": true
+  },
+  {
+   "id": "D14",
+   "code": "НА-200.00.000 ЖИ",
+   "title": "Журнал извещений об изменениях",
+   "doc_type": "ChangeLog",
+   "fmt": "csv",
+   "subject": "P",
+   "filename": "D14_ChangeLog.csv",
+   "is_synthetic": true
+  }
+ ],
+ "tests": [
+  {
+   "id": "T01",
+   "name": "Гидравлическое испытание корпуса на прочность и плотность",
+   "verifies": [
+    "R04",
+    "R03"
+   ],
+   "measured": "давление 2,4 МПа выдержано 10 мин, течей нет"
+  },
+  {
+   "id": "T02",
+   "name": "Испытание на нагрев при максимальной температуре среды",
+   "verifies": [
+    "R01",
+    "R16"
+   ],
+   "measured": "температура подшипникового узла 78 °C"
+  },
+  {
+   "id": "T03",
+   "name": "Виброиспытание агрегата",
+   "verifies": [
+    "R09"
+   ],
+   "measured": "виброскорость 3,1 мм/с"
+  },
+  {
+   "id": "T04",
+   "name": "Измерение уровня звука",
+   "verifies": [
+    "R10"
+   ],
+   "measured": "уровень звука 82 дБА"
+  },
+  {
+   "id": "T05",
+   "name": "Снятие напорной характеристики",
+   "verifies": [
+    "R05",
+    "R06"
+   ],
+   "measured": "подача 205 м³/ч, напор 51 м"
+  },
+  {
+   "id": "T06",
+   "name": "Климатические испытания на холодоустойчивость",
+   "verifies": [
+    "R11"
+   ],
+   "measured": "пуск при -40 °C успешен"
+  },
+  {
+   "id": "T07",
+   "name": "Испытание электродвигателя под нагрузкой",
+   "verifies": [
+    "R08",
+    "R15"
+   ],
+   "measured": "мощность 55 кВт, ток в норме"
+  }
+ ],
+ "changes": [
+  {
+   "id": "ИИ-01",
+   "date": "2025-03-14",
+   "document": "НА-200.05.001 ТУ",
+   "edition": "ред. 2",
+   "supersedes": "ред. 1",
+   "text": "Изменено: допустимая температура перекачиваемой среды для торцевого уплотнения с 70 °C на 90 °C."
+  },
+  {
+   "id": "ИИ-02",
+   "date": "2025-06-02",
+   "document": "НА-200.00.000 РЭ",
+   "edition": "изм. 1",
+   "supersedes": "исх.",
+   "text": "Уточнены указания по монтажу виброопор."
+  },
+  {
+   "id": "ИИ-03",
+   "date": "2025-09-20",
+   "document": "НА-200.00.000 ВМ",
+   "edition": "ред. 2",
+   "supersedes": "ред. 1",
+   "text": "Сталь 20Л корпуса насоса заменена на сталь 25Л."
+  }
+ ]
+}
