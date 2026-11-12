@@ -12,7 +12,18 @@ from dataclasses import dataclass, field
 
 CITE_RE = re.compile(r"\[(\d+(?:\s*,\s*\d+)*)\]")
 NUM_RE = re.compile(r"(?<![\w.])[−-]?\d+(?:[.,]\d+)?")
-SENT_RE = re.compile(r"(?<=[.!?])\s+")
+SENT_RE = re.compile(r"(?<=[.!?])\s+(?=[А-ЯЁA-Z«\"(\[])")      # новое предложение — с заглавной
+ABBR_RE = re.compile(r"(?:^|\s)(?:п|пп|т|см|стр|рис|табл|ед|им|г|гг|ч|мин|макс|ном|др)\.$", re.I)
+
+
+def _sentences(text: str) -> list[str]:
+    out: list[str] = []
+    for part in SENT_RE.split(text.strip()):
+        if out and ABBR_RE.search(out[-1]):
+            out[-1] += " " + part          # точка после сокращения («п. 3.1.4») — не конец предложения
+        else:
+            out.append(part)
+    return out
 
 
 @dataclass
@@ -28,13 +39,18 @@ class GuardResult:
         return len(self.rejected) / n if n else 0.0
 
 
+# Обозначения и коды — не числовые утверждения: «НА-200.00.000», «IP55», «ГОСТ 977-88», «п. 3.2.3»
+CODE_RE = re.compile(r"[A-Za-zА-Яа-яЁё]+[-‑]?\d[\d.\-]*|ГОСТ\s*(?:Р\s*)?(?:ИСО\s*)?[\d.\-]+|\bп\.\s*[\d.]+|\b\d+(?:\.\d+){2,}\b")
+
+
 def _nums(s: str) -> set[str]:
+    s = CODE_RE.sub(" ", s)
     return {x.replace(",", ".").replace("−", "-").lstrip("+") for x in NUM_RE.findall(s)}
 
 
 def guard(answer: str, context: dict[int, str]) -> GuardResult:
     res = GuardResult(text="")
-    for sent in (s.strip() for s in SENT_RE.split(answer.strip())):
+    for sent in (s.strip() for s in _sentences(answer)):
         if not sent:
             continue
         refs = {int(x) for m in CITE_RE.finditer(sent) for x in m.group(1).split(",")}

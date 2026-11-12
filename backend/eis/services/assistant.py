@@ -25,6 +25,8 @@ INTENTS = [
     ("contradictions", re.compile(r"противореч|расхожден|несоответстви|конфликт")),
     ("tests", re.compile(r"испытани|проверк\w+\s+требовани")),
     ("revise", re.compile(r"пересмотр|пересмотрет|переработ|актуализ")),
+    ("value", re.compile(r"как\w*\s+значени|чему\s+равн|каков\w*\s+(?:значени|величин|предел)|сколько\s+составля|"
+                         r"како\w*\s+(?:предел|допуст|номинал|рабоч|максимальн|минимальн)")),
     ("documents", re.compile(r"документ")),
     ("requirements", re.compile(r"требовани|ограничени|характеристик")),
 ]
@@ -130,6 +132,28 @@ class Assistant:
                 lines.append(f"• {PARAM_RU.get(r.parameter, r.parameter)}{who}: {fmt_req(r)} — {self._docname(r.document_id)}"
                              f"{' п. ' + r.section if r.section else ''} {c.ref(r.evidence[0])}")
                 facts.append({"requirement": r.id})
+        return lines, facts, []
+
+    def _value(self, q, ents, c):
+        """Значение параметра объекта: «какое значение … для … указано в документе …»."""
+        from eis.extraction.lexicon import find_params
+        params = [h.key for h in find_params(q.lower())]
+        if not params:
+            return [], [], []
+        codes = {d.id for d in self.ws.kb.documents.values() if d.code and d.code.lower() in q.lower()}
+        types = {t for rx, t in DOC_TYPE_WORDS.items() if re.search(rx, q.lower())}
+        cands = [r for e in ents for r in self._subject_requirements(e) if r.parameter in params] if ents else []
+        if not cands:          # объект не назван или требований к нему нет — по всем объектам
+            cands = [r for r in self.ws.kb.requirements.values() if r.parameter in params]
+        if codes:
+            cands = [r for r in cands if r.document_id in codes] or cands
+        elif types:
+            cands = [r for r in cands if self.ws.kb.documents[r.document_id].doc_type in types] or cands
+        lines, facts = [], []
+        for r in sorted(cands, key=lambda r: (r.document_id, r.section or ""))[:8]:
+            lines.append(f"• {PARAM_RU.get(r.parameter, r.parameter)} «{self._name(r.subject_id)}»: {fmt_req(r)} — "
+                         f"{self._docname(r.document_id)}{' п. ' + r.section if r.section else ''} {c.ref(r.evidence[0])}")
+            facts.append({"requirement": r.id})
         return lines, facts, []
 
     def _tests(self, q, ents, c):

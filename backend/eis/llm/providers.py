@@ -93,7 +93,7 @@ class OpenAICompatibleProvider:
 def provider_from_env() -> LLMProvider:
     kind = os.environ.get("EIS_LLM_PROVIDER", "none").lower()
     if kind == "ollama":
-        return OllamaProvider(os.environ.get("EIS_LLM_URL", "http://localhost:11434"), os.environ.get("EIS_LLM_MODEL", "qwen2.5:7b"))
+        return OllamaProvider(os.environ.get("EIS_LLM_URL", "http://localhost:11434"), os.environ.get("EIS_LLM_MODEL", "qwen2.5:3b"))
     if kind == "openai":
         return OpenAICompatibleProvider(os.environ.get("EIS_LLM_URL", "http://localhost:8000/v1"),
                                         os.environ.get("EIS_LLM_MODEL", ""), os.environ.get("EIS_LLM_API_KEY", ""))

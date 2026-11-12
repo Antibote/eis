@@ -26,6 +26,15 @@ EIS_PORT=8080 docker compose up --build  # если порт 8000 занят
 docker compose --profile llm up    # + локальная LLM через Ollama (EIS_LLM_PROVIDER=ollama)
 ```
 
+LLM необязательна: без неё система работает полностью. С локальной Ollama без Docker:
+```bash
+ollama serve & ollama pull qwen2.5:3b
+EIS_LLM_PROVIDER=ollama EIS_LLM_URL=http://127.0.0.1:11434 EIS_LLM_MODEL=qwen2.5:3b \
+  ../.venv/bin/uvicorn eis.api.app:app --port 8000          # из backend/
+```
+Эксперименты: `./experiments/run_all.sh` (E1–E3), `experiments/eval_noise.py` (E4, сканы),
+`experiments/eval_scale.py` (E5), `experiments/eval_llm.py` (E6, нужна Ollama). Журнал — `docs/experiments_log.md`.
+
 ## Эксперименты
 ```bash
 ./experiments/run_all.sh           # датасет → E1 извлечение → E2 последствия → E3 противоречия

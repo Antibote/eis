@@ -64,3 +64,19 @@ def test_reproducible(dev_kb, dev_graph):
     r1 = ImpactAnalyzer(dev_kb, dev_graph).analyze(pc.requirement.id, new_value=pc.new_value)
     r2 = ImpactAnalyzer(dev_kb, dev_graph).analyze(pc.requirement.id, new_value=pc.new_value)
     assert [i.entity_id for i in r1.items] == [i.entity_id for i in r2.items]
+
+
+def test_assistant_value_question_returns_value_with_citation(dev_kb):
+    from eis.services.assistant import Assistant
+    from eis.services.workspace import Workspace
+    a = Assistant(Workspace(dev_kb)).ask("Какое значение параметра «мощность» для «электродвигатель» указано в документе НА-200.00.000 ТЗ?")
+    assert a.intent == "value" and "55 кВт" in a.text and a.citations
+
+
+def test_guard_ignores_designations_but_rejects_invented_numbers():
+    from eis.llm.guard import guard
+    ctx = {1: "3.1.4 Мощность электродвигателя (номинальное значение): 55 кВт."}
+    ok = guard("Согласно документу НА-200.00.000 ТЗ п. 3.1.4, мощность составляет 55 кВт [1].", ctx)
+    bad = guard("Мощность электродвигателя НА-200 составляет 75 кВт [1].", ctx)
+    assert len(ok.accepted) == 1 and not ok.rejected
+    assert not bad.accepted and "75" in bad.rejected[0][1]
